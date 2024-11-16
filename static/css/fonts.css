@@ -1,0 +1,27 @@
+body {
+    font-family: Palatino,palatino linotype,palatino lt std,book antiqua,Georgia,apple color emoji,segoe ui emoji,segoe ui symbol,source han sans cn,'source han serif',songti sc,serif
+}
+
+blockquote {
+    font-family: Palatino,palatino linotype,palatino lt std,book antiqua,Georgia,apple color emoji,segoe ui emoji,segoe ui symbol,source han sans cn,'source han serif',kaiti sc,serif
+}
+
+code {
+    font-size: 14px
+}
+
+code.nohighlight {
+    font-family: Consolas,Courier,courier new,monospace
+}
+
+code.nohighlight {
+    font-size: 14px
+}
+
+pre code {
+    font-size: 14px
+}
+
+.MathJax {
+    pointer-events: none
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block header %}
+    <meta name="generator" content="Hugo 0.105.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Haran&#39;s Website</title>
+    <meta property="og:title" content="Haran&#39;s Website">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="">
+    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Haran&#39;s Whiteboard"/>
+    <meta property="description" content="Haran&#39;s website features his research work on Cubature Kalman Filtering">
+
+
+            <!--        <hr style="margin-top:-1em">-->
+
+<!--        <h3 style="margin-top:-2.3em">-->
+<!--            2014-05-15-->
+<!--        </h3>-->
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/social.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+
+        <!-- Include Highlight.js stylesheet for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+
+    <!-- Include Highlight.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+<!--    <link rel="stylesheet" href="reveal.js/dist/reveal.css">-->
+<!--    <link rel="stylesheet" href="reveal.js/dist/theme/black.css">-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/reveal.css') }}">-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme/black.css') }}">-->
+
+    <script async src="js/load-typekit.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+
+
+    <!--    <script type="70c585336a849c41636d0fb5-text/javascript">-->
+    <!--(function(u, c) {-->
+    <!--  var d = document, t = 'script', o = d.createElement(t), s = d.getElementsByTagName(t)[0];-->
+    <!--  o.src = u;-->
+    <!--  if (c) { o.addEventListener('load', function (e) { c(e); }); }-->
+    <!--  s.parentNode.insertBefore(o, s);-->
+    <!--})('//cdn.jsdelivr.net/npm/pangu@4.0.5/dist/browser/pangu.min.js', function() {-->
+    <!--  pangu.spacingPage();-->
+    <!--});-->
+    <!--    </script>-->
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          "HTML-CSS": {
+            scale: 95,
+            availableFonts: ["TeX"],
+            preferredFonts: "MathJax_Serif",
+            undefinedFamily: "MathJax_Serif",
+            linebreaks: { automatic: true },
+            matchFontHeight: true,
+            noReflows: false,
+          },
+          "fast-preview": {
+            disabled: true
+          },
+        });
+
+    </script>
+
+    <script type="math/tex">
+            \require{sansmath}
+    </script>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!--    <script type="text/javascript" async-->
+<!--        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">-->
+<!--    </script>-->
+
+    <!--   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2980951767804816"-->
+    <!--     crossorigin="anonymous"></script>-->
+
+
+
+
+    {% endblock %}
+
+</head>
+
+<body class="home">
+<header class="masthead">
+    <!--    <h1><a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='images/icon_home_2.png') }}" alt="Back"/></a>-->
+    <!--    </h1>-->
+    <nav class="menu">
+        <ul>
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="{{url_for('portfolio')}}">Portfolio</a></li>
+            <li><a href="{{url_for('estimation')}}">Estimation</a></li>
+            <li><a href="{{url_for('coding')}}">Coding</a></li>
+            <li><a href="{{url_for('resume')}}">Resume</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<article class="main">
+    <header class="title">
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+</article>
+
+<footer>
+    <div class="footer_wrapper">
+        <div class="footer_message">
+            <p> &copy; Haran Arasaratnam 2013 - 2024. Crafted with ❤️ and ☕ in California</p>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>

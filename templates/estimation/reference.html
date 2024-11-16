@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+        <a class="nav-button" href="{{ url_for('estimation') }}"> >> </a>
+        <a class="nav-button" href="{{ url_for('application') }}">
+            << </a>
+
+                <br><br>
+
+                <h1>References</h1>
+    </header>
+
+
+
+
+
+
+    <!-- <h3>References</h3> -->
+
+    <ol>
+        <li> Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction
+            Problems,
+            Journal of Basic Engineering. 82: 35–45.
+            <a
+                href="http://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf">http://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf</a>
+        </li>
+        <li>
+            Y. Ho and R. Lee (1964). "A Bayesian approach to problems in stochastic estimation and control". IEEE
+            Transactions on Automatic Control, vol. 9, no. 4, pp. 333-339.
+        </li>
+        <li>
+            Uhlmann, Jeffrey & Julier, Simon. (2022). Gaussianity and the Kalman Filter: A Simple Yet Complicated
+            Relationship. Journal de Ciencia e Ingeniería. 14. 21-26. 10.46571/JCI.2022.1.2
+        </li>
+    </ol>
+
+
+
+
+    <!--    &lt;!&ndash; Slide 1 &ndash;&gt;-->
+    <!--    <section class="left-align">-->
+
+    <!--        <h2>Intro</h2>-->
+
+
+    <!--        <ul>-->
+    <!--            <li>Trade off global optimality for computational traceability and robustness</li>-->
+    <!--            <li>Assuume that the joint state-innovations density given the past measurement history to be Gaussian-->
+    <!--            <li>Under the above assumption, the new probelm is to compute integrals whose integrands are of the form:-->
+    <!--                \[\text{nonlinear function x Gaussian}\]-->
+    <!--            </li>-->
+    <!--            <li> The logical choice is to use monomial based cubature ruto compute them numerically</li>-->
+    <!--        </ul>-->
+    <!--        <p style="text-align: right;">Page 1</p>-->
+    <!--        <hr class="full-width">-->
+    <!--    </section>-->
+
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}

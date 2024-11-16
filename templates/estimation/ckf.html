@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+        <a class="nav-button" href="{{ url_for('sckf')}}"> >> </a>
+        <a class="nav-button" href="{{ url_for('kf')}}">
+            << </a>
+                <br><br>
+
+                <h1>Cubature Kalman Filters (CKF)</h1>
+
+
+
+
+    </header>
+
+
+    <!--        <div class="reveal">-->
+    <!--        <div class="slides">-->
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+        <h2>Intro</h2>
+
+
+        <ul>
+            <li>Trade off global optimality for computational traceability and robustness</li>
+            <li>Assuume that the joint state-innovations density given the past measurement history to be Gaussian
+            <li>Under the above assumption, the new probelm is to compute integrals whose integrands are of the form:
+                \[\text{nonlinear function x Gaussian}\]
+            </li>
+            <li> The logical choice is to use monomial based cubature ruto compute them numerically</li>
+        </ul>
+        <p style="text-align: right;">Page 1</p>
+        <hr class="full-width">
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Spherical-Radial Integration</h2>
+        <ul>
+
+            <li>Integral of interest:
+                \[
+                I(\mathbf{f}) =
+                \int_{R^{n_{x}}}p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})d\mathbf{x}_{k-1}
+                \]
+
+
+            </li>
+            <li>Key step: Transform \(\mathbf{I}()\) in the cartesian coordinate into the spherical-radial coordinate
+            </li>
+            <li>We may thus write the radial integrals
+                \[
+                \mathbf{I}_{r} = \int_{0}^{\infty}S(r)r^{n-1}\exp(-r^{2})dr
+                \]
+                where \(S(r)\) is defined by the spherical Integral
+                \[
+                S(r) = \int_{U_{n}}\mathbf{f}(r\mathbf{y})d\sigma(\mathbf{y})
+                \]
+                with \(\sigma()\) is the spherical surface measure on the region
+                \[
+                U_{n} = \{\mathbf{y} \in R^{n}|\mathbf{y}^{T}\mathbf{y} = 1\}
+                \]
+            </li>
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Monomial Based Cubature Rules</h2>
+        <ul>
+            <li>Fix the degree of the target cubature rule to be 3</li>
+            <li>The third degree monomial based cubature rule for spherical integration:
+                \[
+                \int_{U_{n}}\mathbf{f}(r\mathbf{s})d\sigma(\mathbf{s}) \approx\sum_{i=1}^{2n}\omega_{s}\mathbf{f}[u]_{i}
+                \]
+
+            </li>
+            <li>
+                The first degree quadrature rule for radial integration:
+                \[
+                \int_{0}^{\infty}f(r)r^{n-1}\exp(-r^{-2})dr\approx \omega_{r}f(r)
+                \]
+
+            </li>
+            <li>
+
+                The resulting third degree sphrical-radial cubature rule is written as:
+                \[
+                \int_{R^{n}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x} \approx
+                \sum_{i=1}^{2n}\omega_{n}\omega_{r}\mathbf{f}([\mathbf{x}_{r}u]_{i})
+                \]
+            </li>
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Cubature Rules (Continued)</h2>
+        <ul>
+            <li>We can extend the above cubature rule to compute an \(n\)-dimensional
+                Gaussian-weighted integral numerically:
+                \[
+                \int_{R^{n}}\mathbf{f}(\mathbf{x})\mathcal{N}(\mathbf{x};\mathbf{\mu}, \mathbf{\Sigma})d\mathbf{x}
+                \approx \frac{1}{2n}\sum_{i=1}^{2n}\mathbf{f}(\mathbf{\mu}+\sqrt{\mathbf{\Sigma}}\xi_{i}),
+                \]
+                where $$\mathbf{\Sigma}= \sqrt{\mathbf{\Sigma}}\sqrt{\mathbf{\Sigma}}^{T}$$ and the cubature points
+                \[
+                \xi_{i} = \begin{cases} \sqrt{n}\mathbf{e}_{i }, i=1, 2,\ldots n\\
+                -\sqrt{n}\mathbf{e}_{i }, i=n+1, n+2, \ldots 2n \end{cases}
+                \]
+
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Time Update</h2>
+        <ul>
+            <li>Assume at time \(k\) that the posterior density,
+                \[
+                p(\mathbf{x}_{k-1}|D_{k-1}) = \mathcal{N}(\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{P}_{k-1|k-1})
+                \]
+                is known. Factorize
+                \[
+                \mathbf{P}_{k-1|k-1} = S_{k-1|k-1}S_{k-1|k-1}^{T}
+                \]
+
+            </li>
+
+            <li>
+
+                Evaluate the cubature points: (\(i=1, 2,\ldots m, \text{ where } m=2n_{x}\))
+                \[
+                X_{i, k-1|k-1} = S_{k-1|k-1}\xi_{i} + \hat{\mathbf{x}}_{k-1|k-1}
+                \]
+            </li>
+
+            <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
+                \[
+                X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k-1})
+                \]
+            </li>
+
+            <li>
+                Estimate the predicted state
+                \[
+                \hat{\mathbf{x}}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}
+                \]
+            </li>
+
+            <li>
+                Estimate the predicted error covariance
+                \[
+                \mathbf{P}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}X^{\ast T}_{i, k|k-1} -
+                \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{x}}^{T}_{k|k-1} + \mathbf{Q}_{k-1}
+                \]
+
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Measurement Update</h2>
+        <ul>
+            <li>Factorize
+                \[
+                \mathbf{P}_{k|k-1} = S_{k|k-1}S_{k|k-1}^{T}
+                \]
+            </li>
+
+            <li>
+
+                Evaluate the cubature points: (\(i=1, 2,\ldots m, \text{ where } m=2n_{x}\))
+                \[
+                X_{i, k|k-1} = S_{k|k-1}\xi_{i} + \hat{\mathbf{x}}_{k|k-1}
+                \]
+            </li>
+
+            <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
+                \[
+                Z_{i, k|k-1} = \mathbf{f}(X_{i,k|k-1}, \mathbf{u}_{k})
+                \]
+            </li>
+
+            <li>
+                Estimate the predicted measurement
+                \[
+                \hat{\mathbf{z}}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}Z_{i, k|k-1}
+                \]
+            </li>
+
+            <li>
+                Estimate the innovations covariance matrix
+                \[
+                \mathbf{P}_{zz, k|k-1} = \frac{1}{m}\sum_{i=1}^{m}Z_{i, k|k-1}Z^{T}_{i, k|k-1} -
+                \hat{\mathbf{z}}_{k|k-1}\hat{\mathbf{z}}^{T}_{k|k-1} + \mathbf{R}_{k}
+                \]
+
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+        <h2>Measurement Update (Ctd...)</h2>
+        <ul>
+
+            <li>
+                Estimate the cross-covariance matrix
+                \[
+                \mathbf{P}_{xz, k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X_{i, k|k-1}Z^{T}_{i, k|k-1} -
+                \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{z}}^{T}_{k|k-1}
+                \]
+
+            </li>
+
+            <li>
+                Estimate the cubature Kalman Gain
+                \[
+                W_{k} = \mathbf{P}_{xz, k|k-1}\mathbf{P}^{-1}_{zz, k|k-1}
+                \]
+
+            </li>
+
+
+
+
+            <li>
+                Estimate the updated state
+                \[
+                \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} - W_{k}(\mathbf{z}_{k} - \hat{\mathbf{z}}_{k|k-1})
+                \]
+            </li>
+
+            <li>
+                Estimate the corresponding posterior error covariance matrix
+                \[
+                \mathbf{P}_{k|k} = \mathbf{P}_{k|k-1} - W_{k}P_{zz,k|k-1}W^{T}_{k}
+                \]
+
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}

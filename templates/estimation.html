@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <header class="title">
+        <h1 style="color: #b40203">Bayesian Estimation</h1>
+        <hr style="margin-top:-1em">
+        <h3 style="margin-top:-2.3em">
+        </h3>
+    </header>
+
+    <div class="archive" style="margin-top:-30px">
+        <h2 class="archive-title">Ch 1: Bayesian Filtering</h2>
+        <p style="text-indent: -55px; margin-left: 18px">
+            <span style="position:absolute; margin-left:0px;">1.</span>
+            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
+            <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Bayesian Filtering</a>
+        </p>
+        <!--        <p style="text-indent: -55px; margin-left: 18px">-->
+        <!--            <span style="position:absolute; margin-left:0px;">2014-05-15</span>-->
+        <!--            &lt;!&ndash;      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>&ndash;&gt;-->
+        <!--            <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Kalman Filtering</a>-->
+
+        <!--        </p>-->
+    </div>
+    <div class="archive" style="margin-top:-30px">
+        <h2 class="archive-title">Ch 2: Nonlinear Kalman Filtering</h2>
+        <p style="text-indent: -55px; margin-left: 18px">
+            <span style="position:absolute; margin-left:0px;">2.</span>
+            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
+            <a href="{{url_for('ckf')}}" style="position:relative; margin-left: 55px;"> Cubature Kalman Filters</a>
+
+        </p>
+
+    </div>
+
+    <div class="archive" style="margin-top:-30px">
+        <h2 class="archive-title">Ch 3: Variants</h2>
+        <p style="text-indent: -55px; margin-left: 18px">
+            <span style="position:absolute; margin-left:0px;">3.</span>
+            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
+            <a href="{{url_for('sckf')}}" style="position:relative; margin-left: 55px;"> Square-Root Cubature Kalman
+                Filters</a>
+
+        </p>
+    </div>
+
+    <div class="archive" style="margin-top:-30px">
+        <h2 class="archive-title">Ch 4: Applications</h2>
+        <p style="text-indent: -55px; margin-left: 18px">
+            <span style="position:absolute; margin-left:0px;">4.</span>
+            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
+            <a href="{{url_for('application')}}" style="position:relative; margin-left: 55px;"> Simultaneous Localization & Map Building</a>
+
+        </p>
+    </div>
+
+    <div class="archive" style="margin-top:-30px">
+        <h2 class="archive-title">Ch 5: References</h2>
+        <p style="text-indent: -55px; margin-left: 18px">
+            <span style="position:absolute; margin-left:0px;">5.</span>
+            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
+            <a href="{{url_for('reference')}}" style="position:relative; margin-left: 55px;"> References</a>
+
+        </p>
+    </div>
+
+</article>
+
+{% endblock %}

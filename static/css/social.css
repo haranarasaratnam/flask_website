@@ -1,0 +1,16 @@
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+@import "https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css";
+
+.social{
+    position: relative;
+    /*top: 50%;*/
+    left: 40%;
+    /*transform: translate(-50%,-50%);*/
+}
+
+/*.social > a {*/
+/*    !*background: #222222;*!*/
+/*    !*color: #222222;*!*/
+/*}*/

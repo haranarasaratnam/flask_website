@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+        <a class="nav-button" href="{{ url_for('reference') }}"> >> </a>
+        <a class="nav-button" href="{{ url_for('sckf') }}">
+            << </a>
+                <br><br>
+
+                <h1>SLAM: Simultaneous Localization &
+                    Map Building</h1>
+
+
+    </header>
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+        <h2>Application Introduction</h2>
+
+        <p>
+            <img src="{{ url_for('static', filename='images/bicycle_model.png') }}"
+                style="width: 60%; height: auto; display: block; margin: 0 auto;">
+        </p>
+        <ul>
+
+            <li>
+                We cosnider a localization problem where a car-like robot employs the SCKF to eatimate its own pose
+                based on
+                the
+                landmarks and on-board sensor measurements.
+            </li>
+            <li>The robot’s pose (state vector), represented as \((x, y, \theta)\), is initialized using a less precise
+                map dataset, akin to GPS accuracy. </li>
+            <li>As the robot moves, it continuously adjusts its velocity and steering angle. </li>
+            <li>An onboard radar sensor measures the range and bearing with respect to known landmarks, provided they
+                are within the
+                sensor’s detection range and field of view. </li>
+            <li>In addition to achieving sufficient accuracy to localize the robot
+                within a confined area, this demands an efficient estimation algorithm to meet strict time constraints,
+                ensuring the process operated within the allowable runtime limits without failure.
+
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 1</p>
+        <hr class="full-width">
+    </section>
+
+
+
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+
+        <h2>Dynamic State-Space Model</h2>
+
+
+        <ul>
+
+            <li>
+                Process Eqn:
+                \[
+                \begin{bmatrix}
+                x_{1,k}\\
+                x_{2,k}\\
+                x_{3,k}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                x_{1,k-1} + u_{1,k}\cos(x_{3,k-1}) - u_{2,k}\sin(x_{3,k-1})\\
+                x_{2,k-1} + u_{1,k}\sin(x_{3,k-1}) + u_{2,k}\cos(x_{3,k-1})\\
+                x_{3,k-1} + u_{3,k}
+                \end{bmatrix} + \mathbf{v}_{k}
+
+                \]
+
+            </li>
+
+            <li>
+                Measurement Eqn:
+                \[
+                \begin{bmatrix}
+                z_{1,k}\\
+                z_{2,k}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                \sqrt{(x_{1,k} - x_{\text{lmk},i})^{2}+(x_{2,k} - y_{\text{lmk},i})^{2}}\\
+                \tan^{-1}(\frac{(x_{2,k} - y_{\text{lmk},i})}{(x_{1,k} - x_{\text{lmk},i})}) - x_{3,k}
+                \end{bmatrix} + \mathbf{w}_{k}
+
+                \]
+
+            </li>
+
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+
+        <h2>Experimental Settings</h2>
+
+
+        <ul>
+
+            <li>
+                We cosnider a scenraio where a car-like robot starting from a relatively uncertain initial position.
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+
+        <h2>Results</h2>
+
+
+        <ul>
+
+            <p>
+                <img src="{{ url_for('static', filename='images/robot_result.png') }}"
+                    style="width: 100%; height: auto; display: block; margin: 0 auto;">
+            </p>
+
+
+            <li>
+                Please check out <a href="https://github.com/haranarasaratnam">my github repo</a> for MATLAB code.
+            </li>
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
+        <hr class="full-width">
+    </section>
+
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}
