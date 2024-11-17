@@ -19,7 +19,7 @@
     <!-- Slide 1 -->
     <section class="left-align">
 
-        <h2>Application Introduction</h2>
+        <h2>Application</h2>
 
         <p>
             <img src="{{ url_for('static', filename='images/bicycle_model.png') }}"
@@ -114,11 +114,24 @@
         <ul>
 
             <li>
-                We cosnider a scenraio where a car-like robot starting from a relatively uncertain initial position.
+                The initial position of the robot was set to \([40m, 25m, 0^\circ]\) and  the trajectory was simulated for 120 seconds.
+            </li>
+<li>
+ The radar was assumed to have a limited line of sight, detecting only landmarks within a range of 50m and an angular field of view of 30 degrees.
+</li>
+            <li>
+            The control input was set to be constant at \([0, 1, 3^\circ]\) with added Gaussian noise characterized by a mean of 0 and a standard deviation of \([0.01m, 0.01m, 1.5^\circ]\).
             </li>
 
+            <li>
+             The on-board radar measurements were modeled as noisy, with Gaussian-distributed noise having a mean of 0 and a standard deviation of \([1.1m, 5^\circ]\).
+            </li>
+
+            <li>
+       We randomly placed 15 landmarks in the environment. Radar measurements in the local coordinate frame were transformed into the global coordinate system in the x and y planes. The nearest neighbor technique was then applied to identify the corresponding landmarks.
+            </li>
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p style="text-align: right;">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -142,7 +155,7 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p style="text-align: right;">Page 4</p>
         <hr class="full-width">
     </section>
 
