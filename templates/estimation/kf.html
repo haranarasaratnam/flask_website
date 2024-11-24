@@ -7,11 +7,11 @@
 
 
 
-        <a class="nav-button" href="{{ url_for('ckf') }}" >>></a>
-        <a class="nav-button" href="{{ url_for('estimation') }}" ><<</a>
-        <br><br>
+        <a class="nav-button" href="{{ url_for('ckf') }}"> ">>" </a>
+        <a class="nav-button" href="{{ url_for('estimation') }}"> "<<" </a>
+                <br><br>
 
-       <h1>Kalman Filtering</h1>
+                <h1>Kalman Filtering</h1>
 
     </header>
 
@@ -86,35 +86,41 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Approximate Solutions</h2>
-        <ul>
+        <h2>Approximate Solutions to Nonlinear Systems</h2>
 
-            <li>
-                Two Approaches:
-                <ul>
-                    <li>
-                        Innovations based algorithms:
-                        <ul>
-                            <li> Extended Kalman Filter (EKF) </li>
-                            <li> Unscented Kalman Filter (UKF)</li>
-                            <li> Central Difference Kalman Filter (CDCK)</li>
-                            <li> Gauss-Hermite Quadrature Kalman Filter </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Moment Closing algorihms:
-                        <ul>
-                            <li>Kushner's nonlinear filter</li>
-                            <li> Grid filters</li>
-                            <li> Particle Filters</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>Problem statement: Develop an approximate Bayesian filter that is theoretically
-                motivated, reasonably accurate and easily extendable at a minimal cost.
-            </li>
-            <li>In the next section, to address the issues, we will introduce a new Bayesian nonlinear filter called Cubature Kalman
+
+        <li>
+            Although we have the optimal solution (the celebrated Kalman filter) to the linear Gaussian systems, we
+            do not have an
+            optimal solution to nonlinear systems.
+        </li>
+
+        <li>In the literature, researchers in the past have taken two approaches to derive an approximate solution:
+            <ul>
+                <li>
+                    Kalman-like (Innovations based) algorithms:
+                    <ul>
+                        <li> Extended Kalman Filter (EKF) </li>
+                        <li> Unscented Kalman Filter (UKF)</li>
+                        <li> Central Difference Kalman Filter (CDCK)</li>
+                        <li> Gauss-Hermite Quadrature Kalman Filter </li>
+                    </ul>
+                </li>
+                <li>
+                    Moment Closing algorithms:
+                    <ul>
+                        <li>Kushner's nonlinear filter</li>
+                        <li> Grid filters</li>
+                        <li> Particle Filters</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Problem statement: Develop an approximate Bayesian filter that is theoretically
+            motivated, reasonably accurate and easily extendable at a minimal cost.
+        </li>
+        <li>In the next section, to address the issues, we will introduce a new Bayesian nonlinear filter called
+            Cubature Kalman
             Filter (CKF).</li>
 
         </ul>
@@ -122,6 +128,19 @@
         <hr class="full-width">
     </section>
 
+
+
+    <section class="left-align">
+
+        <h2>Applications</h2>
+        <p>
+            <img src="{{ url_for('static', filename='images/dssm_signal_flow.png') }}"
+                style="width: 100%; height: auto; display: block; margin: 0 auto;">
+        </p>
+
+        <p style="text-align: right;">Page 4</p>
+        <hr class="full-width">
+    </section>   
 
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 

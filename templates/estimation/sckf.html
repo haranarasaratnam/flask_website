@@ -18,56 +18,77 @@
     <!-- Slide 1 -->
     <section class="left-align">
 
-        <h2>Introduction & Derivation</h2>
+        <h2>Introduction</h2>
 
 
         <ul>
-            <li>In order to preserve the covarinace matrix properties such as symmetry and positive simi-definiteness, a
+            <li>In order to preserve the covariance matrix properties such as symmetry and positive simi-definiteness, a
                 square-root formulation is required </li>
 
             <li>
-                A covariance matrix of \(\mathbf{P}\in R^{n\times n}\)can be factorized using a traingulrization
-                procedure
-                (e.g. QR
-                decomposition) as follows:
-                \[
-                \mathbf{P} = \mathbf{S}\mathbf{S}^{T}
-                \]
-                where \(S\in R^{n\times n}\) is an upper triangular (sparse) matrix.
+                Given a positive definite covariance matrix of \(\mathbf{A}\in R^{n\times n}\), we can apply the
+                Cholesky
+                decomposition
+                to write \(\mathbf{A} = \mathbf{L}\mathbf{L}^{T}\), where \(\mathbf{L}\) is a lower traingular matrix.
+
+            <li>For a rectangular matrix of \(\mathbf{A}\in R^{m\times n}\), we can apply the QR decomposition to
+                write \(\mathbf{A} = \mathbf{Q}\mathbf{R}\),
+                where \(\mathbf{Q}\in R^{m\times n}\) is an orthogonal (unitary) matrix
+                (\(\mathbf{Q}\mathbf{Q}^{T}=\mathbf{I}\))
+                and \(\mathbf{R}\in R^{n\times n}\)
+                is an upper triangular (sparse) matrix.
             </li>
-
-            <li>
-                We may therefore write the predicted state error covariance in a straightforward way.
-
-            </li>
-
-            <li>
-                For the
-                measurement update however, we rewrite the following covarinces in the form of squared-matrices:
-                \[
-                \begin{align}
-                \mathbf{P}_{k|k-1} &= X_{k|k-1}X^{T}_{k|k-1}\\
-                \mathbf{P}_{zz,k|k-1} &= Z_{k|k-1}Z^{T}_{k|k-1} + \mathbf{S}_{R, k+1}\mathbf{S}^{T}_{R, k+1}\\
-                \mathbf{P}_{xz, k|k-1} &= X_{k|k-1}Z^{T}_{k|k-1}
-                \end{align}
-                \]
-
-                where the weighted centered matrices (prior means are substracted off) are given by
-                \[
-                \begin{align}
-                X_{k|k-1} &= \frac{1}{\sqrt{m}}[X^{\ast}_{1, k|k-1} - \hat{\mathbf{x}}_{k|k-1}, X^{\ast}_{2, k|k-1} - \hat{\mathbf{x}}_{k|k-1}
-                \ldots X^{\ast}_{m, k|k-1} - \hat{\mathbf{x}}_{k|k-1}]\\
-                Z_{k|k-1} &= \frac{1}{\sqrt{m}}[Z^{\ast}_{1, k|k-1} - \hat{\mathbf{z}}_{k|k-1}, Z^{\ast}_{2, k|k-1} - \hat{\mathbf{z}}_{k|k-1}
-                \ldots Z^{\ast}_{m, k|k-1} - \hat{\mathbf{z}}_{k|k-1}]
-                \end{align}
-
-                \]
-
-            </li>
-
+            <li>We use the term "Tria" below to denote the QR decomposition that returns the upper triangular matrix
+                \(\mathbf{R}\) of
+                \(\mathbf{QR}\).</li>
 
         </ul>
         <p style="text-align: right;">Page 1</p>
+        <hr class="full-width">
+    </section>
+
+
+
+    <!-- Slide 2 -->
+    <section class="left-align">
+
+        <h2>Derivation</h2>
+
+        <li>
+            Obtaining the predicted state error covariance in a square root form is straightforward as shown in page
+            4.
+
+        </li>
+
+        <li>
+            For the
+            measurement update however, we rewrite the following covariances in the form of squared-matrices:
+            \[
+            \begin{align}
+            \mathbf{P}_{k|k-1} &= X_{k|k-1}X^{T}_{k|k-1}\\
+            \mathbf{P}_{zz,k|k-1} &= Z_{k|k-1}Z^{T}_{k|k-1} + \mathbf{S}_{R, k+1}\mathbf{S}^{T}_{R, k+1}\\
+            \mathbf{P}_{xz, k|k-1} &= X_{k|k-1}Z^{T}_{k|k-1}
+            \end{align}
+            \]
+
+            where the weighted mean-subtracted matrices are given by
+            \[
+            \begin{align}
+            X_{k|k-1} &= \frac{1}{\sqrt{m}}[X^{\ast}_{1, k|k-1} - \hat{\mathbf{x}}_{k|k-1}, X^{\ast}_{2, k|k-1} -
+            \hat{\mathbf{x}}_{k|k-1}
+            \ldots X^{\ast}_{m, k|k-1} - \hat{\mathbf{x}}_{k|k-1}]\\
+            Z_{k|k-1} &= \frac{1}{\sqrt{m}}[Z^{\ast}_{1, k|k-1} - \hat{\mathbf{z}}_{k|k-1}, Z^{\ast}_{2, k|k-1} -
+            \hat{\mathbf{z}}_{k|k-1}
+            \ldots Z^{\ast}_{m, k|k-1} - \hat{\mathbf{z}}_{k|k-1}]
+            \end{align}
+
+            \]
+
+        </li>
+
+
+        </ul>
+        <p style="text-align: right;">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -80,7 +101,7 @@
 
 
         <ul>
-            <li>We combine the above 3 in a square-matrix form as shown by
+            <li>We combine the above 3 equations in a squared-matrix form as shown by
                 \[
                 \begin{bmatrix}
                 \mathbf{P}_{zz, k|k-1} & \mathbf{P}_{zx, k|k-1}\\
@@ -104,31 +125,17 @@
                 where \(\mathbf{O}\in R^{n\times d}\) is the zero matrix.
             </li>
 
-            <li>Applying the triangularization procedure to the square-root factor above, we Gaussian-weighted
-                \[
-                \text{Tria}\begin{pmatrix}
-                Z_{k|k-1} & \mathbf{S}_{R,k}\\
-                X_{k|k-1} & \mathbf{O}
-                \end{pmatrix} =
-                \begin{pmatrix}
-                \mathbf{T}_{11} & \mathbf{O}\\
-                \mathbf{T}_{21} & \mathbf{T}_{22}
-                \end{pmatrix}
-                \]
-                where \(\mathbf{T}_{11}\in R^{d\times d}\) and \(\mathbf{T}_{22} \in R^{n\times n}\) are low-triangular
-                matrices and \(\mathbf{T}_{21} \in R^{n \times d}\).
-
-            </li>
-
-            <li>
-                Hence, we write
+            <li>Applying the QR decomposition to
+                the transpose on the RHS above, we write
                 \[
                 \begin{align}
                 \begin{bmatrix}
                 \mathbf{P}_{zz, k|k-1} & \mathbf{P}_{zx, k|k-1}\\
                 \mathbf{P}_{xz, k|k-1} & \mathbf{P}_{k|k-1}
                 \end{bmatrix}
-
+                &= \mathbf{R}^{T}\mathbf{Q}^{T}\mathbf{QR} \\
+                &= \mathbf{R}^{T}\mathbf{R}\\
+                &=\mathbf{L}\mathbf{L}^{T}\\
                 &=
                 \begin{pmatrix}
                 \mathbf{T}_{11} & \mathbf{O}\\
@@ -148,10 +155,14 @@
 
 
                 \]
+
+                where \(\mathbf{T}_{11}\in R^{d\times d}\) and \(\mathbf{T}_{22} \in R^{n\times n}\) are low-triangular
+                matrices and \(\mathbf{T}_{21} \in R^{n \times d}\).
+
             </li>
 
             <li>
-                The cubature Kalman gian can be therefore written as
+                Hence, the cubature Kalman gain can be written as
                 \[
                 \begin{align}
                 W_{k} &= \mathbf{P}_{xz, k|k-1}\mathbf{P}^{-1}_{zz, k|k-1}\\
@@ -160,21 +171,25 @@
                 \end{align}
                 \]
 
-                Since \(\mathbf{T}_{11}\) is a lower traingular matrix, we may efficiently compute
+                Since \(\mathbf{T}_{11}\) is a lower triangular matrix, we may efficiently compute
                 \(W_{k}\)
             </li>
 
-            <li>By the same token, we may write
-                \[
-                \mathbf{P}_{k|k} = \mathbf{T}_{22}\mathbf{T}_{22}^{T}
-                \]
+            <li>Since \(
+                \mathbf{P}_{k|k} = \mathbf{P}_{k|k-1} - W_{k}P_{zz,k|k-1}W^{T}_{k}\), by the same token, we may write
+                \(\mathbf{P}_{k|k} = \mathbf{T}_{22}\mathbf{T}_{22}^{T}
+                \). Hence, we write a square-root factor of the posterior error covariance matrix
 
+                \[
+                \mathbf{S}_{k|k} = \mathbf{T}_{22}
+
+                \]
 
             </li>
 
 
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p style="text-align: right;">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -185,7 +200,7 @@
     <!-- Slide 3 -->
     <section class="left-align">
 
-        <h2>Time Update</h2>
+        <h2>SCKF: Time Update</h2>
         <ul>
             <li>Assume at time \(k\) that the posterior density,
                 \[
@@ -212,28 +227,29 @@
             </li>
 
             <li>
-                Estimate the square-root of the predicted error covariance
+                Estimate the square-root of the predicted error covariance as follows:
                 \[
-                \mathbf{S}_{k|k-1} = \text{Tria}([X_{k|k-1},  S_{Q,k-1}])
+
+                \mathbf{R} = \text{Tria}([X_{k|k-1}, S_{Q,k-1}]^{T}) => \mathbf{S}_{k|k-1} = \mathbf{R}^{T}
 
 
 
-<!--                \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}X^{\ast T}_{i, k|k-1} - -->
-<!--                \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{x}}^{T}_{k|k-1} + \mathbf{Q}_{k-1}-->
+                <!--                \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}X^{\ast T}_{i, k|k-1} - -->
+                <!--                \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{x}}^{T}_{k|k-1} + \mathbf{Q}_{k-1}-->
                 \]
-where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
+                where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
             </li>
 
         </ul>
 
-        <p style="text-align: right;">Page 3</p>
+        <p style="text-align: right;">Page 4</p>
         <hr class="full-width">
     </section>
 
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Measurement Update</h2>
+        <h2>SCKF: Measurement Update</h2>
         <ul>
             <li>Given that \(\mathbf{P}_{k|k-1} = S_{k|k-1}S_{k|k-1}^{T}\),
                 evaluate the cubature points: (\(i=1, 2,\ldots m, \text{ where } m=2n_{x}\))
@@ -261,11 +277,11 @@ where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
                 \text{Tria}\begin{pmatrix}
                 Z_{k|k-1} & \mathbf{S}_{R,k}\\
                 X_{k|k-1} & \mathbf{O}
-                \end{pmatrix} =
+                \end{pmatrix}^{T} =
                 \begin{pmatrix}
                 \mathbf{T}_{11} & \mathbf{O}\\
                 \mathbf{T}_{21} & \mathbf{T}_{22}
-                \end{pmatrix}
+                \end{pmatrix}^{T}
                 \]
 
 
@@ -278,7 +294,7 @@ where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
                 \]
             </li>
 
-                        <li>
+            <li>
                 Estimate the updated state
                 \[
                 \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} - W_{k}(\mathbf{z}_{k} - \hat{\mathbf{z}}_{k|k-1})
@@ -295,7 +311,7 @@ where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 4</p>
+        <p style="text-align: right;">Page 5</p>
         <hr class="full-width">
     </section>
 

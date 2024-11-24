@@ -28,12 +28,12 @@
 
 
         <ul>
-            <li>Trade off global optimality for computational traceability and robustness</li>
-            <li>Assuume that the joint state-innovations density given the past measurement history to be Gaussian
-            <li>Under the above assumption, the new probelm is to compute integrals whose integrands are of the form:
+            <li>In deriving the CKF, we trade off global optimality for computational traceability and robustness</li>
+            <li>Assume that the joint state-innovations density given the past measurement history to be Gaussian
+            <li>Under the above assumption, the new problem is to compute integrals whose integrands are of the form:
                 \[\text{nonlinear function x Gaussian}\]
             </li>
-            <li> The logical choice is to use monomial based cubature ruto compute them numerically</li>
+            <li> The logical choice is to use monomial based cubature rule compute them numerically</li>
         </ul>
         <p style="text-align: right;">Page 1</p>
         <hr class="full-width">
@@ -93,7 +93,7 @@
             </li>
             <li>
 
-                The resulting third degree sphrical-radial cubature rule is written as:
+                The resulting third degree spherical-radial cubature rule is written as:
                 \[
                 \int_{R^{n}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x} \approx
                 \sum_{i=1}^{2n}\omega_{n}\omega_{r}\mathbf{f}([\mathbf{x}_{r}u]_{i})
