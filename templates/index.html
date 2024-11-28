@@ -1,87 +1,72 @@
-
 {% extends "base.html" %}
 
 {% block content %}
 
 
 
-    <!--    <p><img src=images/myface.jpeg style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>-->
-    <p><img src="{{ url_for('static', filename='images/myface.jpeg') }}"
-            style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>
+<!--    <p><img src=images/myface.jpeg style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>-->
+<p><img src="{{ url_for('static', filename='images/myface.jpeg') }}"
+        style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>
 
-    <p>Hello!</p>
+<p>Hello!</p>
 
 
-    <p>Welcome to my personal website.   I obtained my MSc and PhD degrees in Electrical and Computer Engineering from <a href="http://www.ece.mcmaster.ca/"
-                                                                            target="new">
-        McMaster University</a>, completing them under <a href="https://www.amazon.com/s?k=simon+Haykin&i=stripbooks&crid=1RJ43TQ1AORNF&sprefix=simon+haykin%2Cstripbooks%2C141&ref=nb_sb_noss_1">Distinguished
+<p>Welcome to my personal website. I obtained my MSc and PhD degrees in Electrical and Computer Engineering from <a
+        href="http://www.ece.mcmaster.ca/" target="new">
+        McMaster University</a>, completing them under <a
+        href="https://www.amazon.com/s?k=simon+Haykin&i=stripbooks&crid=1RJ43TQ1AORNF&sprefix=simon+haykin%2Cstripbooks%2C141&ref=nb_sb_noss_1">Distinguished
         University Professor Simon Haykin</a>.
-        My two main research interests include  signal
-        processing and control theory.  During my doctoral studies, I developed the <a href="{{url_for('portfolio')}}">
-            Cubature Kalman Filter (CKF)
-        </a> theory - a state-of-the-art state estimator for solving nonlinear estimation and control
-        problems.
+    My two main research interests include signal
+    processing and control theory. During my doctoral studies, I developed the <a
+        href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en">
+        <span style="color: #b40203; ">Cubature Kalman Filter (CKF) theory</span></a>.
+    The contribution is
+    regarded as seminal in the field of control theory with over 5000 citations.
 
-<!--        The CKF is a predictor-corrector model-based estimation strategy that-->
-<!--        extracts second-order information from sensor measurements optimally and recursively. As per <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en"> Google-->
-<!--            Scholar</a>, my research paper on the CKF has received-->
-<!--        over 3000 citations.-->
-
-    </p>
-
-<p>
-<!--      This <a href="https://palletsprojects.com/p/flask/" target="new">Flask </a> framework based website-->
-<!--    features my research work and projects. -->
-  Here, you will find a collection of my research projects. Feel free to explore this website and leave your comments at <span
-        style="color: #b40203; ">haran.arasaratnam@icloud.com</span>.
 </p>
 
-<!--<h1>MathJax Example</h1>-->
-<!--<p>This is an example of how to use MathJax to display mathematical equations in HTML.</p>-->
-<!--<p>Here is an example equation: $$\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial-->
-<!--    u}{\partial y} = -\frac{1}{\rho} \frac{\partial p}{\partial x} + \nu \left( \frac{\partial^2 u}{\partial x^2} +-->
-<!--    \frac{\partial^2 u}{\partial y^2} \right)$$</p>-->
-<!--<p>This equation is the Navier-Stokes equation, which describes the motion of fluids. MathJax can display both inline-->
-<!--    equations, like this: $E = mc^2$, and block equations, like the one above.</p>-->
+<p>
+    Here, you will find a collection of my research projects. Feel free to explore this website and leave your comments
+    at <span style="color: #b40203; ">haran.arasaratnam@icloud.com</span>.
+</p>
+
+
+<p>
+<div class="social">
+
+    <a href="https://www.linkedin.com/in/haranarasaratnam/"> <i class="fa fa-linkedin-square"
+            style="font-size:26px;"></i> </a>
+
+    <a href="https://github.com/haranarasaratnam/"><i class="fa fa-github-square" style="font-size:26px;"></i></a>
+
+    <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-3x;"
+            style="font-size:26px;"></i></a>
+
+    <a href="https://www.researchgate.net/profile/Haran_Arasaratnam"><i class="ai ai-researchgate-square ai-3x; "
+            style="font-size:26px;"></i></a>
+
+    <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=ienkaran%20arasaratnam"><i
+            class="ai ai-ieee-square ai-3x;" style="font-size:26px;"></i></a>
+
+
+    <!--    <i class="fa google" style="font-size:60px;color:red;"></i>-->
 
 
 
-    <p>
+</div>
+
+</p>
 
 
 
-    <div class="social">
-
-        <a href="https://www.linkedin.com/in/haranarasaratnam/"> <i class="fa fa-linkedin-square"
-                                                                    style="font-size:26px;"></i> </a>
-
-        <a href="https://github.com/haransll/"><i class="fa fa-github-square" style="font-size:26px;"></i></a>
-
-        <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en"><i
-                class="ai ai-google-scholar-square ai-3x;"style="font-size:26px;"></i></a>
-
-        <a href="https://www.researchgate.net/profile/Haran_Arasaratnam"><i
-                class="ai ai-researchgate-square ai-3x; "style="font-size:26px;"></i></a>
-
-        <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=ienkaran%20arasaratnam"><i
-                class="ai ai-ieee-square ai-3x;"style="font-size:26px;"></i></a>
-
-
-        <!--    <i class="fa google" style="font-size:60px;color:red;"></i>-->
-
-
-    </div>
-
-
-    </p>
-    <blockquote>
-        <center>
-            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"
-                    type="70c585336a849c41636d0fb5-text/javascript"></script>
-            <div id="poem_sentence"></div>
-            <div id="poem_info"></div>
-            <script type="70c585336a849c41636d0fb5-text/javascript">
+<blockquote>
+    <center>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"
+            type="70c585336a849c41636d0fb5-text/javascript"></script>
+        <div id="poem_sentence"></div>
+        <div id="poem_info"></div>
+        <script type="70c585336a849c41636d0fb5-text/javascript">
   jinrishici.load(function(result) {
     var sentence = document.querySelector("#poem_sentence")
     var info = document.querySelector("#poem_info")
@@ -94,77 +79,22 @@
 
 
             </script>
-        </center>
-    </blockquote>
+    </center>
+</blockquote>
 
-    <footer>
-
-
-        <script async src="js/center-img.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/right-quote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/no-highlight.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/fix-footnote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/math-code.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/external-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/alt-title.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <script async src="js/header-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-
-        <!--        <div class="fusion-footer">-->
-        <!--            <footer class="fusion-footer-widget-area fusion-widget-area fusion-footer-widget-area-center">-->
-        <!--                <div class="fusion-row">-->
-        <!--                    <div class="fusion-columns fusion-columns-1 fusion-widget-area">-->
-        <!--                        <div class="fusion-column fusion-column-last col-lg-12 col-md-12 col-sm-12">-->
-        <!--                        </div>-->
-        <!--                        <div class="fusion-clearfix"></div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </footer>-->
-        <!--            <footer id="footer" class="fusion-footer-copyright-area">-->
-        <!--                <div class="fusion-row">-->
-        <!--                    <div class="fusion-copyright-content">-->
-        <!--                        <div class="fusion-copyright-notice">-->
-        <!--                            <div>-->
-        <!--                                Copyright © 2006-2022 Guy Kawasaki, All Rights Reserved | <a-->
-        <!--                                    href="/contact/">Contact</a></div>-->
-        <!--                        </div>-->
-        <!--                        <div class="fusion-social-links-footer">-->
-        <!--                            <div class="fusion-social-networks">-->
-        <!--                                <div class="fusion-social-networks-wrapper">-->
-        <!--                                    <a class="fusion-social-network-icon fusion-tooltip fusion-facebook awb-icon-facebook"-->
-        <!--                                       style="" data-placement="top" data-title="Facebook" data-toggle="tooltip"-->
-        <!--                                       title="Facebook" href="https://www.facebook.com/guy" target="_blank"-->
-        <!--                                       rel="noreferrer"><span class="screen-reader-text">Facebook</span></a>-->
-        <!--                                    <a class="fusion-social-network-icon fusion-tooltip fusion-twitter awb-icon-twitter"-->
-        <!--                                       style="" data-placement="top" data-title="Twitter" data-toggle="tooltip"-->
-        <!--                                       title="Twitter" href="https://twitter.com/GuyKawasaki" target="_blank"-->
-        <!--                                       rel="noopener noreferrer"><span class="screen-reader-text">Twitter</span>-->
-        <!--                                    </a><a-->
-        <!--                                        class="fusion-social-network-icon fusion-tooltip fusion-youtube awb-icon-youtube"-->
-        <!--                                        style="" data-placement="top" data-title="YouTube" data-toggle="tooltip"-->
-        <!--                                        title="YouTube" href="https://www.youtube.com/user/GuyKawasaki" target="_blank"-->
-        <!--                                        rel="noopener noreferrer"><span class="screen-reader-text">YouTube</span></a>-->
-        <!--                                    <a class="fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest"-->
-        <!--                                       style="" data-placement="top" data-title="Pinterest" data-toggle="tooltip"-->
-        <!--                                       title="Pinterest" href="https://www.pinterest.com/guykawasaki/" target="_blank"-->
-        <!--                                       rel="noopener noreferrer"><span class="screen-reader-text">Pinterest</span></a>-->
-        <!--                                    <a class="fusion-social-network-icon fusion-tooltip fusion-linkedin awb-icon-linkedin"-->
-        <!--                                       style="" data-placement="top" data-title="LinkedIn" data-toggle="tooltip"-->
-        <!--                                       title="LinkedIn" href="https://www.linkedin.com/in/guykawasaki" target="_blank"-->
-        <!--                                       rel="noopener noreferrer"><span class="screen-reader-text">LinkedIn</span></a>-->
-        <!--                                    <a class="fusion-social-network-icon fusion-tooltip fusion-mail awb-icon-mail fusion-last-social-icon"-->
-        <!--                                       style="" data-placement="top" data-title="Email" data-toggle="tooltip"-->
-        <!--                                       title="Email" href="mailto:guykawasaki@gmail.com" target="_self"-->
-        <!--                                       rel="noopener noreferrer"><span class="screen-reader-text">Email</span></a>-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </footer>-->
-        <!--        </div>-->
+<footer>
 
 
-    </footer>
+    <script async src="js/center-img.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/right-quote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/no-highlight.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/fix-footnote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/math-code.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/external-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/alt-title.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+    <script async src="js/header-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
+
+</footer>
 
 
 </article>
@@ -185,6 +115,6 @@ if (!doNotTrack) {
 
 </script>
 <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="70c585336a849c41636d0fb5-|49" defer=""></script>
+    data-cf-settings="70c585336a849c41636d0fb5-|49" defer=""></script>
 
 {% endblock %}

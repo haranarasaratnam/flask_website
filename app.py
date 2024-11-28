@@ -139,9 +139,13 @@ def ckf():
 def sckf():
     return render_template('./estimation/sckf.html')
 
-@app.route('/estimation/application')
-def application():
-    return render_template('./estimation/application.html')
+@app.route('/estimation/application_1')
+def application_1():
+    return render_template('./estimation/application_1.html')
+
+@app.route('/estimation/application_2')
+def application_2():
+    return render_template('./estimation/application_2.html')
 
 
 @app.route('/estimation/reference')

@@ -5,7 +5,7 @@
 <article class="main">
     <header class="title">
 
-        <a class="nav-button" href="{{ url_for('application') }}"> >> </a>
+        <a class="nav-button" href="{{ url_for('application_1') }}"> >> </a>
         <a class="nav-button" href="{{ url_for('ckf') }}">
             << </a>
                 <br><br>
@@ -22,14 +22,16 @@
 
 
         <ul>
-            <li>In order to preserve the covariance matrix properties such as symmetry and positive simi-definiteness, a
-                square-root formulation is required </li>
+            <li>In order to preserve the covariance matrix properties such as symmetry and positive semi-definiteness,
+                square-root filters
+                propagate the
+                square-roots of the covariance matrices. </li>
 
-            <li>
+            <li>Square-root filters apply various matrix factorizations.
                 Given a positive definite covariance matrix of \(\mathbf{A}\in R^{n\times n}\), we can apply the
                 Cholesky
                 decomposition
-                to write \(\mathbf{A} = \mathbf{L}\mathbf{L}^{T}\), where \(\mathbf{L}\) is a lower traingular matrix.
+                to write \(\mathbf{A} = \mathbf{L}\mathbf{L}^{T}\), where \(\mathbf{L}\) is a lower triangular matrix.
 
             <li>For a rectangular matrix of \(\mathbf{A}\in R^{m\times n}\), we can apply the QR decomposition to
                 write \(\mathbf{A} = \mathbf{Q}\mathbf{R}\),
@@ -38,9 +40,9 @@
                 and \(\mathbf{R}\in R^{n\times n}\)
                 is an upper triangular (sparse) matrix.
             </li>
-            <li>We use the term "Tria" below to denote the QR decomposition that returns the upper triangular matrix
+            <li>We use the term "Tria" below to denote the QR decomposition that returns an upper triangular matrix
                 \(\mathbf{R}\) of
-                \(\mathbf{QR}\).</li>
+                \(\mathbf{A} = \mathbf{QR}\).</li>
 
         </ul>
         <p style="text-align: right;">Page 1</p>
@@ -101,7 +103,7 @@
 
 
         <ul>
-            <li>We combine the above 3 equations in a squared-matrix form as shown by
+            <li>We combine the above 3 equations and write it in a squared-matrix form as shown by
                 \[
                 \begin{bmatrix}
                 \mathbf{P}_{zz, k|k-1} & \mathbf{P}_{zx, k|k-1}\\
@@ -135,7 +137,6 @@
                 \end{bmatrix}
                 &= \mathbf{R}^{T}\mathbf{Q}^{T}\mathbf{QR} \\
                 &= \mathbf{R}^{T}\mathbf{R}\\
-                &=\mathbf{L}\mathbf{L}^{T}\\
                 &=
                 \begin{pmatrix}
                 \mathbf{T}_{11} & \mathbf{O}\\
@@ -156,8 +157,9 @@
 
                 \]
 
-                where \(\mathbf{T}_{11}\in R^{d\times d}\) and \(\mathbf{T}_{22} \in R^{n\times n}\) are low-triangular
-                matrices and \(\mathbf{T}_{21} \in R^{n \times d}\).
+                where the auxiliary matrices \(\mathbf{T}_{11}\in R^{d\times d}\) and \(\mathbf{T}_{22} \in R^{n\times
+                n}\) are low-triangular
+                square matrices and \(\mathbf{T}_{21} \in R^{n \times d}\) is a sparse rectangular matrix.
 
             </li>
 
@@ -171,8 +173,8 @@
                 \end{align}
                 \]
 
-                Since \(\mathbf{T}_{11}\) is a lower triangular matrix, we may efficiently compute
-                \(W_{k}\)
+                Since \(\mathbf{T}_{11}\) is a sparse lower-triangular matrix, we may efficiently compute
+                its inverse to compute the cubature Kalman gain \(W_{k}\) above.
             </li>
 
             <li>Since \(
@@ -271,8 +273,9 @@
                 \]
             </li>
 
-            <li>Compute the matrices \(\mathbf{T}_{11}, \mathbf{T}_{22} \text{ and } \mathbf{T}_{21}\) using the
-                triangularization algorithm:
+            <li>Compute the auxiliary matrices \(\mathbf{T}_{11}, \mathbf{T}_{22} \text{ and } \mathbf{T}_{21}\) using
+                the
+                QR decomposition algorithm:
                 \[
                 \text{Tria}\begin{pmatrix}
                 Z_{k|k-1} & \mathbf{S}_{R,k}\\

@@ -39,9 +39,9 @@
                 \text{Measurement noise}
                 \end{align}
                 \]
-                where \(\mathbf{x}_{k}\) is the state vector at time k, \(\mathbf{u}_{k}\) is the control input at time
+                where \(\mathbf{x}_{k}\in R^{n}\) is the state vector at time k, \(\mathbf{u}_{k}\in R^{p}\) is the control input at time
                 k,
-                and \(\mathbf{z}_{k}\) is the measurement taken at time k</li>
+                and \(\mathbf{z}_{k}\in R^{d}\) is the measurement taken at time k</li>
             <li>Key Question: How do we recursively compute the posterior density of the state \(\mathbf{x}_{k}\),
                 given the noiisy measuorements upto time \(k\),
                 \(\mathbf{z}_{1:k}=\{\mathbf{z}_{1},\mathbf{z}_{2},...\mathbf{z}_{k} \}\)? </li>

@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab9a041a-7562-48eb-bb4c-14a6cb298bb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/application.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/estimation/application_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/bicycle_model.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/bicycle_model.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/application.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/application.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/ckf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/ckf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/estimation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/estimation/application.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/application_1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/estimation/kf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/kf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/reference.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/reference.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/estimation/sckf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/sckf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,16 +36,19 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.index.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/haran/Library/Mobile Documents/com~apple~CloudDocs/apps/flask_website/application&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.index.executor": "Run",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/haran/Library/Mobile Documents/com~apple~CloudDocs/apps/flask_website/application/templates/estimation",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/estimation" />
       <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/templates/ebook/ch_2" />
     </key>
