@@ -10,8 +10,7 @@
             << </a>
                 <br><br>
 
-                <h1>SLAM: Simultaneous Localization &
-                    Map Building</h1>
+                <h1>Mobile Robot Navigation</h1>
 
 
     </header>
@@ -19,7 +18,7 @@
     <!-- Slide 1 -->
     <section class="left-align">
 
-        <h2>Application: Robot Localization</h2>
+        <h2>Scenario</h2>
 
         <p>
             <img src="{{ url_for('static', filename='images/bicycle_model.png') }}"
@@ -28,18 +27,23 @@
         <ul>
 
             <li>
-                We consider a localization problem where a car-like robot employs the SCKF to estimate its own pose
+                We consider a mobile robot navigation problem where a car-like robot employs the SCKF to estimate its
+                own pose
                 based on
                 a set of
-                landmarks and on-board sensor measurements.
+                landmarks and on-board sensor measurements and apply its control inputs. This problem often arises in
+                SLAM (Simultaneous Localization
+                And Map Building).
             </li>
             <li>The robot’s pose (state vector), represented as \((x, y, \theta)\), is initialized using a less precise
                 map dataset, akin to GPS accuracy. </li>
-            <li>As the robot moves, we assume that the robot continuously adjusts its position and steering angle. </li>
+            <li>As the robot moves, we assume that the robot continuously adjusts its control inputs, namely, x
+                position, y position and
+                steering angle in its local coordinates. </li>
             <li>An onboard radar sensor measures the range and bearing with respect to known landmarks, provided they
                 are within the
                 sensor’s detection range and field of view. </li>
-            <li>We employ the SCKF as an onboard estimator for the following reasons: (1) Its improved estimation
+            <li>The SCKF is chosen as an onboard estimator for the following reasons: (1) Its improved estimation
                 accuracy
                 enables the robot to navigate even without measurements at times (2) Its efficient formulation is
                 expected
@@ -72,26 +76,26 @@
                 Process Equation:
                 \[
                 \begin{bmatrix}
-                x_{1,k}\\
-                x_{2,k}\\
-                x_{3,k}
+                x_{k+1}\\
+                y_{k+1}\\
+                \theta_{k+1}
                 \end{bmatrix}
                 =
                 \begin{bmatrix}
-                x_{1,k-1}\\
-                x_{2,k-1}\\
-                x_{3,k-1}
+                x_{k}\\
+                y_{k}\\
+                \theta_{k}
                 \end{bmatrix}
                 +
                 \begin{bmatrix}
-                \cos(x_{3,k-1}) & -\sin(x_{3,k-1}) & 0\\
-                \sin(x_{3,k-1}) &\cos(x_{3,k-1}) & 0\\
+                \cos\theta_{k} & -\sin\theta_{k} & 0\\
+                \sin\theta_{k} &\cos\theta_{k} & 0\\
                 0 & 0 & 1
                 \end{bmatrix}
                 \begin{bmatrix}
-                u_{1,k-1}\\
-                u_{2,k-1}\\
-                u_{3,k-1}
+                u_{1,k}\\
+                u_{2,k}\\
+                u_{3,k}
                 \end{bmatrix}
 
                 + \mathbf{v}_{k}
@@ -109,8 +113,8 @@
                 \end{bmatrix}
                 =
                 \begin{bmatrix}
-                \sqrt{(x_{1,k} - x_{\text{lmk},i})^{2}+(x_{2,k} - y_{\text{lmk},i})^{2}}\\
-                \tan^{-1}(\frac{(x_{2,k} - y_{\text{lmk},i})}{(x_{1,k} - x_{\text{lmk},i})}) - x_{3,k}
+                \sqrt{(x_{k} - x_{\text{lmk},i})^{2}+(y_{k} - y_{\text{lmk},i})^{2}}\\
+                \tan^{-1}\big(\frac{y_{k} - y_{\text{lmk},i}}{x_{k} - x_{\text{lmk},i}}\big) - \theta_{k}
                 \end{bmatrix} + \mathbf{w}_{k}
 
                 \]
