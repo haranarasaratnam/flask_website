@@ -33,7 +33,7 @@
             <li>Under the above assumption, the new problem is to compute integrals whose integrands are of the form:
                 \[\text{nonlinear function x Gaussian}\]
             </li>
-            <li> The logical choice is to use monomial based cubature rule compute them numerically</li>
+            <li> The logical choice is to apply the monomial based cubature rule to compute them numerically</li>
         </ul>
         <p style="text-align: right;">Page 1</p>
         <hr class="full-width">
@@ -41,28 +41,28 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Spherical-Radial Integration</h2>
+        <h2>Numerical Integration Using Spherical-Radial Cubature Rule</h2>
         <ul>
 
-            <li>Integral of interest:
+            <li>As shown previously, we are interested in numerically computing the integral of the form:
                 \[
                 I(\mathbf{f}) =
-                \int_{R^{n_{x}}}p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})d\mathbf{x}_{k-1}
+                \int_{R^{n_{x}}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x}
                 \]
 
 
             </li>
-            <li>Key step: Transform \(\mathbf{I}()\) in the cartesian coordinate into the spherical-radial coordinate
+            <li>As a first step, we transform \(\mathbf{I}()\) in the cartesian co-ordinate into the spherical-radial coordinate
             </li>
-            <li>We may thus write the radial integrals
+            <li>This is equivalent to finding the solution to the radial integral
                 \[
                 \mathbf{I}_{r} = \int_{0}^{\infty}S(r)r^{n-1}\exp(-r^{2})dr
                 \]
-                where \(S(r)\) is defined by the spherical Integral
+                where \(S(r)\) is defined by another integral, which we call the spherical integral:
                 \[
                 S(r) = \int_{U_{n}}\mathbf{f}(r\mathbf{y})d\sigma(\mathbf{y})
                 \]
-                with \(\sigma()\) is the spherical surface measure on the region
+                where \(\sigma()\) is the spherical surface measure on the region
                 \[
                 U_{n} = \{\mathbf{y} \in R^{n}|\mathbf{y}^{T}\mathbf{y} = 1\}
                 \]
@@ -75,17 +75,17 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Monomial Based Cubature Rules</h2>
+        <h2>Spherical-Radial Cubature Rule (Continued)</h2>
         <ul>
-            <li>Fix the degree of the target cubature rule to be 3</li>
-            <li>The third degree monomial based cubature rule for spherical integration:
+            <li>We fix the degree of the target cubature rule to be 3 for numerical reasons.</li>
+            <li>We apply the third-degree monomial based cubature rule for spherical integration as follows:
                 \[
                 \int_{U_{n}}\mathbf{f}(r\mathbf{s})d\sigma(\mathbf{s}) \approx\sum_{i=1}^{2n}\omega_{s}\mathbf{f}[u]_{i}
                 \]
 
             </li>
             <li>
-                The first degree quadrature rule for radial integration:
+                We apply the first-degree quadrature rule for radial integration:
                 \[
                 \int_{0}^{\infty}f(r)r^{n-1}\exp(-r^{-2})dr\approx \omega_{r}f(r)
                 \]
@@ -93,7 +93,7 @@
             </li>
             <li>
 
-                The resulting third degree spherical-radial cubature rule is written as:
+                Combining the spherical and radial integration leads to the following third-degree spherical-radial cubature rule:
                 \[
                 \int_{R^{n}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x} \approx
                 \sum_{i=1}^{2n}\omega_{n}\omega_{r}\mathbf{f}([\mathbf{x}_{r}u]_{i})
@@ -107,7 +107,7 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Cubature Rules (Continued)</h2>
+        <h2>Spherical-Radial Cubature Rule (Continued)</h2>
         <ul>
             <li>We can extend the above cubature rule to compute an \(n\)-dimensional
                 Gaussian-weighted integral numerically:
@@ -123,6 +123,10 @@
 
             </li>
 
+            <li>The resulting  filter now operates only on the numerically computed means and covariances of the
+                (approximate) Gaussian conditional probability densities encountered in the time and measurement
+                updates as described next. </li>
+
         </ul>
         <p style="text-align: right;">Page 4</p>
         <hr class="full-width">
@@ -132,7 +136,7 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Time Update</h2>
+        <h2>Time-Update</h2>
         <ul>
             <li>Assume at time \(k\) that the posterior density,
                 \[
@@ -155,7 +159,7 @@
 
             <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
                 \[
-                X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k-1})
+                X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k})
                 \]
             </li>
 
@@ -183,7 +187,7 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Measurement Update</h2>
+        <h2>Measurement-Update</h2>
         <ul>
             <li>Factorize
                 \[
@@ -229,7 +233,7 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Measurement Update (Continued)</h2>
+        <h2>Measurement-Update (Continued)</h2>
         <ul>
 
             <li>

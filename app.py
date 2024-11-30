@@ -152,6 +152,9 @@ def application_2():
 def reference():
     return render_template('./estimation/reference.html')
 
+@app.route('/control')
+def control():
+    return render_template('./control.html')
 
 @app.route('/coding')
 def coding():

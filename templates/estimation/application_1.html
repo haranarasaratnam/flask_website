@@ -29,18 +29,16 @@
             <li>
                 We consider a typical air-traffic control scenario where the objective is to track
                 the trajectory of an aircraft that executes a maneuver at nearly constant speed and turn rate in the
-                horizontal plane. In the tracking literature, this is commonly captured by a "constant turn rate (CTR)"
+                horizontal plane. In the tracking literature, this is commonly known as "constant turn rate (CTR)"
                 model.
             </li>
-            <li>The 5-dimensional aircraft state vector, represented by \((x, \dot{x}, y, \dot{y}, \omega)\), refers
-                to the position and velocity of the aircraft in x direction, y direction and the turn rate.
+            <li>The radar uses the CKF to track the  aircraft states, represented by \((x, \dot{x}, y, \dot{y}, \omega)\),  where \((x, \dot{x})\) refers
+                to the position and velocity of the aircraft in the x-direction, \((y, \dot{y})\) refers
+                to the position and velocity of the aircraft in the y-direction and \(\omega\) is the turn rate.
             </li>
             <li>As the aircraft manuevers, we assume that the radar measures the range, bearing and range rate as shown
                 in the above
                 figure </li>
-            <li>We employ the CKF to track the aircraft's trajectory.
-
-
             </li>
 
 
@@ -57,7 +55,7 @@
     <!-- Slide 2 -->
     <section class="left-align">
 
-        <h2>Constant Turn Rate Model</h2>
+        <h2>Constant Turn Rate (CTR) Model</h2>
 
 
         <ul>

@@ -11,7 +11,7 @@
         <a class="nav-button" href="{{ url_for('estimation') }}"> "<<" </a>
                 <br><br>
 
-                <h1>Kalman Filtering</h1>
+                <h1>Bayesian Filtering</h1>
 
     </header>
 
@@ -22,29 +22,30 @@
     <!-- Slide 1 -->
     <section class="left-align">
 
-        <h2>Intro to Bayesian Filtering</h2>
+        <h2>Introduction</h2>
         <p>
             <img src="{{ url_for('static', filename='images/dssm.png') }}"
                 style="width: 60%; height: auto; display: block; margin: 0 auto;">
         </p>
 
         <ul>
-            <li>State-space model in discrete time:
+            <li>The dynamic state-space model in discrete-time can be written as a set of nonlinear system of equations:
                 \[
                 \begin{align}
-                \text{Process equation: } \mathbf{x}_{k} &= \mathbf{f}(\mathbf{x}_{k-1}, \mathbf{u}_{k-1}) +
-                \text{Process noise}
+                \text{Process equation: } \mathbf{x}_{k} &= \mathbf{f}(\mathbf{x}_{k-1}, \mathbf{u}_{k}, \mathbf{v}_{k})
                 \\
-                \text{Measurement equation: } \mathbf{z}_{k} &= \mathbf{h}(\mathbf{x}_{k}, \mathbf{u}_{k}) +
-                \text{Measurement noise}
+                \text{Measurement equation: } \mathbf{z}_{k} &= \mathbf{h}(\mathbf{x}_{k}, \mathbf{w}_{k})
                 \end{align}
                 \]
-                where \(\mathbf{x}_{k}\in R^{n}\) is the state vector at time k, \(\mathbf{u}_{k}\in R^{p}\) is the control input at time
+                where \(\mathbf{x}_{k}\in R^{n}\) is the state vector at time k, \(\mathbf{u}_{k}\in R^{p}\) is the
+                control input at time
                 k,
-                and \(\mathbf{z}_{k}\in R^{d}\) is the measurement taken at time k</li>
-            <li>Key Question: How do we recursively compute the posterior density of the state \(\mathbf{x}_{k}\),
-                given the noiisy measuorements upto time \(k\),
-                \(\mathbf{z}_{1:k}=\{\mathbf{z}_{1},\mathbf{z}_{2},...\mathbf{z}_{k} \}\)? </li>
+                \(\mathbf{z}_{k}\in R^{d}\) is the measurement taken at time k, \(\mathbf{v}_{k}\) is the process noise and
+            \(\mathbf{w}_{k}\) is the measurement noise</li>
+            <li>The Bayeisna filter theory attempts to address the question of how we could recursively estimate the  hidden state
+                of the system \(\mathbf{x}_{k}\),
+                given the noisy measurements and inputs upto time \(k\),
+                \(D_{k}=\{\mathbf{z}_{1},\mathbf{z}_{2}\ldots\mathbf{z}_{k},\mathbf{u}_{1},\mathbf{u}_{2}\ldots\mathbf{u}_{k}\}\)? </li>
 
         </ul>
         <p style="text-align: right;">Page 1</p>
@@ -53,31 +54,33 @@
 
     <!-- Slide 2 -->
     <section class="left-align">
-        <h2>Conceptual Recursive Solution</h2>
+        <h2>Conceptual (Recursive) Solution</h2>
         <ul>
 
             <li>Time Update:
                 \[
-                p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1}) =
-                \int_{R^{n_{x}}}p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})d\mathbf{x}_{k-1}
+                p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k}) =
+                \int_{R^{n_{x}}}p(\mathbf{x}_{k-1}|D_{k-1})p(\mathbf{x}_{k}|\mathbf{x}_{k-1}, \mathbf{u}_{k})d\mathbf{x}_{k-1}
                 \]
 
 
             </li>
-            <li>Measurement Update:
+            <li>Measurement Update (Using Bayes' Rule):
                 \[
-                p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1}) =
-                \int_{R^{n_{x}}}p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})d\mathbf{x}_{k-1}
+                p(\mathbf{x}_{k}|D_{k}) =\frac{1}{c_{k}}
+                p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k})
                 \]
                 where the normalizing constant
                 \[
                 \begin{align}
-                c_{k} &=p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})\\
-                &=\int_{R^{n_{x}}}p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})p(\mathbf{x}_{k}|\mathbf{z}_{1:k-1})d\mathbf{x}_{k-1}
+                c_{k} &=p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})\\
+                &=\int_{R^{n_{x}}}p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k})d\mathbf{x}_{k}
                 \end{align}
                 \]
                 and \(n_{x}\) is the state vector dimension.
             </li>
+
+            <li> The integrals above are typically intractable for nonlinear systems. </li>
         </ul>
         <p style="text-align: right;">Page 2</p>
         <hr class="full-width">
@@ -102,8 +105,8 @@
                     <ul>
                         <li> Extended Kalman Filter (EKF) </li>
                         <li> Unscented Kalman Filter (UKF)</li>
-                        <li> Central Difference Kalman Filter (CDCK)</li>
-                        <li> Gauss-Hermite Quadrature Kalman Filter </li>
+                        <li> Central-Difference Kalman Filter (CDKF)</li>
+                        <li> Gauss-Hermite Quadrature Kalman Filter (GH-QKF)</li>
                     </ul>
                 </li>
                 <li>
@@ -116,12 +119,12 @@
                 </li>
             </ul>
         </li>
-        <li>Problem statement: Develop an approximate Bayesian filter that is theoretically
-            motivated, reasonably accurate and easily extendable at a minimal cost.
+        <li>Although we have a suite of nonlnear Bayesian filters to address the nonlinear inference problems, each of them
+            suffers from either accuracy or increased computational cost or both.
         </li>
-        <li>In the next section, to address the issues, we will introduce a new Bayesian nonlinear filter called
-            Cubature Kalman
-            Filter (CKF).</li>
+        <li>In the next section,  we introduce a new Bayesian nonlinear filter called
+            the Cubature Kalman
+            Filter (CKF). We will derive the CKF with a mathematical rigor and prove that it yields reasonably accurate estimates at a minimal cost.</li>
 
         </ul>
         <p style="text-align: right;">Page 3</p>
@@ -132,15 +135,15 @@
 
     <section class="left-align">
 
-        <h2>Applications</h2>
+        <h2>Bayesian filters in full-state feedback control systems </h2>
         <p>
             <img src="{{ url_for('static', filename='images/dssm_signal_flow.png') }}"
-                style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                style="width: 110%; height: auto; display: block; margin: 0 auto;">
         </p>
 
         <p style="text-align: right;">Page 4</p>
         <hr class="full-width">
-    </section>   
+    </section>
 
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 

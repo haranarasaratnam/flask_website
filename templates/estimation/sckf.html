@@ -27,14 +27,21 @@
                 propagate the
                 square-roots of the covariance matrices. </li>
 
-            <li>Square-root filters apply various matrix factorizations.
+            <li>At the heart of the square-root filters lies various matrix factorizations.
                 Given a positive definite covariance matrix of \(\mathbf{A}\in R^{n\times n}\), we can apply the
                 Cholesky
                 decomposition
-                to write \(\mathbf{A} = \mathbf{L}\mathbf{L}^{T}\), where \(\mathbf{L}\) is a lower triangular matrix.
+                to write
+                \[
+                \mathbf{A} = \mathbf{L}\mathbf{L}^{T}
+                \]
+                where \(\mathbf{L}\) is a lower triangular matrix.
 
             <li>For a rectangular matrix of \(\mathbf{A}\in R^{m\times n}\), we can apply the QR decomposition to
-                write \(\mathbf{A} = \mathbf{Q}\mathbf{R}\),
+                write
+            \[
+            \mathbf{A} = \mathbf{Q}\mathbf{R}
+            \]
                 where \(\mathbf{Q}\in R^{m\times n}\) is an orthogonal (unitary) matrix
                 (\(\mathbf{Q}\mathbf{Q}^{T}=\mathbf{I}\))
                 and \(\mathbf{R}\in R^{n\times n}\)
@@ -54,7 +61,7 @@
     <!-- Slide 2 -->
     <section class="left-align">
 
-        <h2>Derivation</h2>
+        <h2>SCKF Derivation</h2>
 
         <li>
             Obtaining the predicted state error covariance in a square root form is straightforward as shown in page
@@ -99,7 +106,7 @@
     <!-- Slide 2 -->
     <section class="left-align">
 
-        <h2>Derivation (Continued)</h2>
+        <h2>SCKF Derivation (Continued)</h2>
 
 
         <ul>
@@ -202,7 +209,7 @@
     <!-- Slide 3 -->
     <section class="left-align">
 
-        <h2>SCKF: Time Update</h2>
+        <h2>SCKF: Time-Update</h2>
         <ul>
             <li>Assume at time \(k\) that the posterior density,
                 \[
@@ -217,7 +224,7 @@
 
             <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
                 \[
-                X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k-1})
+                X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k})
                 \]
             </li>
 
@@ -239,7 +246,7 @@
                 <!--                \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}X^{\ast T}_{i, k|k-1} - -->
                 <!--                \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{x}}^{T}_{k|k-1} + \mathbf{Q}_{k-1}-->
                 \]
-                where \(S_{Q,k-1}\) denotes a square-root of \(\mathbf{Q}_{k-1}\).
+                where \(S_{Q,k-1}\) is a square-root of \(\mathbf{Q}_{k-1}\).
             </li>
 
         </ul>
