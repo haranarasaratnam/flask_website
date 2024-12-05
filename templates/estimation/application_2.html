@@ -138,27 +138,28 @@
 
             <li>
                 The initial position of the robot was set to \([40m, 25m, 0^\circ]\) in the global co-ordinate.
+                We added
+                Gaussian noise characterized by a
+                mean of 0 and a standard deviation of \([0.01m, 0.01m, 1.5^\circ]\) for filter signal processing.
             </li>
             <li>
                 The radar was assumed to have a limited line of sight, detecting only landmarks within a range of 50m
                 and an angular field of view of 30 degrees.
-                For this reason, as you can see from the below plot, the robot had to estimate its position without the
-                measurements at times.
+                This means there will be some sample times without any measurements. For these sample times the filter
+                generates state predictions using the state transition function.
             </li>
             <li>
-                The control input was set to be constant at \([0, 1, 3^\circ]\). Therefore, as you can see from the
+                The control input was set to be constant at \([0, 1, 3^\circ]\). As you can see from the
                 process equation above, at every time step, the robot took a step of 1m up in the y-direction with a
                 front wheel turning by \(3^{\circ}\) anti-clock wise
-                in its local coordinate leading to an elliptical path. For realistic simulation though, we added
-                Gaussian noise characterized by a
-                mean of 0 and a standard deviation of \([0.01m, 0.01m, 1.5^\circ]\)
+                in its local coordinate creating an elliptical path as shown below.
 
             </li>
 
-            <li> The trajectory was simulated for 120 seconds making a full rotation.</li>
+            <li> The trajectory was simulated for 120 seconds with a sampling rate of 1 hz.</li>
 
             <li>
-                The on-board radar measurements were modeled as noisy, with Gaussian-distributed noise having a mean of
+                The on-board radar measurements were considered noisy, with Gaussian-distributed additive noise having a mean of
                 0 and a standard deviation of \([1.1m, 5^\circ]\).
             </li>
 

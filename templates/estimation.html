@@ -7,72 +7,62 @@
         <hr style="margin-top:-1em">
         <h3 style="margin-top:-2.3em">
         </h3>
+
+        <style>
+    ul
+{
+list-style: none;
+}
+</style>
     </header>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 1: Bayesian Filtering</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">1.</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Bayesian Filtering</a>
-        </p>
-        <!--        <p style="text-indent: -55px; margin-left: 18px">-->
-        <!--            <span style="position:absolute; margin-left:0px;">2014-05-15</span>-->
-        <!--            &lt;!&ndash;      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>&ndash;&gt;-->
-        <!--            <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Kalman Filtering</a>-->
+    <p>
+        This section covers Bayesian signal processing, with a particular focus on cubature Kalman filters. The content is
+        primarily derived from my PhD thesis. Each subsection below is clickable and presented in a slide format, allowing
+        users to quickly read, review, and grasp the key concepts to master this powerful tool.
 
-        <!--        </p>-->
-    </div>
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 2: Nonlinear Kalman Filtering</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">2.</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('ckf')}}" style="position:relative; margin-left: 55px;"> Cubature Kalman Filters</a>
+    </p>
 
-        </p>
+    <br>
 
-    </div>
+<ul>
+  <li><strong>1. Introduction to Bayesian Filtering</strong>
+    <ul>
+      <li>1.1 <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Overview of Bayesian Filtering</a> </li>
+    </ul>
+  </li>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 3: Variants</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">3.</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('sckf')}}" style="position:relative; margin-left: 55px;"> Square-Root Cubature Kalman
-                Filters</a>
+<li><strong>2. Nonlinear Kalman Filtering</strong>
+    <ul>
+        <li>2.1 <a href="{{url_for('ckf')}}" style="position:relative; margin-left: 55px;"> Cubature Kalman Filters</a></li>
+    </ul>
+</li>
 
-        </p>
-    </div>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 4: Applications</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">4.1</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('application_1')}}" style="position:relative; margin-left: 55px;"> Radar Tracking
-                (Accompanied by Python Code)</a>
+    <li><strong>3. Variants</strong>
+    <ul>
+        <li>3.1 <a href="{{url_for('sckf')}}" style="position:relative; margin-left: 55px;"> Square-Root Cubature Kalman
+                Filters</a></li>
+    </ul>
+</li>
 
-        </p>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">4.2</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('application_2')}}" style="position:relative; margin-left: 55px;"> Mobile Robot
-                Navigation</a>
+    <li><strong>4. Applications</strong>
+    <ul>
+        <li>4.1 <a href="{{url_for('application_1')}}" style="position:relative; margin-left: 55px;"> Radar Tracking
+                (Accompanied by Python Code)</a></li>
+        <li>4.2 <a href="{{url_for('application_2')}}" style="position:relative; margin-left: 55px;"> Mobile Robot
+                Navigation</a></li>
+    </ul>
+</li>
 
-        </p>
-    </div>
+    <li><strong>5. Suggested Readings</strong>
+    <ul>
+        <li>5.1 <a href="{{url_for('reference')}}" style="position:relative; margin-left: 55px;"> References</a></li>
+    </ul>
+</li>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 5: Suggested Readings</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;">5.</span>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('reference')}}" style="position:relative; margin-left: 55px;"> References</a>
 
-        </p>
-    </div>
+</ul>
 
 </article>
-
 {% endblock %}

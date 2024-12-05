@@ -21,7 +21,7 @@
         <h2>Scenario</h2>
 
         <p>
-            <img src="{{ url_for('static', filename='images/application_1_radar_1.png') }}"
+            <img src="{{ url_for('static', filename='images/radar_app_1.png') }}"
                 style="width: 60%; height: auto; display: block; margin: 0 auto;">
         </p>
         <ul>
@@ -130,6 +130,19 @@
                 \]
 
             </li>
+            <li> The below Python code comprises 5 sections:
+                <ul>
+
+                    <li>Filter initialization</li>
+                    <li>State-Space Model Definition</li>
+                    <li>CKF Estimator</li>
+                    <li>Utility Functions (Plotting)</li>
+                    <li>Main Loop for simulation</li>
+                </ul>
+
+
+
+            </li>
 
 
         </ul>
@@ -172,17 +185,13 @@
     <!-- Slide 2 -->
     <section class="left-align">
 
-        <h2>Python Code: Initialization</h2>
+        <h2>Python Code: Filter Initialization</h2>
 
 
         <ul>
 
 
 
-            <li> The below Python code comprises of 5 sections -- (1) Initialization (2) Model Definition
-                (3) CKF Estimator (4) Utility Function (Plotting) (5) Main
-
-            </li>
 
         </ul>
 
@@ -222,8 +231,8 @@ p_0 = np.array([[1e1, 0.0, 0.0, 0.0, 0.0],
                 [0.0, 0.0, 0.0, 0.0, np.deg2rad(1)]])
 
 
-sigma_v1 = 1e-6
-sigma_v2 = np.deg2rad(1e-4)
+sigma_v1 = 1e-3
+sigma_v2 = np.deg2rad(1e-2)
 
 G = np.array([[dt**2/2, 0, 0],
               [dt, 0, 0],
@@ -233,8 +242,7 @@ G = np.array([[dt**2/2, 0, 0],
 
 sigma_v = np.diag([sigma_v1, sigma_v1, sigma_v2])
 
-Q = G @ sigma_v @ G.T
-
+Q = G @ sigma_v**2 @ G.T
 
 R = np.array([[0.15, 0.0, 0.0],
               [0.0, np.deg2rad(2.5), 0.0],
@@ -326,7 +334,7 @@ def generate_measurement(x_true):
         </ul>
 
         <pre><code class="python">
-def moments2points(mu, P):
+def moments2points(mu, p):
     """
     Spherical-Radial Transform using Cubature Rule
     Generate 2n Cubature Points to represent the nonlinear model
@@ -335,16 +343,16 @@ def moments2points(mu, P):
 
     n_dim = len(mu)
     weights = np.ones(2 * n_dim) / (2*n_dim)
-    sigma = linalg.cholesky(P,lower=True)
+    sigma = linalg.cholesky(p,lower=True)
     points = np.tile(mu, (1, 2 * n_dim))
     points[:, 0:n_dim] += sigma * np.sqrt(n_dim)
     points[:, n_dim:] -= sigma * np.sqrt(n_dim)
     return points, weights
 
 
-def cubature_prediction(x_pred, p_pred):
-    n = np.shape(x_pred)[0]
-    [CP, W] = moments2points(x_pred, p_pred)
+def cubature_prediction(x_upd, p_upd):
+    n = len(x_upd)
+    [CP, W] = moments2points(x_upd, p_upd)
     x_pred = np.zeros((n, 1))
     p_pred = Q
     for i in range(2*n):
@@ -356,8 +364,7 @@ def cubature_prediction(x_pred, p_pred):
 
 
 def cubature_update(x_pred, p_pred, z):
-    n = np.shape(x_pred)[0]
-    m = np.shape(z)[0]
+    n, m = len(x_pred), len(z)
     [CP, W] = moments2points(x_pred, p_pred)
     z_pred = np.zeros((m, 1))
     P_xy = np.zeros((n, m))

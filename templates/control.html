@@ -4,110 +4,180 @@
 {% block content %}
 <article>
     <header class="title">
-        <h1 style="color: #b40203">Control Theory<br> (Under Construction)</h1>
+        <h1 style="color: #b40203">State-Space Control<br> (Under Construction)</h1>
         <hr style="margin-top:-1em">
         <h3 style="margin-top:-2.3em">
         </h3>
+
+              <style>
+    ul
+{
+list-style: none;
+}
+</style>
+      
     </header>
 
+
   <ul>
-  <li><strong>1. Introduction to Control Systems</strong>
+  <li><strong>1. Introduction to State-Space Control</strong>
     <ul>
-      <li>1.1 Overview of Control Systems</li>
-      <li>1.2 Open-Loop vs Closed-Loop Control</li>
-      <li>1.3 Applications of Control Systems</li>
-      <li>1.4 Mathematical Modeling of Systems</li>
+      <li>1.1 Overview of State-Space Representation</li>
+      <li>1.2 Comparison with Transfer Function Approach</li>
+      <li>1.3 Applications of State-Space Control</li>
     </ul>
   </li>
-  <li><strong>2. Mathematical Preliminaries</strong>
+  <li><strong>2. Mathematical Foundations</strong>
     <ul>
-      <li>2.1 Review of Laplace Transform</li>
-      <li>2.2 Transfer Functions and Block Diagrams</li>
-      <li>2.3 State-Space Representation</li>
-      <li>2.4 Linearization of Nonlinear Systems</li>
+      <li>2.1 Linear Algebra Review</li>
+      <li>2.2 Eigenvalues and Eigenvectors</li>
+      <li>2.3 State Transition Matrix</li>
     </ul>
   </li>
-  <li><strong>3. Time-Domain Analysis</strong>
+  <li><strong>3. State-Space Modeling</strong>
     <ul>
-      <li>3.1 Standard Test Signals (Step, Ramp, Impulse)</li>
-      <li>3.2 Time Response of First-Order Systems</li>
-      <li>3.3 Time Response of Second-Order Systems</li>
-      <li>3.4 Performance Metrics: Overshoot, Settling Time, Steady-State Error</li>
+      <li>3.1 Deriving State-Space Equations</li>
+      <li>3.2 Canonical Forms</li>
+      <li>3.3 Linearization of Nonlinear Systems</li>
     </ul>
   </li>
-  <li><strong>4. Stability Analysis</strong>
+  <li><strong>4. Analysis of State-Space Systems</strong>
     <ul>
-      <li>4.1 Concept of Stability</li>
-      <li>4.2 Routh-Hurwitz Criterion</li>
-      <li>4.3 Root Locus Method</li>
-      <li>4.4 Stability in State-Space Representation</li>
+      <li>4.1 Controllability and Observability</li>
+      <li>4.2 Stability Analysis</li>
+      <li>4.3 Lyapunov Stability</li>
     </ul>
   </li>
-  <li><strong>5. Frequency-Domain Analysis</strong>
+  <li><strong>5. State Feedback Control</strong>
     <ul>
-      <li>5.1 Frequency Response and Bode Plots</li>
-      <li>5.2 Nyquist Stability Criterion</li>
-      <li>5.3 Gain and Phase Margins</li>
-      <li>5.4 Nichols Chart</li>
+      <li>5.1 Pole Placement Design</li>
+      <li>5.2 Ackermann’s Formula</li>
+      <li>5.3 Integral Action in State Feedback</li>
     </ul>
   </li>
-  <li><strong>6. Control System Design</strong>
+  <li><strong>6. Observers and Estimators</strong>
     <ul>
-      <li>6.1 Proportional (P), Integral (I), and Derivative (D) Controllers</li>
-      <li>6.2 PID Tuning Methods</li>
-      <li>6.3 Lead, Lag, and Lead-Lag Compensators</li>
-      <li>6.4 Design in the Frequency Domain</li>
+      <li>6.1 Design of Observers</li>
+      <li>6.2 Luenberger Observer</li>
+      <li>6.3 Kalman Filter Basics</li>
     </ul>
   </li>
-  <li><strong>7. State-Space Design</strong>
+  <li><strong>7. Advanced Topics</strong>
     <ul>
-      <li>7.1 Controllability and Observability</li>
-      <li>7.2 Pole Placement</li>
-      <li>7.3 State Feedback Controllers</li>
-      <li>7.4 Observers and Estimators</li>
+      <li>7.1 Robust State-Space Design</li>
+      <li>7.2 Model Predictive Control</li>
+      <li>7.3 Nonlinear State-Space Control</li>
     </ul>
   </li>
-  <li><strong>8. Digital Control Systems</strong>
+  <li><strong>8. Practical Implementation</strong>
     <ul>
-      <li>8.1 Sampling and Reconstruction</li>
-      <li>8.2 Discrete-Time Models</li>
-      <li>8.3 z-Transform and Stability Analysis</li>
-      <li>8.4 Digital PID Controllers</li>
-    </ul>
-  </li>
-  <li><strong>9. Advanced Topics</strong>
-    <ul>
-      <li>9.1 Nonlinear Control Basics</li>
-      <li>9.2 Robust Control Concepts</li>
-      <li>9.3 Introduction to Optimal Control</li>
-      <li>9.4 Control Systems with Delays</li>
-    </ul>
-  </li>
-  <li><strong>10. Case Studies and Applications</strong>
-    <ul>
-      <li>10.1 DC Motor Control</li>
-      <li>10.2 Inverted Pendulum on a Cart</li>
-      <li>10.3 Aircraft Pitch Control</li>
-      <li>10.4 Industrial Process Control</li>
-    </ul>
-  </li>
-  <li><strong>11. Laboratory Exercises</strong>
-    <ul>
-      <li>11.1 Modeling and Simulation in MATLAB/Simulink</li>
-      <li>11.2 Hardware Implementation of PID Controllers</li>
-      <li>11.3 Frequency Response Analysis with Bode Plots</li>
-      <li>11.4 State-Space Control Design and Implementation</li>
-    </ul>
-  </li>
-  <li><strong>12. Appendices</strong>
-    <ul>
-      <li>12.1 Mathematical Tables and Formulas</li>
-      <li>12.2 MATLAB/Simulink Quick Reference</li>
-      <li>12.3 Control System Standards and Conventions</li>
-      <li>12.4 Recommended Reading and Resources</li>
+      <li>8.1 MATLAB/Simulink for State-Space Systems</li>
+      <li>8.2 Hardware Implementation</li>
+      <li>8.3 Case Studies</li>
     </ul>
   </li>
 </ul>
+
+
+
+<!--  <ul>-->
+<!--  <li><strong>1. Introduction to Control Systems</strong>-->
+<!--    <ul>-->
+<!--      <li>1.1 Overview of Control Systems</li>-->
+<!--      <li>1.2 Open-Loop vs Closed-Loop Control</li>-->
+<!--      <li>1.3 Applications of Control Systems</li>-->
+<!--      <li>1.4 Mathematical Modeling of Systems</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>2. Mathematical Preliminaries</strong>-->
+<!--    <ul>-->
+<!--      <li>2.1 Review of Laplace Transform</li>-->
+<!--      <li>2.2 Transfer Functions and Block Diagrams</li>-->
+<!--      <li>2.3 State-Space Representation</li>-->
+<!--      <li>2.4 Linearization of Nonlinear Systems</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>3. Time-Domain Analysis</strong>-->
+<!--    <ul>-->
+<!--      <li>3.1 Standard Test Signals (Step, Ramp, Impulse)</li>-->
+<!--      <li>3.2 Time Response of First-Order Systems</li>-->
+<!--      <li>3.3 Time Response of Second-Order Systems</li>-->
+<!--      <li>3.4 Performance Metrics: Overshoot, Settling Time, Steady-State Error</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>4. Stability Analysis</strong>-->
+<!--    <ul>-->
+<!--      <li>4.1 Concept of Stability</li>-->
+<!--      <li>4.2 Routh-Hurwitz Criterion</li>-->
+<!--      <li>4.3 Root Locus Method</li>-->
+<!--      <li>4.4 Stability in State-Space Representation</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>5. Frequency-Domain Analysis</strong>-->
+<!--    <ul>-->
+<!--      <li>5.1 Frequency Response and Bode Plots</li>-->
+<!--      <li>5.2 Nyquist Stability Criterion</li>-->
+<!--      <li>5.3 Gain and Phase Margins</li>-->
+<!--      <li>5.4 Nichols Chart</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>6. Control System Design</strong>-->
+<!--    <ul>-->
+<!--      <li>6.1 Proportional (P), Integral (I), and Derivative (D) Controllers</li>-->
+<!--      <li>6.2 PID Tuning Methods</li>-->
+<!--      <li>6.3 Lead, Lag, and Lead-Lag Compensators</li>-->
+<!--      <li>6.4 Design in the Frequency Domain</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>7. State-Space Design</strong>-->
+<!--    <ul>-->
+<!--      <li>7.1 Controllability and Observability</li>-->
+<!--      <li>7.2 Pole Placement</li>-->
+<!--      <li>7.3 State Feedback Controllers</li>-->
+<!--      <li>7.4 Observers and Estimators</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>8. Digital Control Systems</strong>-->
+<!--    <ul>-->
+<!--      <li>8.1 Sampling and Reconstruction</li>-->
+<!--      <li>8.2 Discrete-Time Models</li>-->
+<!--      <li>8.3 z-Transform and Stability Analysis</li>-->
+<!--      <li>8.4 Digital PID Controllers</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>9. Advanced Topics</strong>-->
+<!--    <ul>-->
+<!--      <li>9.1 Nonlinear Control Basics</li>-->
+<!--      <li>9.2 Robust Control Concepts</li>-->
+<!--      <li>9.3 Introduction to Optimal Control</li>-->
+<!--      <li>9.4 Control Systems with Delays</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>10. Case Studies and Applications</strong>-->
+<!--    <ul>-->
+<!--      <li>10.1 DC Motor Control</li>-->
+<!--      <li>10.2 Inverted Pendulum on a Cart</li>-->
+<!--      <li>10.3 Aircraft Pitch Control</li>-->
+<!--      <li>10.4 Industrial Process Control</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>11. Laboratory Exercises</strong>-->
+<!--    <ul>-->
+<!--      <li>11.1 Modeling and Simulation in MATLAB/Simulink</li>-->
+<!--      <li>11.2 Hardware Implementation of PID Controllers</li>-->
+<!--      <li>11.3 Frequency Response Analysis with Bode Plots</li>-->
+<!--      <li>11.4 State-Space Control Design and Implementation</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--  <li><strong>12. Appendices</strong>-->
+<!--    <ul>-->
+<!--      <li>12.1 Mathematical Tables and Formulas</li>-->
+<!--      <li>12.2 MATLAB/Simulink Quick Reference</li>-->
+<!--      <li>12.3 Control System Standards and Conventions</li>-->
+<!--      <li>12.4 Recommended Reading and Resources</li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--</ul>-->
 
 
 <!--    <div class="archive" style="margin-top:-30px">-->

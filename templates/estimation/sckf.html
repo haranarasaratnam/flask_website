@@ -47,7 +47,7 @@
                 and \(\mathbf{R}\in R^{n\times n}\)
                 is an upper triangular (sparse) matrix.
             </li>
-            <li>We use the term "Tria" below to denote the QR decomposition that returns an upper triangular matrix
+            <li>We use the term "Tria" below to denote the QR decomposition that returns an (upper-)triangular matrix
                 \(\mathbf{R}\) of
                 \(\mathbf{A} = \mathbf{QR}\).</li>
 
@@ -307,7 +307,7 @@
             <li>
                 Estimate the updated state
                 \[
-                \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} - W_{k}(\mathbf{z}_{k} - \hat{\mathbf{z}}_{k|k-1})
+                \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + W_{k}(\mathbf{z}_{k} - \hat{\mathbf{z}}_{k|k-1})
                 \]
             </li>
 
