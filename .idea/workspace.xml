@@ -9,9 +9,6 @@
       <change beforePath="$PROJECT_DIR$/templates/control.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/control.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/estimation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/estimation/application_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/application_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/application_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/application_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/ckf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/ckf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/estimation/sckf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/estimation/sckf.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
