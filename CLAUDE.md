@@ -5,10 +5,13 @@ Personal Flask website with technical content sections (estimation, control, cod
 ## Run
 
 ```
-python app.py
+uv sync           # one-time: install deps into .venv (Python 3.12)
+uv run app.py     # start the dev server
 ```
 
 Serves on `127.0.0.1:8080` with `debug=True` (see `app.py:233-234`). No separate dev/prod config — the `__main__` block is the entry point.
+
+Add a new dependency with `uv add <pkg>` (updates `pyproject.toml` and `uv.lock`). Activate the venv interactively with `source .venv/bin/activate` if you prefer running `python app.py` directly.
 
 ## Architecture
 
@@ -43,7 +46,9 @@ To add a new page:
 
 ```
 app.py              # routes dicts + dynamic registration
-requirements.txt    # pinned deps (Flask 2.0.1)
+pyproject.toml      # project metadata + Flask dependency
+uv.lock             # locked transitive deps (commit this)
+.venv/              # local virtualenv (gitignored)
 static/
   css/  js/  images/  docs/  code/
 templates/
