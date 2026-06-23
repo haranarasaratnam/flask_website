@@ -1,5 +1,5 @@
 /* ============================================================
-   Design tokens
+   Design tokens — light theme (default)
    ============================================================ */
 :root {
     --accent:        #b40203;
@@ -10,15 +10,52 @@
     --surface:       #f5f3ee;
     --surface-2:     #ebe7dc;
     --rule:          #d9d4c7;
+    --shadow:        0 4px 14px rgba(0, 0, 0, 0.05);
 
     --serif: Palatino, "Palatino Linotype", "Palatino LT STD",
              "Book Antiqua", Georgia, serif;
     --sans:  -apple-system, BlinkMacSystemFont, "SF Pro Text",
              "Inter", system-ui, sans-serif;
 
-    --measure:   38rem;
-    --radius:    4px;
+    --measure:    38rem;     /* readable line length for prose */
+    --column:     760px;     /* main content max-width */
+    --radius:     4px;
     --transition: 160ms ease;
+
+    color-scheme: light;
+}
+
+/* ============================================================
+   Dark theme — applied via either system preference or manual
+   toggle on <html data-theme="dark">. The data-theme attribute
+   wins when both are present (specificity), letting users
+   override their OS setting.
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --accent:        #ff6b6b;
+        --accent-hover:  #ff8a8a;
+        --ink:           #e8e6e0;
+        --muted:         #9a958a;
+        --bg:            #1a1816;
+        --surface:       #25221f;
+        --surface-2:     #2f2c28;
+        --rule:          #3a3631;
+        --shadow:        0 4px 14px rgba(0, 0, 0, 0.4);
+        color-scheme: dark;
+    }
+}
+[data-theme="dark"] {
+    --accent:        #ff6b6b;
+    --accent-hover:  #ff8a8a;
+    --ink:           #e8e6e0;
+    --muted:         #9a958a;
+    --bg:            #1a1816;
+    --surface:       #25221f;
+    --surface-2:     #2f2c28;
+    --rule:          #3a3631;
+    --shadow:        0 4px 14px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
 }
 
 /* ============================================================
@@ -36,9 +73,10 @@ body {
     margin: 0;
     padding: 0;
     width: auto;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--ink);
     background: var(--bg);
+    transition: background var(--transition), color var(--transition);
 }
 
 img { max-width: 100%; }
@@ -50,17 +88,26 @@ button, input, select, textarea, label {
     font-size: inherit;
 }
 
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
 /* ============================================================
    Typography
    ============================================================ */
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
+    line-height: 1.25;
     font-weight: 700;
     color: var(--ink);
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
 }
-h1 { font-size: 1.8em; }
-h2 { font-size: 1.35em; }
-h3, h4, h5, h6 { font-size: 1.05em; }
+h1 { font-size: 2.0em; letter-spacing: -0.005em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.05em; }
+h5, h6 { font-size: 1em; }
 
 .title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
     text-align: center;
@@ -80,6 +127,23 @@ h3, h4, h5, h6 { font-size: 1.05em; }
 
 p { margin: 0 0 1em 0; }
 
+.eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.lede {
+    font-size: 1.15em;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
 blockquote {
     margin: 1.5em 0;
     padding: 0.5em 1.25em;
@@ -95,22 +159,26 @@ ol { padding: 0 0 0 24px; }
 li { margin: 0; padding: 0; }
 
 /* ============================================================
-   Links
+   Links — animated underline that grows on hover
    ============================================================ */
 a {
     color: var(--accent);
     text-decoration: none;
-    transition: color var(--transition), border-color var(--transition);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size var(--transition), color var(--transition);
 }
 a:hover {
     color: var(--accent-hover);
-    border-bottom: 1px dotted var(--accent-hover);
+    background-size: 100% 1px;
 }
 a:visited { color: var(--ink); }
 
-sup a { border-bottom: none; margin-left: -3px; }
+sup a { background-image: none; margin-left: -3px; }
 sup { line-height: 5px; }
-h1 a { color: var(--ink); }
+h1 a { color: var(--ink); background-image: none; }
 
 /* ============================================================
    Rules
@@ -132,7 +200,7 @@ hr.full-width {
 }
 
 /* ============================================================
-   Layout — sidebar masthead + centered main
+   Layout — fixed sidebar masthead + content column
    ============================================================ */
 .masthead {
     position: fixed;
@@ -141,6 +209,9 @@ hr.full-width {
     background: var(--bg);
     height: 100vh;
     border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    transition: background var(--transition), border-color var(--transition);
 }
 .masthead h1 {
     margin-top: 0;
@@ -150,7 +221,7 @@ hr.full-width {
     font-size: 1.6em;
     line-height: 1.4;
 }
-.masthead h1 a { border-bottom: none; }
+.masthead h1 a { color: var(--ink); }
 .masthead .tagline {
     font-style: italic;
     text-align: center;
@@ -163,7 +234,7 @@ hr.full-width {
 }
 
 /* ---- Sidebar nav ---- */
-.masthead .menu { margin: 0; direction: ltr; }
+.masthead .menu { margin: 0; direction: ltr; flex: 1; }
 .masthead .menu ul {
     list-style: none;
     text-align: left;
@@ -192,6 +263,7 @@ hr.full-width {
     width: auto;
     height: auto;
     line-height: 1.4;
+    background-image: none;
     transition: background var(--transition),
                 color var(--transition),
                 border-color var(--transition);
@@ -200,7 +272,6 @@ hr.full-width {
     border-left-color: var(--accent);
     color: var(--accent);
     background: var(--surface);
-    border-bottom: none;
 }
 .masthead .menu .active a,
 .masthead .menu .selected a {
@@ -210,7 +281,45 @@ hr.full-width {
     font-weight: 600;
 }
 
-/* ---- Standalone nav button (used in some pages) ---- */
+/* ---- Theme toggle ---- */
+.theme-toggle {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.85em;
+    transition: background var(--transition), color var(--transition),
+                border-color var(--transition);
+}
+.theme-toggle:hover {
+    background: var(--surface);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.theme-toggle svg { width: 16px; height: 16px; flex-shrink: 0; }
+.theme-toggle .label { font-weight: 500; }
+
+/* Show the icon for the *current* theme; hide the other */
+:root:not([data-theme="dark"]) .theme-toggle .icon-sun  { display: none; }
+:root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun  { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+
+/* ---- Standalone nav button ---- */
 .nav-button {
     padding: 6px 14px;
     background: var(--accent);
@@ -218,6 +327,7 @@ hr.full-width {
     text-decoration: none;
     border-radius: var(--radius);
     margin: 0 10px;
+    background-image: none;
     transition: background var(--transition);
 }
 .nav-button:hover {
@@ -226,14 +336,15 @@ hr.full-width {
 }
 
 /* ============================================================
-   Main content area
+   Main content area — narrower reading column,
+   biased to account for the 200px sidebar
    ============================================================ */
 .main {
-    max-width: 1000px;
-    margin-left: calc(50% - 400px);
-    text-align: justify;
+    max-width: var(--column);
+    margin-left: calc(50% - 280px);
+    text-align: left;
     min-height: calc(100vh - 60px);
-    padding: 2.5em 40px;
+    padding: 3em 40px;
     hyphens: auto;
     border: none;
 }
@@ -241,6 +352,15 @@ hr.full-width {
 .main .title h1 {
     margin-top: 0;
     margin-bottom: 40px;
+}
+
+/* Block elements that may need to escape the prose measure */
+.main pre,
+.main table,
+.main .MathJax_Display,
+.main figure {
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* ============================================================
@@ -253,6 +373,7 @@ pre {
     background-color: var(--surface);
     border: 1px solid var(--rule);
     border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 pre code {
     font-size: 0.9em;
@@ -270,8 +391,8 @@ code {
     hyphens: none;
 }
 code.hljs { background: var(--surface); }
-.hljs { padding: 1em; }
-.hljs-comment { font-style: inherit; }
+.hljs { padding: 1em; color: var(--ink); }
+.hljs-comment { font-style: inherit; color: var(--muted); }
 pre .nohighlight { background-color: transparent; }
 
 /* ============================================================
@@ -297,10 +418,15 @@ pre .nohighlight { background-color: transparent; }
     border-bottom: 1px solid var(--rule);
     padding-bottom: 6px;
     margin-top: 2em;
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
 }
 .archive a {
     text-decoration: none;
     color: var(--ink);
+    background-image: linear-gradient(var(--accent), var(--accent));
 }
 .archive a:hover { color: var(--accent); }
 
@@ -318,7 +444,7 @@ pre .nohighlight { background-color: transparent; }
 .accent      { color: var(--accent); }
 
 /* ============================================================
-   Tables
+   Tables — zebra striping for readability
    ============================================================ */
 table {
     display: inline-block;
@@ -336,11 +462,12 @@ table thead {
 }
 table tr td,
 table tr th {
-    padding: 0 10px;
+    padding: 6px 12px;
     vertical-align: top;
     white-space: nowrap;
 }
-table th { color: var(--ink); }
+table tbody tr:nth-child(even) { background: var(--surface); }
+table th { color: var(--ink); font-family: var(--sans); }
 
 /* ============================================================
    Multicol & misc utilities
@@ -359,7 +486,7 @@ table th { color: var(--ink); }
 
 img[src$="#border"] {
     border: 1px solid var(--rule);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow);
     border-radius: var(--radius);
 }
 
@@ -374,6 +501,16 @@ iframe, twitterwidget, video {
 
 .MathJax_Display { overflow-x: auto; overflow-y: hidden; }
 .utterances { max-width: 100%; width: 100%; margin: 0; }
+
+/* Smooth scroll + reduced-motion respect */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
 
 /* ============================================================
    Responsive — collapse sidebar to top bar under 1200px
@@ -394,15 +531,21 @@ iframe, twitterwidget, video {
         position: relative;
         width: 100%;
         height: auto;
-        padding: 12px 0 0;
+        padding: 12px 12px 0;
         text-align: center;
         margin: 0 auto;
         border-right: none;
         border-bottom: 1px solid var(--rule);
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
     }
     .masthead .tagline { text-align: center; }
 
     .masthead .menu {
+        flex: 1 1 auto;
         direction: ltr;
         max-width: 100%;
         margin: 0 auto;
@@ -431,6 +574,12 @@ iframe, twitterwidget, video {
     .masthead .menu .selected a {
         border-left: none;
         border-bottom-color: var(--accent);
+    }
+    .theme-toggle {
+        flex: 0 0 auto;
+        width: auto;
+        margin: 0 0 8px 0;
+        padding: 6px 10px;
     }
 
     .masthead img {

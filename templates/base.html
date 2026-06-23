@@ -12,6 +12,19 @@
 
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
 
+    {# No-flash theme init: must run before first paint, so it's inline and
+       in <head>. Reads a saved choice; otherwise lets prefers-color-scheme decide. #}
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'dark' || saved === 'light') {
+            document.documentElement.setAttribute('data-theme', saved);
+          }
+        } catch (_) { /* localStorage unavailable (private mode) — fall back to OS pref */ }
+      })();
+    </script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/social.css') }}">
@@ -22,8 +35,8 @@
 
     <!-- Highlight.js for fenced code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"
+            onload="hljs.highlightAll()"></script>
 
     <!-- MathJax 3 (renders \(...\) and $$...$$) -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -43,6 +56,19 @@
             <li><a href="{{url_for('coding')}}">Coding</a></li>
         </ul>
     </nav>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <span class="label">Theme</span>
+    </button>
 </header>
 
 <article class="main">
@@ -57,6 +83,31 @@
         </div>
     </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var resolved = current || (media.matches ? 'dark' : 'light');
+      var next = resolved === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (_) {}
+    });
+
+    /* If the user hasn't pinned a manual choice, follow the OS in real time */
+    media.addEventListener('change', function () {
+      try {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (_) {}
+    });
+  })();
+</script>
 
 </body>
 </html>

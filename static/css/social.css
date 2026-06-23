@@ -1,21 +1,30 @@
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-@import "https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css";
+/* Inline SVG-based social icons; no CDN imports.
+   Icons inherit currentColor so they auto-adapt to dark mode. */
 
 .social {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+    gap: 22px;
     margin: 1.5em auto 0.5em;
 }
 
 .social a {
     color: var(--muted);
-    transition: color var(--transition);
-    border-bottom: none;
+    transition: color var(--transition), transform var(--transition);
+    background-image: none;
+    line-height: 0;
+    display: inline-block;
 }
 
 .social a:hover {
     color: var(--accent);
-    border-bottom: none;
+    transform: translateY(-2px);
+}
+
+.social svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+    display: block;
 }
