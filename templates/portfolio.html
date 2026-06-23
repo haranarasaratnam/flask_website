@@ -2,390 +2,291 @@
 
 {% block header %}
 {{ super() }}
-<script src="{{url_for('static', filename='js/quotes.js')}}" type="text/javascript"></script>
+<script defer src="{{url_for('static', filename='js/quotes.js')}}"></script>
 {% endblock %}
 
 {% block content %}
 
-
 <header class="title">
-    <h1 style="color: #b40203"> PhD Work </h1>
+    <span class="eyebrow">Research</span>
+    <h1 class="section-heading">PhD Work</h1>
 </header>
 <div class="divider"></div>
 
-<div class="container" style="height: 800px">
+<section class="work-section">
+    <div class="container">
+        <article class="box">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='images/radar.jpg') }}" alt="Radar tracking visualization">
+            </div>
+            <div class="text-container">
+                <blockquote id="quote"></blockquote>
+                <script>
+                    var quote = getRandomQuote();
+                    document.getElementById("quote").innerHTML = quote;
+                </script>
 
-    <div class="box" style="height: 680px" ;>
-
-        <div class="img-container">
-            <img src="{{ url_for('static', filename='images/radar.jpg') }}">
-        </div>
-        <div class="text-container">
-            <p>
-            <blockquote id="quote"></blockquote>
-
-            <script>
-                <!-- JS code to set the random quote-->
-                var quote = getRandomQuote();
-                document.getElementById("quote").innerHTML = quote
-
-
-            </script>
-
-            Finding a solution to nonlinear Bayesian state-estimation problems is intractable and has engaged many
-            researchers
-            since Kalman’s seminal paper was published in 1960. The selection of suitable sub-optimal approximate
-            solutions to the recursive Bayesian estimation problem represents a trade-off between global optimality on
-            one hand and computational tractability (and robustness) on the other
-            hand.
-            </p>
-            <p>During my PhD research, I developed a new Bayesian filter called the Cubature Kalman Filter (CKF) that
-                solves discrete-time non-linear filtering problems efficiently. When the conditional probability
-                densities are assumed to be
-                Gaussian, which holds in many cases, the optimal Bayesian filter can be reduced to the problem of
-                computing multi-dimensional
-                Gaussian-weighted moment integrals in the time update and measurement update steps. To compute these
-                integrals
-                numerically, two transformations are required: (i) Non-standard Gaussian-weighted
-                integrals are transformed into standard Gaussian-weighted integrals using the change of variables. (ii)
-                These integrals are then transformed from Cartesian coordinates to spherical-radial coordinates. A
-                third-degree spherical-radial cubature rule is used to compute them numerically. The resulting cubature
-                rule uses a set of
-                2n
-                cubature points, where n is the state-vector dimension.
-            </p>
-
-            <p>
-                The CKF is a predictor-corrector model-based estimation strategy that
-                extracts second-order information from sensor measurements optimally and recursively. It is the closest
-                known approximate
-                filter that preserves second-order information according to the
-                maximum entropy principle. As per <a
-                    href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en"> Google
-                    Scholar</a>, my research paper on the CKF has received
-                over 3000 citations. A detailed derivation of this method can be found in my PhD thesis below.
-            </p>
-
-            <p>
-            <div class="icon-row">
+                <p>
+                    Finding a solution to nonlinear Bayesian state-estimation problems is intractable and has
+                    engaged many researchers since Kalman's seminal paper was published in 1960. The selection
+                    of suitable sub-optimal approximate solutions to the recursive Bayesian estimation problem
+                    represents a trade-off between global optimality on one hand and computational tractability
+                    (and robustness) on the other hand.
+                </p>
+                <p>
+                    During my PhD research, I developed a new Bayesian filter called the Cubature Kalman Filter
+                    (CKF) that solves discrete-time non-linear filtering problems efficiently. When the
+                    conditional probability densities are assumed to be Gaussian, which holds in many cases, the
+                    optimal Bayesian filter can be reduced to the problem of computing multi-dimensional
+                    Gaussian-weighted moment integrals in the time update and measurement update steps. To compute
+                    these integrals numerically, two transformations are required: (i) Non-standard
+                    Gaussian-weighted integrals are transformed into standard Gaussian-weighted integrals using
+                    the change of variables. (ii) These integrals are then transformed from Cartesian coordinates
+                    to spherical-radial coordinates. A third-degree spherical-radial cubature rule is used to
+                    compute them numerically. The resulting cubature rule uses a set of 2n cubature points, where
+                    n is the state-vector dimension.
+                </p>
+                <p>
+                    The CKF is a predictor-corrector model-based estimation strategy that extracts second-order
+                    information from sensor measurements optimally and recursively. It is the closest known
+                    approximate filter that preserves second-order information according to the maximum entropy
+                    principle. As per
+                    <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>,
+                    my research paper on the CKF has received over 3000 citations. A detailed derivation of this
+                    method can be found in my PhD thesis below.
+                </p>
 
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/phd_thesis.pdf')}}"><img
-                            src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/phd_thesis.pdf')}}" aria-label="PhD thesis PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
                 </div>
-
             </div>
-            </p>
-
-        </div>
+        </article>
     </div>
+</section>
 
-</div>
+<section class="work-section">
+    <h2 class="section-heading">Four Variants of Cubature Kalman Filter</h2>
+    <div class="divider"></div>
 
-
-<header class="title">
-    <h2 style="color: #b40203"> Four Variants of Cubature Kalman Filter </h2>
-</header>
-<div class="divider"></div>
-
-<div class="container" style="height: 1200px">
-
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{ url_for('static', filename='images/radar.jpg') }}">
-        </div>
-        <div class="text-container">
-            <h2>i. Continuous-Discrete CKF (CD-CKF) </h2>
-            <p>
-                To handle nonlinear state-space models of
-                the continuous-discrete kind, the extended version of the CKF called the Continuous-Discrete Cubature
-                Kalman Filter (CD-CKF) can be used.
-                The process equation, modeled as stochastic ordinary differential equations, is transformed into a
-                set of stochastic difference equations using the Itô-Taylor expansion of order 1.5.
-                The third-degree cubature rule is used to numerically compute integrals.
-                The usefulness of the CD-CKF is illustrated by applying it to a radar tracking problem here.
-
-            </p>
-
-            <p>
-            <div class="icon-row">
-
+    <div class="container">
+        <article class="box">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='images/radar.jpg') }}" alt="CD-CKF radar tracking">
+            </div>
+            <div class="text-container">
+                <h2>i. Continuous-Discrete CKF (CD-CKF)</h2>
+                <p>
+                    To handle nonlinear state-space models of the continuous-discrete kind, the extended version
+                    of the CKF called the Continuous-Discrete Cubature Kalman Filter (CD-CKF) can be used. The
+                    process equation, modeled as stochastic ordinary differential equations, is transformed into
+                    a set of stochastic difference equations using the It&ocirc;-Taylor expansion of order 1.5.
+                    The third-degree cubature rule is used to numerically compute integrals. The usefulness of
+                    the CD-CKF is illustrated by applying it to a radar tracking problem here.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/PDF_SCKF_RobotArm.pdf')}}"><img
-                            src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_file_SCKF_RobotArm.zip')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/PDF_SCKF_RobotArm.pdf')}}" aria-label="CD-CKF paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_file_SCKF_RobotArm.zip')}}" aria-label="CD-CKF Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
-    </div>
-    <!--    <div class="divider"></div>-->
+        </article>
 
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>ii. Square-root CKF (SCKF) </h2>
-            <p>
-                The CKF can encounter numerical problems, including the loss of positive
-                definiteness in covariance matrices due to operations such as matrix inversion and subtraction.
-                This loss of positive definiteness can prevent the CKF from being run continuously. The Square-root CKF
-                (SCKF) resolves these issues
-                by propagating the square-roots of various error covariance matrices.
-                The usefulness of the SCKF is illustrated by applying it to a robotic problem implemented in a finite
-                word-length machine here.
-            </p>
-            <p>
-            <div class="icon-row">
-
+        <article class="box">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='images/radar.jpg') }}" alt="SCKF robotic application">
+            </div>
+            <div class="text-container">
+                <h2>ii. Square-root CKF (SCKF)</h2>
+                <p>
+                    The CKF can encounter numerical problems, including the loss of positive definiteness in
+                    covariance matrices due to operations such as matrix inversion and subtraction. This loss
+                    of positive definiteness can prevent the CKF from being run continuously. The Square-root
+                    CKF (SCKF) resolves these issues by propagating the square-roots of various error covariance
+                    matrices. The usefulness of the SCKF is illustrated by applying it to a robotic problem
+                    implemented in a finite word-length machine here.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/j_cdckf.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_File_CDCKF.zip')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/j_cdckf.pdf')}}" aria-label="SCKF paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_File_CDCKF.zip')}}" aria-label="SCKF Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
-    </div>
-    <!--    <div class="divider"></div>-->
+        </article>
 
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>iii. Cubature Kalman Smoother (CKS) </h2>
-            <p>
-                The cubature Kalman smoother (CKS) addresses nonlinear smoothing problems.
-                The CKS is derived by reformulating matrix equations to propagate the square-root error covariances,
-                which ensures reliable
-                implementation in embedded systems with fixed precision or when the inference problem is
-                ill-conditioned.
-                The usefulness of the CKS is illustrated by applying it to track a ballistic target on reentry here.
-
-            </p>
-            <p>
-            <div class="icon-row">
-
+        <article class="box">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='images/radar.jpg') }}" alt="CKS ballistic target tracking">
+            </div>
+            <div class="text-container">
+                <h2>iii. Cubature Kalman Smoother (CKS)</h2>
+                <p>
+                    The cubature Kalman smoother (CKS) addresses nonlinear smoothing problems. The CKS is
+                    derived by reformulating matrix equations to propagate the square-root error covariances,
+                    which ensures reliable implementation in embedded systems with fixed precision or when the
+                    inference problem is ill-conditioned. The usefulness of the CKS is illustrated by applying
+                    it to track a ballistic target on reentry here.
+                </p>
                 <div class="icon-row">
-                    <a href="docs/j_cks.pdf"><img src="{{url_for('static', filename= 'images/icon_pdf.png')}}"
-                            alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_File_CKS.zip')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/j_cks.pdf')}}" aria-label="CKS paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_File_CKS.zip')}}" aria-label="CKS Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
-    </div>
-    <!--    <div class="divider"></div>-->
+        </article>
 
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>iv. Cubature Information Filter (CIF) </h2>
-            <p>
-
-                The Cubature Information Filter (CIF) is a modified version of the CKF that replaces state estimates and
-                covariances with information
-                vectors and matrices. The CIF is derived using linear fusion theory and advanced matrix algebra.
-                The usefulness of the CIF is illustrated in a multi-sensor fusion setting here.
-            </p>
-            <p>
-            <div class="icon-row">
-
+        <article class="box">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='images/radar.jpg') }}" alt="CIF multi-sensor fusion">
+            </div>
+            <div class="text-container">
+                <h2>iv. Cubature Information Filter (CIF)</h2>
+                <p>
+                    The Cubature Information Filter (CIF) is a modified version of the CKF that replaces state
+                    estimates and covariances with information vectors and matrices. The CIF is derived using
+                    linear fusion theory and advanced matrix algebra. The usefulness of the CIF is illustrated
+                    in a multi-sensor fusion setting here.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/J_ICA_CIF.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_file_SCIF.7z')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/J_ICA_CIF.pdf')}}" aria-label="CIF paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_file_SCIF.7z')}}" aria-label="CIF Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
+        </article>
     </div>
+</section>
 
+<section class="work-section">
+    <h2 class="section-heading">Two sample applications of CKF</h2>
+    <div class="divider"></div>
 
-</div>
-
-
-<header class="title">
-    <h2 style="color: #b40203"> Two sample applications of CKF </h2>
-</header>
-<!--<div class="divider"></div>-->
-<div class="container" style="height: 500px" ;>
-
-    <div class="box">
-
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>Radar Tracking</h2>
-            <p>
-                The interacting multiple model (IMM) filter and
-                square-root version of CKF
-                are used in this work to estimate the states of a maneuvering aircraft using radar measurements.
-
-            </p>
-            <p>
-            <div class="icon-row">
-
+    <div class="container">
+        <article class="box">
+            <div class="img-container">
+                <img src="{{url_for('static', filename='images/radar.jpg')}}" alt="Radar tracking">
+            </div>
+            <div class="text-container">
+                <h2>Radar Tracking</h2>
+                <p>
+                    The interacting multiple model (IMM) filter and square-root version of CKF are used in this
+                    work to estimate the states of a maneuvering aircraft using radar measurements.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/PDF_CKF_IMM.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_File_CKF_IMM.zip')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/PDF_CKF_IMM.pdf')}}" aria-label="IMM-CKF paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_File_CKF_IMM.zip')}}" aria-label="IMM-CKF Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
+        </article>
 
-
-    </div>
-
-
-    <!--    <div class="divider"></div>-->
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/rnn.png')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>Training of Recurrent Neural Networks (RNNs)</h2>
-            <p>
-                The CKF is used in this work to train recurrent neural networks (RNNs).
-                Techniques for tuning the CKF are suggested to improve numerical stability and performance during the
-                training period.
-                Specifically, the usefulness of training RNNs using the CKF is illustrated by applying it to reconstruct
-                the chaotic Mackey-Glass time-series that is sensitive to initial conditions.
-
-            </p>
-            <p>
-            <div class="icon-row">
-
+        <article class="box">
+            <div class="img-container">
+                <img src="{{url_for('static', filename='images/rnn.png')}}" alt="Recurrent neural network">
+            </div>
+            <div class="text-container">
+                <h2>Training of Recurrent Neural Networks (RNNs)</h2>
+                <p>
+                    The CKF is used in this work to train recurrent neural networks (RNNs). Techniques for
+                    tuning the CKF are suggested to improve numerical stability and performance during the
+                    training period. Specifically, the usefulness of training RNNs using the CKF is illustrated
+                    by applying it to reconstruct the chaotic Mackey&ndash;Glass time-series that is sensitive
+                    to initial conditions.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/PDF_SCKF_NN.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/M_File_SCKF_NN.zip')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_code.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/PDF_SCKF_NN.pdf')}}" aria-label="RNN-CKF paper PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/M_File_SCKF_NN.zip')}}" aria-label="RNN-CKF Matlab code">
+                        <img src="{{url_for('static', filename='images/icon_code.png')}}" alt="Code">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
+        </article>
     </div>
-    <!--        <div class="divider"></div>-->
+</section>
 
+<section class="work-section">
+    <h2 class="section-heading">Miscellaneous</h2>
+    <div class="divider"></div>
 
-</div>
-
-
-<header class="title">
-    <h2 style="color:#b40203"> Miscellaneous</h2>
-</header>
-<div class="divider"></div>
-
-<div class="container" style="height: 800px">
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/phd_oral.jpeg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>PhD Candidacy Exam </h2>
-            <p>
-
-                My PhD candidacy exam included three questions at the
-                graduate level and four questions at the undergraduate level.
-                This was a take-home exam. I was required to complete it within a week and defend it in front of a panel
-                of professors.
-            </p>
-            <p>
-            <div class="icon-row">
-
+    <div class="container">
+        <article class="box">
+            <div class="img-container">
+                <img src="{{url_for('static', filename='images/phd_oral.jpeg')}}" alt="PhD oral examination">
+            </div>
+            <div class="text-container">
+                <h2>PhD Candidacy Exam</h2>
+                <p>
+                    My PhD candidacy exam included three questions at the graduate level and four questions at
+                    the undergraduate level. This was a take-home exam. I was required to complete it within a
+                    week and defend it in front of a panel of professors.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/Grad-merged.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
-                    <a href="{{url_for('static', filename= 'docs/UQ-merged.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/Grad-merged.pdf')}}" aria-label="Graduate questions PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
+                    <a href="{{url_for('static', filename='docs/UQ-merged.pdf')}}" aria-label="Undergraduate questions PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
-    </div>
-    <!--    <div class="divider"></div>-->
+        </article>
 
-
-    <!--    <div class="divider"></div>-->
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>Masters Thesis </h2>
-            <p>
-
-                Radar Warning Receivers on tactical aircraft
-                passively collect electromagnetic signals to assess the threat posed by hostile radars like
-                Multi-Function Radars (MFRs) in
-                complex electronic warfare environments. This masters work involves developing a grid filter approach to
-                estimate the operational mode probabilities
-                of MFRs using pre-trained Observable Operator Models and Hidden Markov
-                Models in a maximum a posteriori sense.
-
-            </p>
-            <p>
-            <div class="icon-row">
-
+        <article class="box">
+            <div class="img-container">
+                <img src="{{url_for('static', filename='images/radar.jpg')}}" alt="Masters thesis">
+            </div>
+            <div class="text-container">
+                <h2>Masters Thesis</h2>
+                <p>
+                    Radar Warning Receivers on tactical aircraft passively collect electromagnetic signals to
+                    assess the threat posed by hostile radars like Multi-Function Radars (MFRs) in complex
+                    electronic warfare environments. This masters work involves developing a grid filter
+                    approach to estimate the operational mode probabilities of MFRs using pre-trained Observable
+                    Operator Models and Hidden Markov Models in a maximum a posteriori sense.
+                </p>
                 <div class="icon-row">
-                    <a href="{{url_for('static', filename= 'docs/masters_thesis_arasaratnam_2005.pdf')}}"><img
-                            src="{{url_for('static', filename= 'images/icon_pdf.png')}}" alt="Image description"></a>
+                    <a href="{{url_for('static', filename='docs/masters_thesis_arasaratnam_2005.pdf')}}" aria-label="Masters thesis PDF">
+                        <img src="{{url_for('static', filename='images/icon_pdf.png')}}" alt="PDF">
+                    </a>
                 </div>
-
             </div>
-            </p>
-        </div>
+        </article>
+
+        <article class="box">
+            <div class="img-container">
+                <img src="{{url_for('static', filename='images/radar.jpg')}}" alt="Letters of commendation">
+            </div>
+            <div class="text-container">
+                <h2>Letters of Commendation received for my PhD work</h2>
+                <ul>
+                    <li>
+                        Here are three sample letters received from
+                        <a href="{{url_for('static', filename='docs/phd_commendations.pdf')}}" target="_blank" rel="noopener">industry and academia</a>
+                        after a formal publication of my PhD work.
+                    </li>
+                    <li>Thank you to others whom I could not include here.</li>
+                </ul>
+            </div>
+        </article>
     </div>
-    <!--        <div class="divider"></div>-->
-
-
-    <div class="box">
-        <div class="img-container">
-            <img src="{{url_for('static', filename= 'images/radar.jpg')}}" alt="Image">
-        </div>
-        <div class="text-container">
-            <h2>Letters of Commendation received for my PhD work</h2>
-            <p>
-                <!--                -->
-            <ul>
-
-                <li>Here are three sample letters received from <a
-                        href="{{url_for('static', filename= 'docs/phd_commendations.pdf')}}" target="_blank"> industry
-                        and academia </a> after a formal publication of my PhD work.
-                </li>
-                <li>Thank you to others whom I could not include here.</li>
-
-            </ul>
-            </p>
-        </div>
-    </div>
-
-
-</div>
+</section>
 
 {% endblock %}

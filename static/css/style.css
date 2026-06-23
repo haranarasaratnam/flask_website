@@ -444,6 +444,83 @@ pre .nohighlight { background-color: transparent; }
 .accent      { color: var(--accent); }
 
 /* ============================================================
+   Section heading + table of contents
+   used by estimation.html, control.html, coding.html
+   ============================================================ */
+.section-heading {
+    color: var(--accent);
+    text-align: center;
+    font-size: 2.4em;
+    font-variant: small-caps;
+    letter-spacing: 0.01em;
+    margin: 0 0 0.4em;
+    line-height: 1.15;
+}
+.under-construction {
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 0 0 2.5em;
+}
+
+.toc {
+    list-style: none;
+    padding: 0;
+    margin: 2.5em 0;
+    counter-reset: toc-chapter;
+}
+.toc > li {
+    margin: 0 0 2em 0;
+}
+.toc-chapter {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 0.3em;
+}
+.toc-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 0.6em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.4em;
+}
+.toc-sub,
+.toc-sub-sub {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.toc-sub > li {
+    padding: 6px 0;
+    color: var(--ink);
+    line-height: 1.5;
+}
+.toc-sub-sub {
+    padding-left: 1.6em;
+    margin-top: 0.25em;
+}
+.toc-sub-sub > li {
+    padding: 4px 0;
+    font-size: 0.96em;
+    color: var(--muted);
+}
+.toc-num {
+    display: inline-block;
+    width: 2.6em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-family: var(--sans);
+    font-size: 0.92em;
+}
+
+/* ============================================================
    Tables — zebra striping for readability
    ============================================================ */
 table {

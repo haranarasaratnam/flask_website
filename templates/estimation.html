@@ -1,92 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <header class="title">
-        <h1 style="color: #b40203">State Estimation: The Kalman Filter and Beyond</h1>
-        <hr style="margin-top:-1em">
-        <h3 style="margin-top:-2.3em">
-        </h3>
 
-        <style>
-    ul
-{
-list-style: none;
-}
-</style>
-    </header>
+<header class="title">
+    <span class="eyebrow">Course notes</span>
+    <h1 class="section-heading">State Estimation: The Kalman Filter and Beyond</h1>
+</header>
 
-    <p>
-        This section covers Bayesian signal processing, a powerful technique to estimate hidden states of a dynamical system. The content is
-        primarily based on
-        nonlinear state estimation from my PhD work. Each subsection below is clickable and presented in a slide format, allowing
-        users to quickly read, review, and grasp the key concepts to master this powerful tool.
+<p>
+    This section covers Bayesian signal processing, a powerful technique to estimate hidden states of a
+    dynamical system. The content is primarily based on nonlinear state estimation from my PhD work.
+    Each subsection below is clickable and presented in a slide format, allowing users to quickly read,
+    review, and grasp the key concepts to master this powerful tool.
+</p>
 
-    </p>
-
-    <br>
-
-<ul>
-  <li><strong>1. Introduction to Bayesian Filters</strong>
-    <ul>
-      <li>1.1 <a style="position:relative; ">Bayes' Rule</a> </li>
-      <li>1.2 <a href="{{url_for('intro')}}"  style="position:relative; ">Kalman Filtering</a> </li>
-      <li>1.3 <a href="{{url_for('dc_motor')}}"  style="position:relative; ">Estimating the State of DC Motors </a> </li>
-    </ul>
-  </li>
-
-<li><strong>2. Nonlinear Bayesian Filters</strong>
-    <ul>
-        <li>2.1 <a > Gausssian Filters</a>
-        <ul>
-            <li>2.1.1 Extended Kalman Filters</li>
-            <li>2.1.2 Unscented Kalman Filters</li>
-            <li>2.1.3 Gauss-Hermite Kalman Filters</li>
-            <li>2.1.2 <a href="{{url_for('ckf')}}"
-                   style="position:relative; "> Cubature Kalman Filters</a></li>
+<ol class="toc">
+    <li>
+        <span class="toc-chapter">Chapter 1</span>
+        <h2 class="toc-title">Introduction to Bayesian Filters</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">1.1</span> Bayes' Rule</li>
+            <li><span class="toc-num">1.2</span> <a href="{{url_for('intro')}}">Kalman Filtering</a></li>
+            <li><span class="toc-num">1.3</span> <a href="{{url_for('dc_motor')}}">Estimating the State of DC Motors</a></li>
         </ul>
-        </li>
-        <li>2.2 <a > Non-Gaussian Filters</a>
-            <ul>
-                <li>
-                    2.2.1 Particle Filters
+    </li>
 
-                </li>
-            </ul>
-        </li>
+    <li>
+        <span class="toc-chapter">Chapter 2</span>
+        <h2 class="toc-title">Nonlinear Bayesian Filters</h2>
+        <ul class="toc-sub">
+            <li>
+                <span class="toc-num">2.1</span> Gaussian Filters
+                <ul class="toc-sub-sub">
+                    <li><span class="toc-num">2.1.1</span> Extended Kalman Filters</li>
+                    <li><span class="toc-num">2.1.2</span> Unscented Kalman Filters</li>
+                    <li><span class="toc-num">2.1.3</span> Gauss&ndash;Hermite Kalman Filters</li>
+                    <li><span class="toc-num">2.1.4</span> <a href="{{url_for('ckf')}}">Cubature Kalman Filters</a></li>
+                </ul>
+            </li>
+            <li>
+                <span class="toc-num">2.2</span> Non-Gaussian Filters
+                <ul class="toc-sub-sub">
+                    <li><span class="toc-num">2.2.1</span> Particle Filters</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
 
-    </ul>
-</li>
+    <li>
+        <span class="toc-chapter">Chapter 3</span>
+        <h2 class="toc-title">Variants</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">3.1</span> <a href="{{url_for('sckf')}}">Square-Root Bayesian Filters</a></li>
+            <li><span class="toc-num">3.2</span> Continuous-Discrete Bayesian Filters</li>
+            <li><span class="toc-num">3.3</span> Bayesian Smoothers</li>
+            <li><span class="toc-num">3.4</span> Interacting Multiple Model (IMM) Filters</li>
+        </ul>
+    </li>
 
+    <li>
+        <span class="toc-chapter">Chapter 4</span>
+        <h2 class="toc-title">Applications</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">4.1</span> <a href="{{url_for('application_1')}}">Radar Tracking (Accompanied by Python and Matlab Code)</a></li>
+            <li><span class="toc-num">4.2</span> <a href="{{url_for('application_2')}}">Mobile Robot Navigation</a></li>
+        </ul>
+    </li>
 
-    <li><strong>3. Variants</strong>
-    <ul>
-        <li>3.1 <a href="{{url_for('sckf')}}" style="position:relative; "> Square-Root Bayesian Filters</a></li>
-        <li>3.2 Continuous-Discrete Bayesian Filters</li>
-        <li>3.3 Bayesian Smothers</li>
-         <li>3.4 <a style="position:relative; "> Interacting Multiple Model (IMM) Filters</a></li>
-    </ul>
-</li>
+    <li>
+        <span class="toc-chapter">Chapter 5</span>
+        <h2 class="toc-title">Suggested Readings</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">5.1</span> <a href="{{url_for('reference')}}">References</a></li>
+        </ul>
+    </li>
+</ol>
 
-
-
-    <li><strong>4. Applications</strong>
-    <ul>
-        <li>4.1 <a href="{{url_for('application_1')}}" style="position:relative; "> Radar Tracking
-                (Accompanied by Python and Matlab Code)</a></li>
-        <li>4.2 <a href="{{url_for('application_2')}}" style="position:relative; "> Mobile Robot
-                Navigation</a></li>
-    </ul>
-</li>
-
-    <li><strong>5. Suggested Readings</strong>
-    <ul>
-        <li>5.1 <a href="{{url_for('reference')}}" style="position:relative; "> References</a></li>
-    </ul>
-</li>
-
-
-</ul>
-
-</article>
 {% endblock %}

@@ -1,76 +1,65 @@
-
 {% extends "base.html" %}
 
 {% block content %}
-<article>
-    <header class="title">
-        <h1 style="color: #b40203">Python For Electrical Engineers<br> (Under Construction)</h1>
-        <hr style="margin-top:-1em">
-        <h3 style="margin-top:-2.3em">
-        </h3>
-    </header>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 1: Introduction</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;"></span><br>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a href="{{url_for('oop')}}" style="position:relative; margin-left: 15px; color: red;">1.1. Intro to Python</a>
-        </p>
-    </div>
+<header class="title">
+    <span class="eyebrow">Course notes</span>
+    <h1 class="section-heading">Python For Electrical Engineers</h1>
+    <p class="under-construction">Under construction</p>
+</header>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 2: Core Libraries</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;"></span><br>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a style="position:relative; margin-left: 15px;"> 2.1. NumPy</a><br>
-            <a style="position:relative; margin-left: 15px;"> 2.2. Pandas</a><br>
-            <a style="position:relative; margin-left: 15px;"> 2.3. Matplotlib</a><br>
-            <a style="position:relative; margin-left: 15px;"> 2.4. Pandas</a><br>
-            <a style="position:relative; margin-left: 15px;"> 2.5. Misc</a><br>
-        </p>
+<ol class="toc">
+    <li>
+        <span class="toc-chapter">Chapter 1</span>
+        <h2 class="toc-title">Introduction</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">1.1</span> <a href="{{url_for('oop')}}">Intro to Python</a></li>
+        </ul>
+    </li>
 
-    </div>
+    <li>
+        <span class="toc-chapter">Chapter 2</span>
+        <h2 class="toc-title">Core Libraries</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">2.1</span> NumPy</li>
+            <li><span class="toc-num">2.2</span> Pandas</li>
+            <li><span class="toc-num">2.3</span> Matplotlib</li>
+            <li><span class="toc-num">2.4</span> Misc</li>
+        </ul>
+    </li>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 3: Applications </h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;"></span><br>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a style="position:relative; margin-left: 15px;"> 3.1. Signal Processing</a><br>
-            <a style="position:relative; margin-left: 15px;"> 3.2. Control Systems</a><br>
-                        <a style="position:relative; margin-left: 15px;"> 3.3. Circuit Analysis</a><br>
-                        <a style="position:relative; margin-left: 15px;"> 3.4. Electro-Magnetics</a><br>
-                        <a style="position:relative; margin-left: 15px;"> 3.5. Misc</a><br>
-        </p>
-    </div>
+    <li>
+        <span class="toc-chapter">Chapter 3</span>
+        <h2 class="toc-title">Applications</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">3.1</span> Signal Processing</li>
+            <li><span class="toc-num">3.2</span> Control Systems</li>
+            <li><span class="toc-num">3.3</span> Circuit Analysis</li>
+            <li><span class="toc-num">3.4</span> Electro-Magnetics</li>
+            <li><span class="toc-num">3.5</span> Misc</li>
+        </ul>
+    </li>
 
-    <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 4: Advanced Topics</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;"></span><br>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a style="position:relative; margin-left: 15px;"> 4.1. Machine Learning</a><br>
-            <a style="position:relative; margin-left: 15px;"> 4.2. Emebedded Systems and Hardware Integration</a><br>
-            <a style="position:relative; margin-left: 15px;"> 4.1. Power Systesm and Energy Analysis</a><br>
+    <li>
+        <span class="toc-chapter">Chapter 4</span>
+        <h2 class="toc-title">Advanced Topics</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">4.1</span> Machine Learning</li>
+            <li><span class="toc-num">4.2</span> Embedded Systems and Hardware Integration</li>
+            <li><span class="toc-num">4.3</span> Power Systems and Energy Analysis</li>
+        </ul>
+    </li>
 
-        </p>
-    </div>
-
-        <div class="archive" style="margin-top:-30px">
-        <h2 class="archive-title">Ch 5: Resources</h2>
-        <p style="text-indent: -55px; margin-left: 18px">
-            <span style="position:absolute; margin-left:0px;"></span><br>
-            <!--      <a href="estimation/speed_up" style="position:relative; margin-left: 55px;">Speed up python code</a>-->
-            <a style="position:relative; margin-left: 15px;"> 5.1. Practical Applications</a><br>
-            <a style="position:relative; margin-left: 15px;"> 5.2. EE Formulas in Python</a><br>
-            <a style="position:relative; margin-left: 15px;"> 5.3. Cheat Sheet</a><br>
-            <a style="position:relative; margin-left: 15px;"> 5.4. References</a>
-
-        </p>
-    </div>
-
-</article>
+    <li>
+        <span class="toc-chapter">Chapter 5</span>
+        <h2 class="toc-title">Resources</h2>
+        <ul class="toc-sub">
+            <li><span class="toc-num">5.1</span> Practical Applications</li>
+            <li><span class="toc-num">5.2</span> EE Formulas in Python</li>
+            <li><span class="toc-num">5.3</span> Cheat Sheet</li>
+            <li><span class="toc-num">5.4</span> References</li>
+        </ul>
+    </li>
+</ol>
 
 {% endblock %}
