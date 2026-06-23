@@ -2,120 +2,54 @@
 
 {% block content %}
 
-
-
-<!--    <p><img src=images/myface.jpeg style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>-->
-<p><img src="{{ url_for('static', filename='images/myface.jpeg') }}"
-        style="width: 20%; height: auto; display: block; margin: 0 auto;"></p>
+<p>
+    <img src="{{ url_for('static', filename='images/myface.jpeg') }}"
+         alt="Haran Arasaratnam"
+         style="width: 20%; height: auto; display: block; margin: 0 auto; border-radius: 50%;">
+</p>
 
 <p>Hello!</p>
 
-
-<p>I'm Haran Arasaratnam. Welcome to my personal website. I obtained my MSc and PhD degrees in Electrical and Computer Engineering from <a
-        href="http://www.ece.mcmaster.ca/" target="new">
-        McMaster University</a>, completing them under <a
-        href="https://www.amazon.com/s?k=simon+Haykin&i=stripbooks&crid=1RJ43TQ1AORNF&sprefix=simon+haykin%2Cstripbooks%2C141&ref=nb_sb_noss_1">Distinguished
-        University Professor Simon Haykin</a>.
-    My two main research interests include Bayesian signal
-    processing and control theory. During my doctoral studies, I developed the <a
-        href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en">
-        <span style="color: #b40203; ">Cubature Kalman Filter (CKF) theory</span></a>.
-    The related contribution is
-    regarded as seminal in the field of control theory with over 4000 citations and has
-    been applied successfully to numerous real-world inference problems.
-
+<p>
+    I'm Haran Arasaratnam. Welcome to my personal website. I obtained my MSc and PhD degrees in Electrical and
+    Computer Engineering from
+    <a href="http://www.ece.mcmaster.ca/" target="_blank" rel="noopener">McMaster University</a>,
+    completing them under
+    <a href="https://www.amazon.com/s?k=simon+Haykin&i=stripbooks" target="_blank" rel="noopener">Distinguished
+    University Professor Simon Haykin</a>.
+    My two main research interests include Bayesian signal processing and control theory.
+    During my doctoral studies, I developed the
+    <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en" target="_blank" rel="noopener"
+       class="accent">Cubature Kalman Filter (CKF) theory</a>.
+    The related contribution is regarded as seminal in the field of control theory with over 4000 citations
+    and has been applied successfully to numerous real-world inference problems.
 </p>
 
 <p>
-    Here, you will find a collection of my graduate level course notes on Bayesian estimation and Control theory accompanied by Matlab and Python codes.
-    For comments and suggestions, you may reach out to me  at <span style="color: #b40203; ">haran.arasaratnam@icloud.com</span>.
+    Here, you will find a collection of my graduate level course notes on Bayesian estimation and control
+    theory accompanied by Matlab and Python codes. For comments and suggestions, you may reach out to me at
+    <span class="accent">haran.arasaratnam@icloud.com</span>.
 </p>
 
-
-<p>
 <div class="social">
-
-    <a href="https://www.linkedin.com/in/haranarasaratnam/"> <i class="fa fa-linkedin-square"
-            style="font-size:26px;"></i> </a>
-
-    <a href="https://github.com/haranarasaratnam/"><i class="fa fa-github-square" style="font-size:26px;"></i></a>
-
-    <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-3x;"
-            style="font-size:26px;"></i></a>
-
-    <a href="https://www.researchgate.net/profile/Haran_Arasaratnam"><i class="ai ai-researchgate-square ai-3x; "
-            style="font-size:26px;"></i></a>
-
-    <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=ienkaran%20arasaratnam"><i
-            class="ai ai-ieee-square ai-3x;" style="font-size:26px;"></i></a>
-
-
-    <!--    <i class="fa google" style="font-size:60px;color:red;"></i>-->
-
-
-
+    <a href="https://www.linkedin.com/in/haranarasaratnam/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa fa-linkedin-square" style="font-size:26px;"></i>
+    </a>
+    <a href="https://github.com/haranarasaratnam/" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fa fa-github-square" style="font-size:26px;"></i>
+    </a>
+    <a href="https://scholar.google.com/citations?user=odep9f8AAAAJ&hl=en" target="_blank" rel="noopener"
+       aria-label="Google Scholar">
+        <i class="ai ai-google-scholar-square" style="font-size:26px;"></i>
+    </a>
+    <a href="https://www.researchgate.net/profile/Haran_Arasaratnam" target="_blank" rel="noopener"
+       aria-label="ResearchGate">
+        <i class="ai ai-researchgate-square" style="font-size:26px;"></i>
+    </a>
+    <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=ienkaran%20arasaratnam"
+       target="_blank" rel="noopener" aria-label="IEEE Xplore">
+        <i class="ai ai-ieee-square" style="font-size:26px;"></i>
+    </a>
 </div>
-
-</p>
-
-
-
-<blockquote>
-    <center>
-        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"
-            type="70c585336a849c41636d0fb5-text/javascript"></script>
-        <div id="poem_sentence"></div>
-        <div id="poem_info"></div>
-        <script type="70c585336a849c41636d0fb5-text/javascript">
-  jinrishici.load(function(result) {
-    var sentence = document.querySelector("#poem_sentence")
-    var info = document.querySelector("#poem_info")
-    sentence.innerHTML = result.data.content
-    info.innerHTML = '——' +  result.data.origin.dynasty + ' · ' + result.data.origin.author + '《' + result.data.origin.title + '》'
-    info.style.textAlign = 'right';
-  });
-
-
-
-
-            </script>
-    </center>
-</blockquote>
-
-<footer>
-
-
-    <script async src="js/center-img.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/right-quote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/no-highlight.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/fix-footnote.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/math-code.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/external-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/alt-title.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-    <script async src="js/header-link.js" type="70c585336a849c41636d0fb5-text/javascript"></script>
-
-</footer>
-
-
-</article>
-<script type="70c585336a849c41636d0fb5-application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-93356635-1', 'auto');
-
-	ga('send', 'pageview');
-}
-
-
-
-
-</script>
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
-    data-cf-settings="70c585336a849c41636d0fb5-|49" defer=""></script>
 
 {% endblock %}

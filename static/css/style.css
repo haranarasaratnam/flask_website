@@ -1,355 +1,283 @@
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+    --accent:        #b40203;
+    --accent-hover:  #8c0202;
+    --ink:           #1a1a1a;
+    --muted:         #6b6b6b;
+    --bg:            #fdfdfc;
+    --surface:       #f5f3ee;
+    --surface-2:     #ebe7dc;
+    --rule:          #d9d4c7;
+
+    --serif: Palatino, "Palatino Linotype", "Palatino LT STD",
+             "Book Antiqua", Georgia, serif;
+    --sans:  -apple-system, BlinkMacSystemFont, "SF Pro Text",
+             "Inter", system-ui, sans-serif;
+
+    --measure:   38rem;
+    --radius:    4px;
+    --transition: 160ms ease;
+}
+
+/* ============================================================
+   Reset & base
+   ============================================================ */
 html {
     font-size: 100%;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit
-}
+*, *:before, *:after { box-sizing: inherit; }
 
 body {
     margin: 0;
     padding: 0;
-    line-height: 1.5
+    width: auto;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
 }
 
-.left-align {
-    text-align: left;
-    margin-left: 20px;
+img { max-width: 100%; }
+
+button, input, select, textarea, label {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
 }
 
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--ink);
+}
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.35em; }
+h3, h4, h5, h6 { font-size: 1.05em; }
+
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6 {
+    text-align: center;
+}
+.title h1 {
+    font-size: 2.6em;
+    font-variant: small-caps;
+    letter-spacing: 0.01em;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+.title h3 {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+p { margin: 0 0 1em 0; }
+
+blockquote {
+    margin: 1.5em 0;
+    padding: 0.5em 1.25em;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    color: var(--muted);
+    font-style: italic;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+ul { list-style-type: square; padding: 0 0 0 24px; }
+ol { padding: 0 0 0 24px; }
+li { margin: 0; padding: 0; }
+
+/* ============================================================
+   Links
+   ============================================================ */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition), border-color var(--transition);
+}
+a:hover {
+    color: var(--accent-hover);
+    border-bottom: 1px dotted var(--accent-hover);
+}
+a:visited { color: var(--ink); }
+
+sup a { border-bottom: none; margin-left: -3px; }
+sup { line-height: 5px; }
+h1 a { color: var(--ink); }
+
+/* ============================================================
+   Rules
+   ============================================================ */
 hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid;
-    margin: 50px auto;
+    border-top: 1px solid var(--rule);
+    margin: 40px auto;
     padding: 0;
 }
-
-/* Style for full-width horizontal line */
 hr.full-width {
     width: 100%;
     border: none;
-    border-top: 2px solid #0000ff;
-    /* Customize color as needed */
+    border-top: 1px solid var(--rule);
     margin: 0;
     padding: 0;
 }
 
-h2 {
-    color: blue;
-}
-
-/* Ensure code block has proper formatting */
-pre {
-    text-align: left;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    /* padding: 10px; */
-    background-color: #f0f0f0;
-    border-radius: 8px;
-}
-
-.nav-button {
-    padding: 6px 10px;
-    background-color: #00ff00;
-    color: black;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 0px 10px;
-}
-
-
-button,
-input,
-select,
-textarea,
-label {
-    margin: 0;
-    padding: 0;
-    font-family: inherit;
-    font-size: inherit
-}
-
-img {
-    max-width: 100%
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    line-height: 1;
-    font-weight: 700
-}
-
-.title h1,
-.title h2,
-.title h3,
-.title h4,
-.title h5,
-.title h6 {
-    text-align: center
-}
-
-h1 {
-    font-size: 1.5em
-}
-
-.title h1 {
-    font-size: 2.8em;
-    font-variant: small-caps
-}
-
-h2 {
-    font-size: 1.2em
-}
-
-.title h3 {
-    font-style: italic;
-    font-weight: 400
-}
-
-h3,
-h4,
-h5,
-h6 {
-    font-size: 1em
-}
-
-blockquote {
-    margin: 0;
-    padding: 0 2em
-}
-
-li {
-    margin: 0;
-    padding: 0
-}
-
-ul {
-    list-style-type: square;
-    padding: 0 0 0 20px
-}
-
-ol {
-    margin-left: 3px;
-    padding: 0 0 0 20px
-}
-
-pre code {
-    font-size: .9em;
-    display: block;
-    padding: 1em;
-    overflow-x: auto;
-    line-height: 1.25
-}
-
-code {
-    background: #eee
-}
-
-code.hljs {
-    background: #eee
-}
-
-pre code {
-    background: 0 0
-}
-
-a {
-    color: #b40203;
-    text-decoration: none
-}
-
-a:hover {
-    color: #b40203;
-}
-
-a:visited {
-    color: #1a1a1a;
-}
-
-sup a {
-    border-bottom: none;
-    margin-left: -3px
-}
-
-sup {
-    line-height: 5px
-}
-
-h1 a {
-    color: #000
-}
-
-body {
-    width: 960px;
-    margin: 0 auto;
-    padding: 30px 0
-}
-
+/* ============================================================
+   Layout — sidebar masthead + centered main
+   ============================================================ */
 .masthead {
     position: fixed;
-    padding: 10px 50px 20px 10px;
-    float: left;
+    padding: 24px 18px;
     width: 200px;
-    background: #fff;
+    background: var(--bg);
     height: 100vh;
-    box-shadow: 5px 5px 5px #eee
+    border-right: 1px solid var(--rule);
 }
-
 .masthead h1 {
     margin-top: 0;
-    margin-bottom: 34px;
+    margin-bottom: 24px;
     padding: 0;
     text-align: center;
-    font-size: 46px;
-    line-height: 58px
+    font-size: 1.6em;
+    line-height: 1.4;
 }
-
-.masthead h1 a {
-    border-bottom: none
-}
-
+.masthead h1 a { border-bottom: none; }
 .masthead .tagline {
     font-style: italic;
-    text-align: right
-}
-
-.masthead .menu {
-    margin-right: 20px;
-    direction: rtl
-}
-
-.masthead .menu a {
-    direction: ltr
-}
-
-.masthead .menu li {
-    margin: 4px
-}
-
-.masthead .menu ul ul {
-    list-style: none;
-    margin-left: 10px;
-    margin-right: 10px
-}
-
-.masthead .menu li li::before {
-    content: "•\00a\000a0\00a0"
-}
-
-.masthead .menu a {
-    display: inline-block;
-    padding: 5px 8px;
-    background: #00FF00;
-    border-bottom: 4px solid #4CAF50;
-    border-right: 4px solid #4CAF50;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-weight: 200;
-    position: relative;
-    height: 34px;
-    line-height: 20px;
-    outline-width: 0;
-    vertical-align: middle;
-    color: #000000;
-    width: 100px
-}
-
-.masthead .menu a:hover {
-    display: inline-block;
-    padding: 5px 8px;
-    background: #00FF00;
-    border-bottom: 4px solid #4CAF50;
-    border-right: 4px solid #4CAF50;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-weight: 600;
-    position: relative;
-    height: 34px;
-    line-height: 20px;
-    outline-width: 0;
-    vertical-align: middle;
-    color: #c80004;
-    width: 110px
-}
-
-.masthead .menu .active a {
-    display: inline-block;
-    padding: 5px 8px;
-    background: #ff0000;
-    border-bottom: 4px solid #4CAF50;
-    border-right: 4px solid #4CAF50;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-weight: 600;
-    position: relative;
-    height: 34px;
-    line-height: 20px;
-    outline-width: 0;
-    vertical-align: middle;
-    color: #c80004;
-    width: 100px
-}
-
-
-.masthead .menu .selected a {
-    color: #FF0000;
-}
-
-
-.masthead .menu ul {
     text-align: center;
-    list-style: none;
-    list-style-position: inside;
-    padding-left: 60px
+    color: var(--muted);
 }
-
 .masthead img {
     width: 70px;
-    margin-top: 15px;
-    margin-bottom: -30px;
-    margin-left: 30px
+    margin: 15px auto;
+    display: block;
 }
 
+/* ---- Sidebar nav ---- */
+.masthead .menu { margin: 0; direction: ltr; }
+.masthead .menu ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 24px 0;
+}
+.masthead .menu ul ul {
+    list-style: none;
+    margin-left: 12px;
+    margin-right: 0;
+}
+.masthead .menu li { margin: 2px 0; }
+.masthead .menu li li::before { content: "•\00a0\00a0\00a0"; }
+
+.masthead .menu a {
+    display: block;
+    padding: 8px 14px;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 0.95em;
+    color: var(--ink);
+    width: auto;
+    height: auto;
+    line-height: 1.4;
+    transition: background var(--transition),
+                color var(--transition),
+                border-color var(--transition);
+}
+.masthead .menu a:hover {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    background: var(--surface);
+    border-bottom: none;
+}
+.masthead .menu .active a,
+.masthead .menu .selected a {
+    border-left-color: var(--accent);
+    color: var(--accent);
+    background: var(--surface);
+    font-weight: 600;
+}
+
+/* ---- Standalone nav button (used in some pages) ---- */
+.nav-button {
+    padding: 6px 14px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: var(--radius);
+    margin: 0 10px;
+    transition: background var(--transition);
+}
+.nav-button:hover {
+    background: var(--accent-hover);
+    color: #fff;
+}
+
+/* ============================================================
+   Main content area
+   ============================================================ */
 .main {
     max-width: 1000px;
     margin-left: calc(50% - 400px);
     text-align: justify;
     min-height: calc(100vh - 60px);
-    padding: 2em 40px;
+    padding: 2.5em 40px;
     hyphens: auto;
-    border: none
+    border: none;
 }
-
-.main nav ul {
-    display: none
-}
-
+.main nav ul { display: none; }
 .main .title h1 {
     margin-top: 0;
-    margin-bottom: 40px
+    margin-bottom: 40px;
 }
 
-.subtitle {
-    font-size: .9em;
-    color: #eee
+/* ============================================================
+   Code
+   ============================================================ */
+pre {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
 }
+pre code {
+    font-size: 0.9em;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    line-height: 1.4;
+    background: transparent;
+}
+code {
+    background: var(--surface);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    hyphens: none;
+}
+code.hljs { background: var(--surface); }
+.hljs { padding: 1em; }
+.hljs-comment { font-style: inherit; }
+pre .nohighlight { background-color: transparent; }
+
+/* ============================================================
+   Archive (section TOCs)
+   ============================================================ */
+.subtitle { font-size: 0.9em; color: var(--muted); }
 
 .archive p {
     text-align: left;
@@ -357,61 +285,41 @@ body {
     padding-left: 94px;
     line-height: 1.5;
     margin: 0;
-    padding-bottom: 0
+    padding-bottom: 0;
 }
-
 .archive span {
     padding-right: 15px;
-    font-style: italic
+    font-style: italic;
 }
-
 .archive h2 {
-    font-size: 2em;
-    color: #eee
+    font-size: 1.4em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    margin-top: 2em;
 }
-
 .archive a {
     text-decoration: none;
-    color: #000
+    color: var(--ink);
 }
+.archive a:hover { color: var(--accent); }
 
-.archive a:hover {
-    color: #c80004
-}
+/* ============================================================
+   Misc page chrome
+   ============================================================ */
+.copyright   { text-align: center; }
+.post-nav    { display: flex; justify-content: space-between; font-weight: 700; }
+.nav-next    { margin-left: 1em; text-align: right; }
+.nav-prev    { margin-right: 1em; }
+.post-nav a  { color: var(--ink); }
+.left-align  { text-align: left; margin-left: 20px; }
+.comments    { margin-top: 20px; }
+.footnotes   { font-size: 0.9em; }
+.accent      { color: var(--accent); }
 
-
-
-.copyright {
-    text-align: center
-}
-
-.post-nav {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700
-}
-
-.nav-next {
-    margin-left: 1em;
-    text-align: right
-}
-
-.nav-prev {
-    margin-right: 1em
-}
-
-.post-nav a {
-    color: #000
-}
-
-.comments {
-    margin-top: 20px
-}
-
-.footnotes {
-    font-size: .9em
-}
-
+/* ============================================================
+   Tables
+   ============================================================ */
 table {
     display: inline-block;
     text-align: center;
@@ -420,189 +328,114 @@ table {
     overflow: auto;
     border-collapse: collapse;
     border-spacing: 0;
-    border-bottom: 2px solid
+    border-bottom: 2px solid var(--rule);
 }
-
 table thead {
-    border-top: 2px solid;
-    border-bottom: 1px solid
+    border-top: 2px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
 }
-
-table tr td {
-    padding: 0 10px;
-    vertical-align: top;
-    white-space: nowrap
-}
-
+table tr td,
 table tr th {
     padding: 0 10px;
     vertical-align: top;
-    white-space: nowrap
+    white-space: nowrap;
 }
+table th { color: var(--ink); }
 
-table th {
-    color: #000
+/* ============================================================
+   Multicol & misc utilities
+   ============================================================ */
+.multicol {
+    column-count: 2;
+    column-rule: 1px solid var(--rule);
 }
 
 .unselectable {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
-}
-
-@-ms-viewport {
-    width: device-width;
-}
-
-@viewport {
-    width: device-width;
-}
-
-body {
-    width: auto;
-    padding: 0
-}
-
-code {
-    hyphens: none
-}
-
-iframe,
-twitterwidget,
-video {
-    max-width: 100%;
-    display: block;
-    margin: auto
-}
-
-pre .nohighlight {
-    background-color: transparent
-}
-
-.hljs-comment {
-    font-style: inherit
-}
-
-.hljs {
-    padding: 1em
+    user-select: none;
 }
 
 img[src$="#border"] {
-    border: 1px solid #eee;
-    box-shadow: 5px 5px 5px #eee
+    border: 1px solid var(--rule);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
 }
 
-.anchor {
-    display: none
+iframe, twitterwidget, video {
+    max-width: 100%;
+    display: block;
+    margin: auto;
 }
 
-:hover>.anchor {
-    display: inline
-}
+.anchor { display: none; }
+:hover > .anchor { display: inline; }
 
-.multicol {
-    column-count: 2;
-    -webkit-column-rule-width: 1px;
-    -moz-column-rule-width: 1px;
-    column-rule-width: 1px;
-    -webkit-column-rule-style: solid;
-    -moz-column-rule-style: solid;
-    column-rule-style: solid;
-    -webkit-column-rule-color: #000;
-    -moz-column-rule-color: #000;
-    column-rule-color: #000
-}
+.MathJax_Display { overflow-x: auto; overflow-y: hidden; }
+.utterances { max-width: 100%; width: 100%; margin: 0; }
+
+/* ============================================================
+   Responsive — collapse sidebar to top bar under 1200px
+   ============================================================ */
+@-ms-viewport { width: device-width; }
+@viewport     { width: device-width; }
 
 @media screen and (max-width: 1200px) {
     .main {
         width: 100%;
-        margin: auto;
-        padding: 10px;
-        padding-top: 180px
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1.5em 18px;
     }
-
-    .multicol {
-        column-count: 1
-    }
+    .multicol { column-count: 1; }
 
     .masthead {
         position: relative;
         width: 100%;
-        height: 100%;
-        padding: 10px 0 20px;
+        height: auto;
+        padding: 12px 0 0;
         text-align: center;
-        margin: 10px auto
+        margin: 0 auto;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
     }
-
-    .masthead .tagline {
-        text-align: center
-    }
+    .masthead .tagline { text-align: center; }
 
     .masthead .menu {
-        width: 100vw;
         direction: ltr;
         max-width: 100%;
-        margin: 0 auto
+        margin: 0 auto;
     }
-
-    .masthead .menu ul {
-        text-align: left;
-        margin: 0;
-        padding: 0
-    }
-
-    .masthead .menu ul ul {
-        margin: 0;
-        padding: 0
-    }
-
-    .masthead .menu li {
-        border-bottom: 1px solid;
-        list-style: none;
-        margin: 0;
-        padding: 0
-    }
-
     .masthead .menu ul {
         text-align: center;
-        list-style: none;
-        list-style-position: inside;
-        padding: 0
+        margin: 0;
+        padding: 0;
     }
-
+    .masthead .menu ul ul { margin: 0; padding: 0; }
     .masthead .menu li,
     .masthead .menu li:first-child {
+        list-style: none;
         border: none;
+        margin: 0;
+        padding: 0;
         display: inline-block;
-        margin-top: 5px
+    }
+    .masthead .menu a {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 8px 14px;
+    }
+    .masthead .menu a:hover,
+    .masthead .menu .active a,
+    .masthead .menu .selected a {
+        border-left: none;
+        border-bottom-color: var(--accent);
     }
 
     .masthead img {
-        width: 70px;
-        margin-top: 5px;
-        margin-bottom: -35px;
-        margin-left: auto;
-        margin-right: auto
+        width: 60px;
+        margin: 5px auto;
     }
-
-    br.masthead-br {
-        display: none
-    }
-}
-
-.MathJax_Display {
-    overflow-x: auto;
-    overflow-y: hidden
-}
-
-a:hover {
-    color: #c80004
-}
-
-.utterances {
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0
+    br.masthead-br { display: none; }
 }

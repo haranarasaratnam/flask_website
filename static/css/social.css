@@ -1,16 +1,21 @@
-
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-
 @import "https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css";
 
-.social{
-    position: relative;
-    /*top: 50%;*/
-    left: 40%;
-    /*transform: translate(-50%,-50%);*/
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 1.5em auto 0.5em;
 }
 
-/*.social > a {*/
-/*    !*background: #222222;*!*/
-/*    !*color: #222222;*!*/
-/*}*/
+.social a {
+    color: var(--muted);
+    transition: color var(--transition);
+    border-bottom: none;
+}
+
+.social a:hover {
+    color: var(--accent);
+    border-bottom: none;
+}
