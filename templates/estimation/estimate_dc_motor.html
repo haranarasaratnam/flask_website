@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+        <a class="nav-button" href="{{ url_for('intro')}}"> >> </a>
+        <a class="nav-button" href="{{ url_for('ckf')}}">
+            << </a>
+                <br><br>
+
+                <h1>Estimating States of a DC Motor</h1>
+
+    <h1>Measurement Noise Variance for Angular Velocity</h1>
+
+    <h2>1. Understanding the Encoder's Measurement Noise</h2>
+    <p>
+        A 12-bit encoder provides discrete measurements of the angle (&theta;) with a resolution determined by the total number of counts:
+    </p>
+    <p>
+        <strong>Resolution:</strong> \( \frac{360^\circ}{2^{12}} = \frac{360^\circ}{4096} \approx 0.0879^\circ \ (\text{per count}) \)
+    </p>
+    <p>
+        The quantization error introduced by the encoder is uniformly distributed over:
+        \( [-\frac{\text{Resolution}}{2}, \frac{\text{Resolution}}{2}] \). The variance of this uniform distribution is:
+    </p>
+    <p>
+        \( \sigma_\theta^2 = \frac{\text{Resolution}^2}{12} \)
+    </p>
+    <p>This variance represents the noise variance of the angular position measurements.</p>
+
+    <h2>2. Relationship Between Angular Position and Velocity</h2>
+    <p>
+        Angular velocity (&omega;) is the time derivative of the angular position (&theta;):
+    </p>
+    <p>
+        \( \omega = \frac{d\theta}{dt} \)
+    </p>
+    <p>
+        For discrete measurements from the encoder, angular velocity is approximated as the finite difference:
+    </p>
+    <p>
+        \( \omega \approx \frac{\Delta \theta}{\Delta t} \)
+    </p>
+    <p>
+        where \( \Delta \theta = \theta_k - \theta_{k-1} \) is the difference between consecutive encoder measurements, and \( \Delta t \) is the sampling interval.
+    </p>
+
+    <h2>3. Noise Variance in Angular Velocity</h2>
+    <p>
+        The noise variance in &omega; depends on the noise variance in &theta; and the sampling interval \( \Delta t \). Assuming \( \Delta \theta \) noise is uncorrelated, the variance of &omega; can be approximated as:
+    </p>
+    <p>
+        \( \sigma_\omega^2 \approx \frac{2 \sigma_\theta^2}{(\Delta t)^2} \)
+    </p>
+    <p>
+        Substituting \( \sigma_\theta^2 = \frac{\text{Resolution}^2}{12} \):
+    </p>
+    <p>
+        \( \sigma_\omega^2 \approx \frac{2}{12} \cdot \frac{\text{Resolution}^2}{(\Delta t)^2} \)
+    </p>
+
+    <h2>4. Quantifying Measurement Noise Variance</h2>
+    <p>
+        Using the encoder resolution \( \text{Resolution} = 0.0879^\circ = 0.001535 \, \text{radians} \):
+    </p>
+    <p>
+        \( \sigma_\theta^2 = \frac{(0.001535)^2}{12} \approx 1.96 \times 10^{-8} \, \text{rad}^2 \)
+    </p>
+    <p>
+        For a sampling interval \( \Delta t = 0.01 \, \text{seconds} \):
+    </p>
+    <p>
+        \( \sigma_\omega^2 \approx \frac{2}{12} \cdot \frac{(0.001535)^2}{(0.01)^2} \approx 1.96 \times 10^{-4} \, \text{rad}^2/\text{s}^2 \)
+    </p>
+
+    </header>
+
+
+    <!--        <div class="reveal">-->
+    <!--        <div class="slides">-->
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+        <h2>Introduction</h2>
+
+                <p style="text-align: right;">Page 7</p>
+        <hr class="full-width">
+    </section>
+
+
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}

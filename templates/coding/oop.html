@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+
+
+        <a class="nav-button" href="{{ url_for('control') }}"> ">>" </a>
+        <a class="nav-button" href="{{ url_for('control') }}"> "<<" </a>
+                <br><br>
+
+                <h1>OOP</h1>
+
+    </header>
+
+
+    <!--        <div class="reveal">-->
+    <!--        <div class="slides">-->
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+
+    <h2>OOP</h2>
+
+
+
+<ul>
+    <li>
+        <strong>Class:</strong>
+        <ul>
+            <li>
+                The script defines two classes:
+                <ul>
+                    <li><code>Frog</code>: Represents an individual frog with attributes and behaviors.</li>
+                    <li><code>Pond</code>: Represents the environment containing the frogs and handles their interactions and visualization.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Encapsulation:</strong>
+        <ul>
+            <li>
+                Each class encapsulates data and methods specific to its role:
+                <ul>
+                    <li><code>Frog</code>: Encapsulates properties like <code>x</code>, <code>y</code>, <code>name</code>, and methods for movement.</li>
+                    <li><code>Pond</code>: Encapsulates the list of animals, plot limits, and methods for visualization (<code>show_world</code>) and simulation (<code>play_word</code>).</li>
+                </ul>
+            </li>
+            <li>Private methods and attributes (e.g., <code>_random_distance</code>, <code>_plot_animals</code>) are prefixed with an underscore to indicate restricted access.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Constructor (<code>__init__</code>):</strong>
+        <ul>
+            <li>
+                Both classes define constructors to initialize their attributes:
+                <ul>
+                    <li><code>Frog.__init__</code>: Initializes a frog's position, name, movement distance, and random factor.</li>
+                    <li><code>Pond.__init__</code>: Initializes the pond with a list of animals and its coordinate limits.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Abstraction:</strong>
+        <ul>
+            <li>The <code>Frog</code> class abstracts the concept of a frog's movement into simple methods like <code>move_up</code>, <code>move_down</code>, and <code>random_move</code>.</li>
+            <li>The <code>Pond</code> class abstracts the visualization of frogs and their simulation, hiding the details of plotting and coordinate updates.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Inheritance:</strong>
+        <ul>
+            <li>While the script does not explicitly use inheritance, it demonstrates how additional classes (e.g., a specialized animal class) could extend the functionality of <code>Frog</code>.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Polymorphism:</strong>
+        <ul>
+            <li>Polymorphism is implied in the design as the <code>Pond</code> class can handle any object that follows a similar interface (e.g., objects with <code>x</code>, <code>y</code>, and <code>random_move</code> methods).</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Dynamic Behavior:</strong>
+        <ul>
+            <li>The method <code>play_word</code> dynamically updates the positions of the animals and redraws the plot, showcasing the interaction between objects over time.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Composition:</strong>
+        <ul>
+            <li>The <code>Pond</code> class is composed of multiple <code>Frog</code> objects, showing how smaller objects can work together within a larger structure.</li>
+        </ul>
+    </li>
+</ul>
+
+                <p style="text-align: right;">Page 1</p>
+        <hr class="full-width">
+    </section>
+      <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}

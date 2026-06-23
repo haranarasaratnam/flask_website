@@ -3,7 +3,7 @@
 {% block content %}
 <article>
     <header class="title">
-        <h1 style="color: #b40203">Bayesian Estimation</h1>
+        <h1 style="color: #b40203">State Estimation: The Kalman Filter and Beyond</h1>
         <hr style="margin-top:-1em">
         <h3 style="margin-top:-2.3em">
         </h3>
@@ -17,8 +17,9 @@ list-style: none;
     </header>
 
     <p>
-        This section covers Bayesian signal processing, with a particular focus on cubature Kalman filters. The content is
-        primarily derived from my PhD thesis. Each subsection below is clickable and presented in a slide format, allowing
+        This section covers Bayesian signal processing, a powerful technique to estimate hidden states of a dynamical system. The content is
+        primarily based on
+        nonlinear state estimation from my PhD work. Each subsection below is clickable and presented in a slide format, allowing
         users to quickly read, review, and grasp the key concepts to master this powerful tool.
 
     </p>
@@ -26,38 +27,61 @@ list-style: none;
     <br>
 
 <ul>
-  <li><strong>1. Introduction to Bayesian Filtering</strong>
+  <li><strong>1. Introduction to Bayesian Filters</strong>
     <ul>
-      <li>1.1 <a href="{{url_for('kf')}}" style="position:relative; margin-left: 55px;">Overview of Bayesian Filtering</a> </li>
+      <li>1.1 <a style="position:relative; ">Bayes' Rule</a> </li>
+      <li>1.2 <a href="{{url_for('intro')}}"  style="position:relative; ">Kalman Filtering</a> </li>
+      <li>1.3 <a href="{{url_for('dc_motor')}}"  style="position:relative; ">Estimating the State of DC Motors </a> </li>
     </ul>
   </li>
 
-<li><strong>2. Nonlinear Kalman Filtering</strong>
+<li><strong>2. Nonlinear Bayesian Filters</strong>
     <ul>
-        <li>2.1 <a href="{{url_for('ckf')}}" style="position:relative; margin-left: 55px;"> Cubature Kalman Filters</a></li>
+        <li>2.1 <a > Gausssian Filters</a>
+        <ul>
+            <li>2.1.1 Extended Kalman Filters</li>
+            <li>2.1.2 Unscented Kalman Filters</li>
+            <li>2.1.3 Gauss-Hermite Kalman Filters</li>
+            <li>2.1.2 <a href="{{url_for('ckf')}}"
+                   style="position:relative; "> Cubature Kalman Filters</a></li>
+        </ul>
+        </li>
+        <li>2.2 <a > Non-Gaussian Filters</a>
+            <ul>
+                <li>
+                    2.2.1 Particle Filters
+
+                </li>
+            </ul>
+        </li>
+
     </ul>
 </li>
 
 
     <li><strong>3. Variants</strong>
     <ul>
-        <li>3.1 <a href="{{url_for('sckf')}}" style="position:relative; margin-left: 55px;"> Square-Root Cubature Kalman
-                Filters</a></li>
+        <li>3.1 <a href="{{url_for('sckf')}}" style="position:relative; "> Square-Root Bayesian Filters</a></li>
+        <li>3.2 Continuous-Discrete Bayesian Filters</li>
+        <li>3.3 Bayesian Smothers</li>
+         <li>3.4 <a style="position:relative; "> Interacting Multiple Model (IMM) Filters</a></li>
     </ul>
 </li>
 
+
+
     <li><strong>4. Applications</strong>
     <ul>
-        <li>4.1 <a href="{{url_for('application_1')}}" style="position:relative; margin-left: 55px;"> Radar Tracking
+        <li>4.1 <a href="{{url_for('application_1')}}" style="position:relative; "> Radar Tracking
                 (Accompanied by Python and Matlab Code)</a></li>
-        <li>4.2 <a href="{{url_for('application_2')}}" style="position:relative; margin-left: 55px;"> Mobile Robot
+        <li>4.2 <a href="{{url_for('application_2')}}" style="position:relative; "> Mobile Robot
                 Navigation</a></li>
     </ul>
 </li>
 
     <li><strong>5. Suggested Readings</strong>
     <ul>
-        <li>5.1 <a href="{{url_for('reference')}}" style="position:relative; margin-left: 55px;"> References</a></li>
+        <li>5.1 <a href="{{url_for('reference')}}" style="position:relative; "> References</a></li>
     </ul>
 </li>
 

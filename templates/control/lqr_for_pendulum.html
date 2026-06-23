@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+
+
+        <a class="nav-button" href="{{ url_for('control') }}"> ">>" </a>
+        <a class="nav-button" href="{{ url_for('control') }}"> "<<" </a>
+                <br><br>
+
+                <h1>LQE for Inverted Pendulum</h1>
+
+    </header>
+
+
+    <!--        <div class="reveal">-->
+    <!--        <div class="slides">-->
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+            <p>
+            <img src="{{ url_for('static', filename='images/inverted_pend.gif') }}"
+                alt="animation" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+        </p>
+
+    </section>
+      <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}

@@ -4,7 +4,7 @@
 {% block content %}
 <article>
     <header class="title">
-        <h1 style="color: #b40203">State-Space Based Control Design<br> (Under Construction)</h1>
+        <h1 style="color: #b40203">State-Space Control<br> (Under Construction)</h1>
         <hr style="margin-top:-1em">
         <h3 style="margin-top:-2.3em">
         </h3>
@@ -20,60 +20,55 @@ list-style: none;
 
 
   <ul>
-  <li><strong>1. Introduction to State-Space Control</strong>
+  <li><strong>1. Introduction to Control Theory</strong>
     <ul>
-      <li>1.1 Overview of State-Space Representation</li>
-      <li>1.2 Comparison with Transfer Function Approach</li>
-      <li>1.3 Applications of State-Space Control</li>
+      <li>1.1 Overview</li>
+      <li>1.2 Frequency-domain Control</li>
+      <li>1.3 PID Tuning Techniques</li>
+      <li> 1.4 PID Control in Action</li>
     </ul>
   </li>
-  <li><strong>2. Mathematical Foundations</strong>
+  <li><strong>2. Analysis of State-Space Systems</strong>
     <ul>
-      <li>2.1 Linear Algebra Review</li>
-      <li>2.2 Eigenvalues and Eigenvectors</li>
-      <li>2.3 State Transition Matrix</li>
+      <li>2.1 Overview</li>
+      <li>2.2 Controllability
+      <li>2.3 Observability</li>
+      <li>2.4 Stability Analysis</li>
+      <li>2.5 Lyapunov Stability</li>
     </ul>
   </li>
-  <li><strong>3. State-Space Modeling</strong>
+
+  <li><strong>3. State Feedback Control</strong>
     <ul>
-      <li>3.1 Deriving State-Space Equations</li>
-      <li>3.2 Canonical Forms</li>
-      <li>3.3 Linearization of Nonlinear Systems</li>
+      <li>3.1 Pole Placement Design</li>
+      <li>3.2 Ackermann’s Formula</li>
+      <li>3.3 Integral Action in State Feedback</li>
+
     </ul>
   </li>
-  <li><strong>4. Analysis of State-Space Systems</strong>
+  <li><strong>4. Optimal Control</strong>
     <ul>
-      <li>4.1 Controllability and Observability</li>
-      <li>4.2 Stability Analysis</li>
-      <li>4.3 Lyapunov Stability</li>
+      <li>4.1 Linear Quadratic Regulator (LQR) </li>
+      <li>4.2 Case Studies
+      <ul>
+        <li><a href="{{url_for('lqr_for_dc_motor')}}" style="position:relative; color:red";> 4.2.1 LQR
+        Control for DC Motor Speed (Accompanied by Matlab code) </a></li>
+        <li><a href="{{url_for('lqr_for_pendulum')}}" style="position:relative; color:red";> 4.2.2 LQR
+        Control for Inverted Pendulum (Accompanied by Matlab code)</a></li>
+        </ul></li>
     </ul>
   </li>
-  <li><strong>5. State Feedback Control</strong>
+  <li><strong>5. Advanced Topics</strong>
     <ul>
-      <li>5.1 Pole Placement Design</li>
-      <li>5.2 Ackermann’s Formula</li>
-      <li>5.3 Integral Action in State Feedback</li>
+      <li>5.1 Robust State-Space Design</li>
+      <li>5.2 Model Predictive Control (MPC)</li>
+      <li>5.3 Nonlinear State-Space Control</li>
     </ul>
   </li>
-  <li><strong>6. Observers and Estimators</strong>
+  <li><strong>6. Practical Consideraions</strong>
     <ul>
-      <li>6.1 Design of Observers</li>
-      <li>6.2 Luenberger Observer</li>
-      <li>6.3 Kalman Filter Basics</li>
-    </ul>
-  </li>
-  <li><strong>7. Advanced Topics</strong>
-    <ul>
-      <li>7.1 Robust State-Space Design</li>
-      <li>7.2 Model Predictive Control</li>
-      <li>7.3 Nonlinear State-Space Control</li>
-    </ul>
-  </li>
-  <li><strong>8. Practical Implementation</strong>
-    <ul>
-      <li>8.1 MATLAB/Simulink for State-Space Systems</li>
-      <li>8.2 Hardware Implementation</li>
-      <li>8.3 Case Studies</li>
+      <li><a href="{{url_for('matlab_commands')}}" style="position:relative; color:red";>
+        8.1 MATLAB/Simulink Commands for Control Theory</a></li>
     </ul>
   </li>
 </ul>

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<article class="main">
+    <header class="title">
+
+
+
+        <a class="nav-button" href="{{ url_for('control') }}"> ">>" </a>
+        <a class="nav-button" href="{{ url_for('control') }}"> "<<" </a>
+                <br><br>
+
+                <h1>LQE for DC Motor Control</h1>
+
+    </header>
+
+
+    <!--        <div class="reveal">-->
+    <!--        <div class="slides">-->
+
+    <!-- Slide 1 -->
+    <section class="left-align">
+
+    <h2>LQR Control Law Derivation</h2>
+
+    <h2>Objective</h2>
+    <p>The goal of Linear Quadratic Regulator (LQR) design is to determine a state feedback control law:</p>
+    <pre><code>u = -K * x</code></pre>
+    <p>where <code>K</code> is the feedback gain matrix that minimizes a quadratic cost function.</p>
+
+    <h2>Cost Function</h2>
+    <p>The quadratic cost function is given by:</p>
+    <pre><code>J = ∫ (x<sup>T</sup>Qx + u<sup>T</sup>Ru) dt</code></pre>
+    <ul>
+        <li><code>Q</code>: A positive semi-definite matrix penalizing state deviations.</li>
+        <li><code>R</code>: A positive definite matrix penalizing control effort.</li>
+    </ul>
+
+    <h2>System Dynamics</h2>
+    <p>The linear time-invariant system is described by:</p>
+    <pre><code>dx/dt = Ax + Bu</code></pre>
+    <p>where:</p>
+    <ul>
+        <li><code>x</code>: State vector.</li>
+        <li><code>A</code>: State matrix.</li>
+        <li><code>B</code>: Input matrix.</li>
+        <li><code>u</code>: Control input.</li>
+    </ul>
+
+    <h2>Solution Approach</h2>
+    <p>The LQR problem is solved using the following steps:</p>
+    <ol>
+        <li><strong>Define the cost function:</strong> Formulate the quadratic cost function based on system objectives.</li>
+        <li><strong>Compute the Riccati Equation:</strong> Solve the Continuous Algebraic Riccati Equation (CARE):</li>
+        <pre><code>A<sup>T</sup>P + PA - PBR<sup>-1</sup>B<sup>T</sup>P + Q = 0</code></pre>
+        <li><strong>Determine Feedback Gain:</strong> Compute the optimal feedback gain as:</li>
+        <pre><code>K = R<sup>-1</sup>B<sup>T</sup>P</code></pre>
+    </ol>
+
+    <h2>Key Insights</h2>
+    <ul>
+        <li>The feedback gain <code>K</code> minimizes the cost function <code>J</code>.</li>
+        <li>The Riccati equation ensures stability and optimality of the control law.</li>
+    </ul>
+
+    <h2>Advantages of LQR</h2>
+    <ul>
+        <li>Provides a systematic method for designing optimal controllers.</li>
+        <li>Balances state regulation and control effort.</li>
+        <li>Ensures robustness for small perturbations in the system.</li>
+    </ul>
+
+    <h2>MATLAB Implementation</h2>
+    <p>The MATLAB <code>lqr</code> function directly computes the feedback gain <code>K</code>. Example:</p>
+    <pre><code>% Define system matrices
+A = [0 1; -2 -3];
+B = [0; 1];
+Q = eye(2);  % State penalty matrix
+R = 1;       % Control effort penalty
+
+% Compute LQR gain
+K = lqr(A, B, Q, R);
+
+% Display result
+disp('LQR Gain:');
+disp(K);
+</code></pre>
+
+    <p>The computed <code>K</code> can then be used in the control law:</p>
+    <pre><code>u = -K * x</code></pre>
+
+
+    <h1>Dynamic State-Space Model (DSSM) of a DC Motor</h1>
+
+    <h2>Introduction</h2>
+    <p>The Dynamic State-Space Model (DSSM) is a mathematical framework used to describe the behavior of a DC motor. It captures the dynamics of the motor using state variables, input signals, and output signals. This representation is widely used for control system design and analysis.</p>
+
+    <h2>State-Space Representation</h2>
+    <p>The state-space equations for a DC motor are given by:</p>
+    <pre><code>
+    dx/dt = A * x + B * u
+    y = C * x + D * u
+    </code></pre>
+
+    <h3>State Variables</h3>
+    <ul>
+        <li><strong>x<sub>1</sub>:</strong> Armature current (i<sub>a</sub>).</li>
+        <li><strong>x<sub>2</sub>:</strong> Angular velocity of the motor shaft (&omega;).</li>
+    </ul>
+
+    <h3>Input and Output</h3>
+    <ul>
+        <li><strong>Input (u):</strong> Voltage applied to the motor (V<sub>a</sub>).</li>
+        <li><strong>Output (y):</strong> Angular velocity (&omega;).</li>
+    </ul>
+
+    <h3>Matrices</h3>
+    <p>The state-space matrices for the DC motor are:</p>
+    <ul>
+        <li><strong>A:</strong> State matrix, which defines the system dynamics.</li>
+        <li><strong>B:</strong> Input matrix, which defines how the input affects the states.</li>
+        <li><strong>C:</strong> Output matrix, which maps the states to the output.</li>
+        <li><strong>D:</strong> Direct transmission matrix, which maps input directly to the output.</li>
+    </ul>
+
+    <pre><code>
+    A = [[-R/L    -K/L],
+         [K/J  -B/J]]
+
+    B = [[1/L],
+         [0]]
+
+    C = [[0  1]]
+
+    D = [[0]]
+    </code></pre>
+
+    <h2>Physical Parameters</h2>
+    <p>The following parameters are used in the model:</p>
+    <ul>
+        <li><strong>R:</strong> Armature resistance (Ohms).</li>
+        <li><strong>L:</strong> Armature inductance (Henries).</li>
+        <li><strong>K:</strong> Back EMF constant (Volt-sec/rad).</li>
+        <li><strong>J:</strong> Moment of inertia of the rotor (kg-m<sup>2</sup>).</li>
+        <li><strong>B:</strong> Viscous friction coefficient (N-m-s).</li>
+    </ul>
+
+    <h2>Applications</h2>
+    <p>The DSSM of a DC motor is used in:</p>
+    <ul>
+        <li>Control system design (e.g., PID, LQR).</li>
+        <li>Simulation of motor dynamics.</li>
+        <li>Observer design (e.g., Kalman filter).</li>
+        <li>Hardware implementation and testing.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The state-space representation provides a compact and structured way to analyze and control the behavior of a DC motor. By leveraging this model, engineers can design advanced control algorithms and improve motor performance in various applications.</p>
+
+
+        <p style="text-align: right;">Page 1</p>
+        <hr class="full-width">
+    </section>
+      <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+</article>
+
+{% endblock %}
