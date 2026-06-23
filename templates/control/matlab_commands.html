@@ -1,172 +1,64 @@
-
 {% extends "base.html" %}
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('control') }}">&laquo; Back</a>
+    </nav>
+    <h1>Matlab Commands for Control Theory</h1>
+</header>
 
-
-
-        <a class="nav-button" href="{{ url_for('control') }}"> ">>" </a>
-        <a class="nav-button" href="{{ url_for('control') }}"> "<<" </a>
-                <br><br>
-
-                <h1>Matlab Commands for Control Theory</h1>
-
-    </header>
-
-
-<table border="1" style="border-collapse: collapse; width: 82%;">
+<h2>Time-Domain Functions</h2>
+<table>
     <thead>
-        <tr>
-            <th>Time-Domain Function</th>
-            <th>Description</th>
-        </tr>
+        <tr><th>Function</th><th>Description</th></tr>
     </thead>
     <tbody>
-        <!--  Commands -->
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/step.html">step</a></td>
-            <td>Plot step response of a dynamic system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/impulse.html">impulse</a></td>
-            <td>Plot impulse response of a dynamic system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/initial.html">initial</a></td>
-            <td>Plot system response to initial conditions.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/lsim.html">lsim</a></td>
-            <td>Simulate response of LTI system to arbitrary input.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/stepinfo.html">stepinfo</a></td>
-            <td>Retrieve step response characteristics (rise time, settling time, etc.).</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/dcgain.html">dcgain</a></td>
-            <td>Compute steady-state (DC) gain of the system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/ltiview.html">ltiview</a></td>
-            <td>Open LTI Viewer for analyzing time and frequency responses.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/ss.html">ss</a></td>
-            <td>Create a state-space representation of a system.</td>
-        </tr>
-
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/step.html">step</a></td><td>Plot step response of a dynamic system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/impulse.html">impulse</a></td><td>Plot impulse response of a dynamic system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/initial.html">initial</a></td><td>Plot system response to initial conditions.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/lsim.html">lsim</a></td><td>Simulate response of LTI system to arbitrary input.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/stepinfo.html">stepinfo</a></td><td>Retrieve step response characteristics (rise time, settling time, etc.).</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/dcgain.html">dcgain</a></td><td>Compute steady-state (DC) gain of the system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/ltiview.html">ltiview</a></td><td>Open LTI Viewer for analyzing time and frequency responses.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/ss.html">ss</a></td><td>Create a state-space representation of a system.</td></tr>
     </tbody>
 </table>
 
-
-
-    <table border="1" style="border-collapse: collapse; width: 82%;">
+<h2>Frequency-Domain Functions</h2>
+<table>
     <thead>
-        <tr>
-            <th>Frequency-Domain Function</th>
-            <th>Description</th>
-        </tr>
+        <tr><th>Function</th><th>Description</th></tr>
     </thead>
     <tbody>
-
-
-        <!-- Frequency-Domain Commands -->
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/bode.html">bode</a></td>
-            <td>Plot the Bode magnitude and phase plot.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/nyquist.html">nyquist</a></td>
-            <td>Generate Nyquist plot of the system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/nichols.html">nichols</a></td>
-            <td>Generate Nichols plot of the system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/margin.html">margin</a></td>
-            <td>Calculate gain margin, phase margin, and crossover frequencies.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/freqresp.html">freqresp</a></td>
-            <td>Compute system frequency response at specific frequencies.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/sigma.html">sigma</a></td>
-            <td>Plot singular value frequency response.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/bandwidth.html">bandwidth</a></td>
-            <td>Compute bandwidth of the system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/tf.html">tf</a></td>
-            <td>Create a transfer function representation.</td>
-        </tr>
-
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/bode.html">bode</a></td><td>Plot the Bode magnitude and phase plot.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/nyquist.html">nyquist</a></td><td>Generate Nyquist plot of the system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/nichols.html">nichols</a></td><td>Generate Nichols plot of the system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/margin.html">margin</a></td><td>Calculate gain margin, phase margin, and crossover frequencies.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/freqresp.html">freqresp</a></td><td>Compute system frequency response at specific frequencies.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/sigma.html">sigma</a></td><td>Plot singular value frequency response.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/bandwidth.html">bandwidth</a></td><td>Compute bandwidth of the system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/tf.html">tf</a></td><td>Create a transfer function representation.</td></tr>
     </tbody>
 </table>
 
-
-
-
-
-
-
-    <table border="1" style="border-collapse: collapse; width: 82%;">
+<h2>Additional Functions</h2>
+<table>
     <thead>
-        <tr>
-            <th>Additional Function</th>
-            <th>Description</th>
-        </tr>
+        <tr><th>Function</th><th>Description</th></tr>
     </thead>
     <tbody>
-
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/rlocus.html">rlocus</a></td>
-            <td>Plot root locus of a system.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/feedback.html">feedback</a></td>
-            <td>Create closed-loop system from open-loop transfer function.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/lqr.html">lqr</a></td>
-            <td>Design Linear Quadratic Regulator (LQR) controller.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/kalman.html">kalman</a></td>
-            <td>Design Kalman state estimator.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/place.html">place</a></td>
-            <td>Place poles for state-feedback control.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/pidtune.html">pidtune</a></td>
-            <td>Automatically tune PID controller gains.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/controlsystemdesigner.html">controlSystemDesigner</a></td>
-            <td>Open GUI for interactive control system design.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/linearsystemanalyzer.html">linearSystemAnalyzer</a></td>
-            <td>Open GUI for analyzing LTI systems.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.mathworks.com/help/control/ref/hinfsyn.html">hinfsyn</a></td>
-            <td>Design H-infinity optimal controller.</td>
-        </tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/rlocus.html">rlocus</a></td><td>Plot root locus of a system.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/feedback.html">feedback</a></td><td>Create closed-loop system from open-loop transfer function.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/lqr.html">lqr</a></td><td>Design Linear Quadratic Regulator (LQR) controller.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/kalman.html">kalman</a></td><td>Design Kalman state estimator.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/place.html">place</a></td><td>Place poles for state-feedback control.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/pidtune.html">pidtune</a></td><td>Automatically tune PID controller gains.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/controlsystemdesigner.html">controlSystemDesigner</a></td><td>Open GUI for interactive control system design.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/linearsystemanalyzer.html">linearSystemAnalyzer</a></td><td>Open GUI for analyzing LTI systems.</td></tr>
+        <tr><td><a href="https://www.mathworks.com/help/control/ref/hinfsyn.html">hinfsyn</a></td><td>Design H-infinity optimal controller.</td></tr>
     </tbody>
 </table>
-
-      <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}

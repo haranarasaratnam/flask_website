@@ -2,18 +2,13 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
-
-
-
-        <a class="nav-button" href="{{ url_for('ckf') }}"> ">>" </a>
-        <a class="nav-button" href="{{ url_for('estimation') }}"> "<<" </a>
-                <br><br>
-
-                <h1>Bayesian Filtering</h1>
-
-    </header>
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('estimation') }}">&laquo; Index</a>
+        <a class="nav-button" href="{{ url_for('dc_motor') }}">Next &raquo;</a>
+    </nav>
+    <h1>Bayesian Filtering</h1>
+</header>
 
 
     <!--        <div class="reveal">-->
@@ -25,7 +20,7 @@
         <h2>Introduction</h2>
         <p>
             <img src="{{ url_for('static', filename='images/dssm.png') }}"
-                style="width: 60%; height: auto; display: block; margin: 0 auto;">
+                class="figure-img size-60">
         </p>
 
         <ul>
@@ -48,7 +43,7 @@
                 \(D_{k}=\{\mathbf{z}_{1},\mathbf{z}_{2}\ldots\mathbf{z}_{k},\mathbf{u}_{1},\mathbf{u}_{2}\ldots\mathbf{u}_{k}\}\)? </li>
 
         </ul>
-        <p style="text-align: right;">Page 1</p>
+        <p class="page-number">Page 1</p>
         <hr class="full-width">
     </section>
 
@@ -82,7 +77,7 @@
 
             <li> The integrals above are typically intractable for nonlinear systems. </li>
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p class="page-number">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -127,7 +122,7 @@
             Filter (CKF). We will derive the CKF with a mathematical rigor and prove that it yields reasonably accurate estimates at a minimal cost.</li>
 
         </ul>
-        <p style="text-align: right;">Page 3</p>
+        <p class="page-number">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -138,15 +133,11 @@
         <h2>Bayesian filters in full-state feedback control systems </h2>
         <p>
             <img src="{{ url_for('static', filename='images/dssm_signal_flow.png') }}"
-                style="width: 110%; height: auto; display: block; margin: 0 auto;">
+                class="figure-img size-full">
         </p>
 
-        <p style="text-align: right;">Page 4</p>
+        <p class="page-number">Page 4</p>
         <hr class="full-width">
     </section>
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}

@@ -2,18 +2,13 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
-
-        <a class="nav-button" href="{{ url_for('application_1') }}"> >> </a>
-        <a class="nav-button" href="{{ url_for('ckf') }}">
-            << </a>
-                <br><br>
-
-                <h1>Square-Root Cubature Kalman Filters (SCKF)</h1>
-
-
-    </header>
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('ckf') }}">&laquo; Prev</a>
+        <a class="nav-button" href="{{ url_for('application_1') }}">Next &raquo;</a>
+    </nav>
+    <h1>Square-Root Cubature Kalman Filters (SCKF)</h1>
+</header>
 
     <!-- Slide 1 -->
     <section class="left-align">
@@ -52,7 +47,7 @@
                 \(\mathbf{A} = \mathbf{QR}\).</li>
 
         </ul>
-        <p style="text-align: right;">Page 1</p>
+        <p class="page-number">Page 1</p>
         <hr class="full-width">
     </section>
 
@@ -97,7 +92,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p class="page-number">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -198,7 +193,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 3</p>
+        <p class="page-number">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -251,7 +246,7 @@
 
         </ul>
 
-        <p style="text-align: right;">Page 4</p>
+        <p class="page-number">Page 4</p>
         <hr class="full-width">
     </section>
 
@@ -321,14 +316,10 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 5</p>
+        <p class="page-number">Page 5</p>
         <hr class="full-width">
     </section>
 
 
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}

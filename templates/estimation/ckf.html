@@ -2,20 +2,13 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
-
-        <a class="nav-button" href="{{ url_for('sckf')}}"> >> </a>
-        <a class="nav-button" href="{{ url_for('intro')}}">
-            << </a>
-                <br><br>
-
-                <h1>Cubature Kalman Filters (CKF)</h1>
-
-
-
-
-    </header>
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('dc_motor') }}">&laquo; Prev</a>
+        <a class="nav-button" href="{{ url_for('sckf') }}">Next &raquo;</a>
+    </nav>
+    <h1>Cubature Kalman Filters (CKF)</h1>
+</header>
 
 
     <!--        <div class="reveal">-->
@@ -35,7 +28,7 @@
             </li>
             <li> The logical choice is to apply the monomial based cubature rule to compute them numerically</li>
         </ul>
-        <p style="text-align: right;">Page 1</p>
+        <p class="page-number">Page 1</p>
         <hr class="full-width">
     </section>
 
@@ -68,7 +61,7 @@
                 \]
             </li>
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p class="page-number">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -100,7 +93,7 @@
                 \]
             </li>
         </ul>
-        <p style="text-align: right;">Page 3</p>
+        <p class="page-number">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -128,7 +121,7 @@
                 updates as described next. </li>
 
         </ul>
-        <p style="text-align: right;">Page 4</p>
+        <p class="page-number">Page 4</p>
         <hr class="full-width">
     </section>
 
@@ -180,7 +173,7 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 5</p>
+        <p class="page-number">Page 5</p>
         <hr class="full-width">
     </section>
 
@@ -226,7 +219,7 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 6</p>
+        <p class="page-number">Page 6</p>
         <hr class="full-width">
     </section>
 
@@ -272,14 +265,10 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 7</p>
+        <p class="page-number">Page 7</p>
         <hr class="full-width">
     </section>
 
 
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}

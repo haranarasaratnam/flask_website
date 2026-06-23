@@ -521,6 +521,73 @@ pre .nohighlight { background-color: transparent; }
 }
 
 /* ============================================================
+   Content-page helpers (slide sections, figures, page nav)
+   ============================================================ */
+.figure-img {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 100%;
+    height: auto;
+}
+.figure-img.size-40 { width: 40%; }
+.figure-img.size-60 { width: 60%; }
+.figure-img.size-80 { width: 80%; }
+.figure-img.size-full { width: 100%; }
+
+.profile-photo {
+    display: block;
+    width: 22%;
+    min-width: 140px;
+    height: auto;
+    margin: 0 auto 1.2em;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    border: 3px solid var(--surface);
+}
+
+.page-number {
+    text-align: right;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 0.82em;
+    margin: 1em 0 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 1em;
+}
+.page-nav .spacer { flex: 1; }
+
+.page-meta {
+    font-family: var(--sans);
+    font-size: 0.78em;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px dashed var(--rule);
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   View Transitions API — smooth page navigation in supporting
+   browsers (Chrome 126+, Safari 18+); silently ignored elsewhere
+   ============================================================ */
+@view-transition {
+    navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 200ms;
+}
+
+/* ============================================================
    Tables — zebra striping for readability
    ============================================================ */
 table {

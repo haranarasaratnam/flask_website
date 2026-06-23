@@ -64,14 +64,21 @@ by-passed this with SMTPLIB
 - added footer
 
 '''
-from flask import Flask, render_template, url_for, request, redirect
-#from flask_mail import Mail, Message
-import smtplib
-from email.mime.text import MIMEText
-from functools import partial
+from datetime import datetime
+from pathlib import Path
+
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
-#app.config.fropp.pym_pyfile('config.py')
+
+
+def _last_updated(template):
+    """Return the template file's mtime as YYYY-MM-DD, or None if unreadable."""
+    path = Path(app.root_path) / app.template_folder / template.lstrip('./')
+    try:
+        return datetime.fromtimestamp(path.stat().st_mtime).strftime('%Y-%m-%d')
+    except OSError:
+        return None
 
 
 # Define routes and their corresponding templates
@@ -82,7 +89,7 @@ routes_main = {
     '/estimation': {'template': './estimation.html', 'endpoint': 'estimation'},
     '/control': {'template': './control.html', 'endpoint': 'control'},
     '/coding': {'template': './coding.html', 'endpoint': 'coding'},
-    # '/resume': {'template': './resume.html', 'endpoint': 'resume'},
+    # '/resume': {'template': './resume.html', 'endpoint': 'resume'},  # intentionally hidden — see CLAUDE.md
 }
 
 # Define routes and their corresponding templates
@@ -110,13 +117,17 @@ routes_coding = {
 
 
 def route_2_render_template(routes):
-
-    # Dynamically create routes with proper endpoint names
+    # Dynamically create routes with proper endpoint names.
+    # The default-argument trick (template=data['template']) captures
+    # the value per-iteration; closures alone would late-bind to whatever
+    # data['template'] held on the *last* loop iteration.
     for route, data in routes.items():
         app.add_url_rule(
             route,
-            endpoint=data['endpoint'],  # Unique endpoint name
-            view_func=lambda template=data['template']: render_template(template)
+            endpoint=data['endpoint'],
+            view_func=lambda template=data['template']: render_template(
+                template, last_updated=_last_updated(template)
+            ),
         )
 
 route_2_render_template(routes_main)

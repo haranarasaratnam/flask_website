@@ -2,18 +2,13 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
-
-        <a class="nav-button" href="{{ url_for('reference') }}"> >> </a>
-        <a class="nav-button" href="{{ url_for('application_1') }}">
-            << </a>
-                <br><br>
-
-                <h1>Mobile Robot Navigation</h1>
-
-
-    </header>
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('application_1') }}">&laquo; Prev</a>
+        <a class="nav-button" href="{{ url_for('reference') }}">Next &raquo;</a>
+    </nav>
+    <h1>Mobile Robot Navigation</h1>
+</header>
 
     <!-- Slide 1 -->
     <section class="left-align">
@@ -22,7 +17,7 @@
 
         <p>
             <img src="{{ url_for('static', filename='images/bicycle_model.png') }}"
-                style="width: 60%; height: auto; display: block; margin: 0 auto;">
+                class="figure-img size-60">
         </p>
         <ul>
 
@@ -55,7 +50,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 1</p>
+        <p class="page-number">Page 1</p>
         <hr class="full-width">
     </section>
 
@@ -123,7 +118,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p class="page-number">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -169,7 +164,7 @@
                 was then applied to identify the corresponding landmarks.
             </li>
         </ul>
-        <p style="text-align: right;">Page 3</p>
+        <p class="page-number">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -184,7 +179,7 @@
 
             <p>
                 <img src="{{ url_for('static', filename='images/robot_result.png') }}"
-                    style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                    class="figure-img size-full">
             </p>
 
 
@@ -193,13 +188,9 @@
             </li>
 
         </ul>
-        <p style="text-align: right;">Page 4</p>
+        <p class="page-number">Page 4</p>
         <hr class="full-width">
     </section>
 
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}

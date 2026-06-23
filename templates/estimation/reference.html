@@ -2,83 +2,43 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('application_2') }}">&laquo; Prev</a>
+        <a class="nav-button" href="{{ url_for('estimation') }}">Next &raquo;</a>
+    </nav>
+    <h1>Suggested Reading</h1>
+</header>
 
-        <a class="nav-button" href="{{ url_for('estimation') }}"> >> </a>
-        <a class="nav-button" href="{{ url_for('application_2') }}">
-            << </a>
+<h3>Textbooks</h3>
+<ol>
+    <li>
+        Yaakov Bar-Shalom, X.-Rong Li, Thiagalingam Kirubarajan (2001).
+        Estimation with Applications to Tracking and Navigation: Theory, Algorithms and Software.
+        John Wiley &amp; Sons.
+    </li>
+</ol>
 
-                <br><br>
-
-                <h1>Suggested Reading</h1>
-    </header>
-
-
-
-
-
-
-    <!-- <h3>References</h3> -->
-
-
-    <h3>Textbooks</h3>
-
-    <ol>
-        <li>
-            Yaakov Bar-Shalom, X.-Rong Li, Thiagalingam Kirubarajan (2001). Estimation with Applications to Tracking and Navigation: Theory, Algorithms and Software. John Wiley & Sons
-        </li>
-
-    </ol>
-
-    <h3>Journals</h3>
-
-    <ol>
-        <li> Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction
-            Problems,
-            Journal of Basic Engineering. 82: 35–45.
-            <a
-                href="http://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf">http://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf</a>
-        </li>
-        <li>
-            Y. Ho and R. Lee (1964). "A Bayesian approach to problems in stochastic estimation and control". IEEE
-            Transactions on Automatic Control, vol. 9, no. 4, pp. 333-339.
-        </li>
-        <li>
-            Uhlmann, Jeffrey & Julier, Simon. (2002). Gaussianity and the Kalman Filter: A Simple Yet Complicated
-            Relationship. Journal de Ciencia e Ingeniería. 14. pp. 21-26
-        </li>
-
-        <li>I. Arasaratnam and S. Haykin (2009). Cubature Kalman Filters, IEEE Trans. on
-            Automatic Control, vol. 54, no. 6, pp. 1254-1269</li>
-
-
-    </ol>
-
-
-
-
-    <!--    &lt;!&ndash; Slide 1 &ndash;&gt;-->
-    <!--    <section class="left-align">-->
-
-    <!--        <h2>Intro</h2>-->
-
-
-    <!--        <ul>-->
-    <!--            <li>Trade off global optimality for computational traceability and robustness</li>-->
-    <!--            <li>Assuume that the joint state-innovations density given the past measurement history to be Gaussian-->
-    <!--            <li>Under the above assumption, the new probelm is to compute integrals whose integrands are of the form:-->
-    <!--                \[\text{nonlinear function x Gaussian}\]-->
-    <!--            </li>-->
-    <!--            <li> The logical choice is to use monomial based cubature ruto compute them numerically</li>-->
-    <!--        </ul>-->
-    <!--        <p style="text-align: right;">Page 1</p>-->
-    <!--        <hr class="full-width">-->
-    <!--    </section>-->
-
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
+<h3>Journals</h3>
+<ol>
+    <li>
+        Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction Problems,
+        Journal of Basic Engineering. 82: 35&ndash;45.
+        <a href="http://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf"
+           target="_blank" rel="noopener">[PDF]</a>
+    </li>
+    <li>
+        Y. Ho and R. Lee (1964). "A Bayesian approach to problems in stochastic estimation and control".
+        IEEE Transactions on Automatic Control, vol. 9, no. 4, pp. 333&ndash;339.
+    </li>
+    <li>
+        Uhlmann, Jeffrey &amp; Julier, Simon (2002). Gaussianity and the Kalman Filter:
+        A Simple Yet Complicated Relationship. Journal de Ciencia e Ingenier&iacute;a. 14, pp. 21&ndash;26.
+    </li>
+    <li>
+        I. Arasaratnam and S. Haykin (2009). Cubature Kalman Filters,
+        IEEE Trans. on Automatic Control, vol. 54, no. 6, pp. 1254&ndash;1269.
+    </li>
+</ol>
 
 {% endblock %}

@@ -2,18 +2,13 @@
 
 {% block content %}
 
-<article class="main">
-    <header class="title">
-
-        <a class="nav-button" href="{{ url_for('application_2') }}"> >> </a>
-        <a class="nav-button" href="{{ url_for('sckf') }}">
-            << </a>
-                <br><br>
-
-                <h1>Radar Tracking</h1>
-
-
-    </header>
+<header class="title">
+    <nav class="page-nav">
+        <a class="nav-button" href="{{ url_for('sckf') }}">&laquo; Prev</a>
+        <a class="nav-button" href="{{ url_for('application_2') }}">Next &raquo;</a>
+    </nav>
+    <h1>Radar Tracking</h1>
+</header>
 
     <!-- Slide 1 -->
     <section class="left-align">
@@ -22,7 +17,7 @@
 
         <p>
             <img src="{{ url_for('static', filename='images/radar_app_1.png') }}"
-                style="width: 60%; height: auto; display: block; margin: 0 auto;">
+                class="figure-img size-60">
         </p>
         <ul>
 
@@ -44,7 +39,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 1</p>
+        <p class="page-number">Page 1</p>
         <hr class="full-width">
     </section>
 
@@ -131,8 +126,8 @@
 
             </li>
             <li> The Matlab code that implements the SCKF can be found
-                 <a href="https://github.com/haranarasaratnam/Radar_Tracking" style="color: red;">here</a></li>
-            <li> The below <a href="https://github.com/haranarasaratnam/Radar_Tracking" style="color: red;">Python code</a> implements the CKF and entails 5 sections:
+                 <a href="https://github.com/haranarasaratnam/Radar_Tracking">here</a></li>
+            <li> The below <a href="https://github.com/haranarasaratnam/Radar_Tracking">Python code</a> implements the CKF and entails 5 sections:
                 <ul>
 
                     <li>Filter initialization</li>
@@ -148,7 +143,7 @@
 
 
         </ul>
-        <p style="text-align: right;">Page 2</p>
+        <p class="page-number">Page 2</p>
         <hr class="full-width">
     </section>
 
@@ -164,18 +159,18 @@
 
             <p>
                 <img src="{{ url_for('static', filename='images/application_1_radar_1.png') }}"
-                    style="width: 60%; height: auto; display: block; margin: 0 auto;">
+                    class="figure-img size-60">
             </p>
 
             <p>
                 <img src="{{ url_for('static', filename='images/application_1_radar_2.png') }}"
-                    style="width: 60%; height: auto; display: block; margin: 0 auto;">
+                    class="figure-img size-60">
             </p>
 
 
 
         </ul>
-        <p style="text-align: right;">Page 3</p>
+        <p class="page-number">Page 3</p>
         <hr class="full-width">
     </section>
 
@@ -252,7 +247,7 @@ R = np.array([[0.15, 0.0, 0.0],
 
             </code></pre>
 
-        <p style="text-align: right;">Page 4</p>
+        <p class="page-number">Page 4</p>
         <hr class="full-width">
     </section>
 
@@ -312,7 +307,7 @@ def generate_measurement(x_true):
         
             </code></pre>
 
-        <p style="text-align: right;">Page 5</p>
+        <p class="page-number">Page 5</p>
         <hr class="full-width">
     </section>
 
@@ -389,7 +384,7 @@ def cubature_kalman_filter(x_est, p_est, z):
 
             </code></pre>
 
-        <p style="text-align: right;">Page 6</p>
+        <p class="page-number">Page 6</p>
         <hr class="full-width">
     </section>
 
@@ -486,7 +481,7 @@ def plot_final(x_true_cat, x_est_cat, conf_est_cat):
 
         </code></pre>
 
-        <p style="text-align: right;">Page 7</p>
+        <p class="page-number">Page 7</p>
         <hr class="full-width">
     </section>
 
@@ -553,14 +548,10 @@ if __name__ == '__main__':
     main()    
             </code></pre>
 
-        <p style="text-align: right;">Page 8</p>
+        <p class="page-number">Page 8</p>
         <hr class="full-width">
     </section>
 
 
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-
-</article>
 
 {% endblock %}
