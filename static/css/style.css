@@ -644,6 +644,24 @@ iframe, twitterwidget, video {
 :hover > .anchor { display: inline; }
 
 .MathJax_Display { overflow-x: auto; overflow-y: hidden; }
+
+/* ============================================================
+   Display-math equation boxes — MathJax 3 wraps display
+   equations in <mjx-container display="true">. Style them to
+   match the <pre> code-block treatment for visual consistency.
+   ============================================================ */
+mjx-container[display="true"] {
+    display: block;
+    margin: 1.25em 0;
+    padding: 1em 1.25em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+mjx-container[display="true"] > mjx-math { text-align: center; }
 .utterances { max-width: 100%; width: 100%; margin: 0; }
 
 /* Smooth scroll + reduced-motion respect */
