@@ -64,21 +64,9 @@ by-passed this with SMTPLIB
 - added footer
 
 '''
-from datetime import datetime
-from pathlib import Path
-
 from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
-
-
-def _last_updated(template):
-    """Return the template file's mtime as YYYY-MM-DD, or None if unreadable."""
-    path = Path(app.root_path) / app.template_folder / template.lstrip('./')
-    try:
-        return datetime.fromtimestamp(path.stat().st_mtime).strftime('%Y-%m-%d')
-    except OSError:
-        return None
 
 
 # Define routes and their corresponding templates
@@ -125,9 +113,7 @@ def route_2_render_template(routes):
         app.add_url_rule(
             route,
             endpoint=data['endpoint'],
-            view_func=lambda template=data['template']: render_template(
-                template, last_updated=_last_updated(template)
-            ),
+            view_func=lambda template=data['template']: render_template(template),
         )
 
 route_2_render_template(routes_main)
