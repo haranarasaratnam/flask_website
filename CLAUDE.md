@@ -13,6 +13,24 @@ Serves on `127.0.0.1:8080` with `debug=True` (see `app.py:233-234`). No separate
 
 Add a new dependency with `uv add <pkg>` (updates `pyproject.toml` and `uv.lock`). Activate the venv interactively with `source .venv/bin/activate` if you prefer running `python app.py` directly.
 
+## Deploy
+
+Deployed to PythonAnywhere via a daily scheduled task that runs `scripts/pa_deploy.sh`. The script does:
+
+1. `git fetch && git pull --ff-only origin main` inside `~/flask_website`
+2. `touch /var/www/${USER}_pythonanywhere_com_wsgi.py` — equivalent to clicking **Reload** in the PA Web tab
+3. Echoes `[<UTC>] deployed <sha>` so the deployed commit is visible in the Tasks-tab log
+
+On PA, the Tasks-tab command is:
+
+```
+bash /home/<user>/flask_website/scripts/pa_deploy.sh
+```
+
+`--ff-only` is deliberate: if PA's working tree has drifted (e.g. a hot-fix in the web editor), the pull fails loudly in the task log instead of silently overwriting it. Resolve drift in a PA console (`git stash` or reclone) before the next daily run.
+
+To deploy immediately, run the same command in a PA bash console. There is no local equivalent — the script touches `/var/www/...`, a PA-only path.
+
 ## Architecture
 
 Routes are registered **dynamically** from dictionaries, not via `@app.route` decorators. Each section has its own `routes_<section>` dict in `app.py`, and `route_2_render_template()` walks each dict and calls `app.add_url_rule()`.
