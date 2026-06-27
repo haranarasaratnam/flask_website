@@ -89,7 +89,7 @@ routes_main = {
     '/estimation': {'template': './estimation.html', 'endpoint': 'estimation'},
     '/control': {'template': './control.html', 'endpoint': 'control'},
     '/coding': {'template': './coding.html', 'endpoint': 'coding'},
-    # '/resume': {'template': './resume.html', 'endpoint': 'resume'},  # intentionally hidden — see CLAUDE.md
+    '/resume': {'template': './resume.html', 'endpoint': 'resume'},
 }
 
 # Define routes and their corresponding templates

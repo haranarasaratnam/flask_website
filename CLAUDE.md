@@ -38,7 +38,6 @@ To add a new page:
 ## Conventions and gotchas
 
 - **No contact form** — removed in the 12/8/24 refactor. Don't reintroduce `flask_mail` / SMTP code; `contact.html` and the contact route are intentionally gone from nav.
-- **No resume in nav** — `templates/resume.html` exists but is unlinked from `base.html`'s nav and commented out in `routes_main`.
 - **Dead commented-out routes** at the bottom of `app.py` (lines ~128–227) are leftover from the decorator-style refactor. Safe to delete; left in for now as a reference.
 - **`.idea/workspace.xml` is still tracked** despite being in `.gitignore` — Git only ignores untracked files. Use `git rm --cached -r .idea` to fully untrack when convenient.
 
