@@ -10,134 +10,101 @@
     <h1>Bayesian Filtering</h1>
 </header>
 
+<h2 id="introduction">Introduction</h2>
 
-    <!--        <div class="reveal">-->
-    <!--        <div class="slides">-->
+<p>
+    <img src="{{ url_for('static', filename='images/dssm.png') }}"
+         alt="Dynamic state-space model"
+         class="figure-img size-60">
+</p>
 
-    <!-- Slide 1 -->
-    <section class="left-align">
+<p>
+    A dynamic state-space model in discrete time can be written as a set of nonlinear equations:
+    \[
+    \begin{align}
+    \text{Process equation: } \mathbf{x}_{k} &amp;= \mathbf{f}(\mathbf{x}_{k-1}, \mathbf{u}_{k}, \mathbf{v}_{k}) \\
+    \text{Measurement equation: } \mathbf{z}_{k} &amp;= \mathbf{h}(\mathbf{x}_{k}, \mathbf{w}_{k})
+    \end{align}
+    \]
+    where \(\mathbf{x}_{k}\in R^{n}\) is the state vector at time \(k\),
+    \(\mathbf{u}_{k}\in R^{p}\) is the control input at time \(k\),
+    \(\mathbf{z}_{k}\in R^{d}\) is the measurement taken at time \(k\),
+    \(\mathbf{v}_{k}\) is the process noise, and
+    \(\mathbf{w}_{k}\) is the measurement noise.
+</p>
 
-        <h2>Introduction</h2>
-        <p>
-            <img src="{{ url_for('static', filename='images/dssm.png') }}"
-                class="figure-img size-60">
-        </p>
+<p>
+    Bayesian filter theory asks how we can recursively estimate the hidden state
+    \(\mathbf{x}_{k}\) given the noisy measurements and inputs up to time \(k\),
+    \(D_{k}=\{\mathbf{z}_{1},\mathbf{z}_{2}\ldots\mathbf{z}_{k},
+    \mathbf{u}_{1},\mathbf{u}_{2}\ldots\mathbf{u}_{k}\}\).
+</p>
 
-        <ul>
-            <li>The dynamic state-space model in discrete-time can be written as a set of nonlinear system of equations:
-                \[
-                \begin{align}
-                \text{Process equation: } \mathbf{x}_{k} &= \mathbf{f}(\mathbf{x}_{k-1}, \mathbf{u}_{k}, \mathbf{v}_{k})
-                \\
-                \text{Measurement equation: } \mathbf{z}_{k} &= \mathbf{h}(\mathbf{x}_{k}, \mathbf{w}_{k})
-                \end{align}
-                \]
-                where \(\mathbf{x}_{k}\in R^{n}\) is the state vector at time k, \(\mathbf{u}_{k}\in R^{p}\) is the
-                control input at time
-                k,
-                \(\mathbf{z}_{k}\in R^{d}\) is the measurement taken at time k, \(\mathbf{v}_{k}\) is the process noise and
-            \(\mathbf{w}_{k}\) is the measurement noise</li>
-            <li>The Bayeisna filter theory attempts to address the question of how we could recursively estimate the  hidden state
-                of the system \(\mathbf{x}_{k}\),
-                given the noisy measurements and inputs upto time \(k\),
-                \(D_{k}=\{\mathbf{z}_{1},\mathbf{z}_{2}\ldots\mathbf{z}_{k},\mathbf{u}_{1},\mathbf{u}_{2}\ldots\mathbf{u}_{k}\}\)? </li>
+<h2 id="conceptual-recursive-solution">Conceptual recursive solution</h2>
 
-        </ul>
-        <p class="page-number">Page 1</p>
-        <hr class="full-width">
-    </section>
+<p>
+    The conceptual solution has two stages. The <strong>time update</strong>
+    propagates the previous posterior forward through the process model:
+    \[
+    p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k}) =
+    \int_{R^{n_{x}}}p(\mathbf{x}_{k-1}|D_{k-1})p(\mathbf{x}_{k}|\mathbf{x}_{k-1}, \mathbf{u}_{k})d\mathbf{x}_{k-1}.
+    \]
+</p>
 
-    <!-- Slide 2 -->
-    <section class="left-align">
-        <h2>Conceptual (Recursive) Solution</h2>
-        <ul>
+<p>
+    The <strong>measurement update</strong> then folds in the new observation via Bayes' rule:
+    \[
+    p(\mathbf{x}_{k}|D_{k}) = \frac{1}{c_{k}}
+    p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k}),
+    \]
+    where the normalising constant is
+    \[
+    \begin{align}
+    c_{k} &amp;= p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k}) \\
+    &amp;= \int_{R^{n_{x}}}p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k})d\mathbf{x}_{k},
+    \end{align}
+    \]
+    and \(n_{x}\) is the dimension of the state vector. These integrals are typically intractable for nonlinear systems.
+</p>
 
-            <li>Time Update:
-                \[
-                p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k}) =
-                \int_{R^{n_{x}}}p(\mathbf{x}_{k-1}|D_{k-1})p(\mathbf{x}_{k}|\mathbf{x}_{k-1}, \mathbf{u}_{k})d\mathbf{x}_{k-1}
-                \]
+<h2 id="approximate-solutions">Approximate solutions to nonlinear systems</h2>
 
+<p>
+    The Kalman filter is the celebrated optimal solution to the linear Gaussian case, but no
+    such optimal solution exists for general nonlinear systems. Researchers have historically
+    taken two approaches to derive approximate solutions:
+</p>
 
-            </li>
-            <li>Measurement Update (Using Bayes' Rule):
-                \[
-                p(\mathbf{x}_{k}|D_{k}) =\frac{1}{c_{k}}
-                p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k})
-                \]
-                where the normalizing constant
-                \[
-                \begin{align}
-                c_{k} &=p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})\\
-                &=\int_{R^{n_{x}}}p(\mathbf{x}_{k}|D_{k-1}, \mathbf{u}_{k})p(\mathbf{z}_{k}|\mathbf{x}_{k}, \mathbf{u}_{k})d\mathbf{x}_{k}
-                \end{align}
-                \]
-                and \(n_{x}\) is the state vector dimension.
-            </li>
+<ul>
+    <li>
+        <strong>Kalman-like (innovations-based) algorithms:</strong>
+        Extended Kalman Filter (EKF),
+        Unscented Kalman Filter (UKF),
+        Central-Difference Kalman Filter (CDKF),
+        Gauss&ndash;Hermite Quadrature Kalman Filter (GH-QKF).
+    </li>
+    <li>
+        <strong>Moment-closing algorithms:</strong>
+        Kushner's nonlinear filter,
+        grid filters,
+        particle filters.
+    </li>
+</ul>
 
-            <li> The integrals above are typically intractable for nonlinear systems. </li>
-        </ul>
-        <p class="page-number">Page 2</p>
-        <hr class="full-width">
-    </section>
+<p>
+    Each of these filters trades off accuracy against computational cost &mdash; or pays a
+    price in both. In the next section we introduce the
+    <a href="{{ url_for('ckf') }}">Cubature Kalman Filter (CKF)</a>, a new Bayesian
+    nonlinear filter derived with mathematical rigour, and we show that it yields reasonably
+    accurate estimates at minimal cost.
+</p>
 
+<h2 id="filters-in-control-loops">Bayesian filters in full-state feedback control systems</h2>
 
-    <!-- Slide 2 -->
-    <section class="left-align">
-        <h2>Approximate Solutions to Nonlinear Systems</h2>
-
-
-        <li>
-            Although we have the optimal solution (the celebrated Kalman filter) to the linear Gaussian systems, we
-            do not have an
-            optimal solution to nonlinear systems.
-        </li>
-
-        <li>In the literature, researchers in the past have taken two approaches to derive an approximate solution:
-            <ul>
-                <li>
-                    Kalman-like (Innovations based) algorithms:
-                    <ul>
-                        <li> Extended Kalman Filter (EKF) </li>
-                        <li> Unscented Kalman Filter (UKF)</li>
-                        <li> Central-Difference Kalman Filter (CDKF)</li>
-                        <li> Gauss-Hermite Quadrature Kalman Filter (GH-QKF)</li>
-                    </ul>
-                </li>
-                <li>
-                    Moment Closing algorithms:
-                    <ul>
-                        <li>Kushner's nonlinear filter</li>
-                        <li> Grid filters</li>
-                        <li> Particle Filters</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li>Although we have a suite of nonlnear Bayesian filters to address the nonlinear inference problems, each of them
-            suffers from either accuracy or increased computational cost or both.
-        </li>
-        <li>In the next section,  we introduce a new Bayesian nonlinear filter called
-            the Cubature Kalman
-            Filter (CKF). We will derive the CKF with a mathematical rigor and prove that it yields reasonably accurate estimates at a minimal cost.</li>
-
-        </ul>
-        <p class="page-number">Page 3</p>
-        <hr class="full-width">
-    </section>
-
-
-
-    <section class="left-align">
-
-        <h2>Bayesian filters in full-state feedback control systems </h2>
-        <p>
-            <img src="{{ url_for('static', filename='images/dssm_signal_flow.png') }}"
-                class="figure-img size-full">
-        </p>
-
-        <p class="page-number">Page 4</p>
-        <hr class="full-width">
-    </section>
+<p>
+    <img src="{{ url_for('static', filename='images/dssm_signal_flow.png') }}"
+         alt="Signal-flow diagram showing a Bayesian filter inside a full-state feedback control loop"
+         class="figure-img size-full">
+</p>
 
 {% endblock %}
