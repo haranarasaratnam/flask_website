@@ -41,6 +41,7 @@
                 \[
                 I(\mathbf{f}) =
                 \int_{R^{n_{x}}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x}
+                \tag{1}
                 \]
 
 
@@ -50,10 +51,12 @@
             <li>This is equivalent to finding the solution to the radial integral
                 \[
                 \mathbf{I}_{r} = \int_{0}^{\infty}S(r)r^{n-1}\exp(-r^{2})dr
+                \tag{2}
                 \]
                 where \(S(r)\) is defined by another integral, which we call the spherical integral:
                 \[
                 S(r) = \int_{U_{n}}\mathbf{f}(r\mathbf{y})d\sigma(\mathbf{y})
+                \tag{3}
                 \]
                 where \(\sigma()\) is the spherical surface measure on the region
                 \[
@@ -71,25 +74,28 @@
         <h2>Spherical-Radial Cubature Rule (Continued)</h2>
         <ul>
             <li>We fix the degree of the target cubature rule to be 3 for numerical reasons.</li>
-            <li>We apply the third-degree monomial based cubature rule for spherical integration as follows:
+            <li>We apply the third-degree monomial based cubature rule for the spherical integral in (3) as follows:
                 \[
                 \int_{U_{n}}\mathbf{f}(r\mathbf{s})d\sigma(\mathbf{s}) \approx\sum_{i=1}^{2n}\omega_{s}\mathbf{f}[u]_{i}
+                \tag{4}
                 \]
 
             </li>
             <li>
-                We apply the first-degree quadrature rule for radial integration:
+                We apply the first-degree quadrature rule for the radial integral in (2):
                 \[
                 \int_{0}^{\infty}f(r)r^{n-1}\exp(-r^{-2})dr\approx \omega_{r}f(r)
+                \tag{5}
                 \]
 
             </li>
             <li>
 
-                Combining the spherical and radial integration leads to the following third-degree spherical-radial cubature rule:
+                Substituting (4) and (5) back into (1) yields the third-degree spherical-radial cubature rule:
                 \[
                 \int_{R^{n}}\mathbf{f}(\mathbf{x})\exp(-\mathbf{x}^{T}\mathbf{x})d\mathbf{x} \approx
                 \sum_{i=1}^{2n}\omega_{n}\omega_{r}\mathbf{f}([\mathbf{x}_{r}u]_{i})
+                \tag{6}
                 \]
             </li>
         </ul>
@@ -107,11 +113,13 @@
                 \[
                 \int_{R^{n}}\mathbf{f}(\mathbf{x})\mathcal{N}(\mathbf{x};\mathbf{\mu}, \mathbf{\Sigma})d\mathbf{x}
                 \approx \frac{1}{2n}\sum_{i=1}^{2n}\mathbf{f}(\mathbf{\mu}+\sqrt{\mathbf{\Sigma}}\xi_{i}),
+                \tag{7}
                 \]
-                where $$\mathbf{\Sigma}= \sqrt{\mathbf{\Sigma}}\sqrt{\mathbf{\Sigma}}^{T}$$ and the cubature points
+                where \(\mathbf{\Sigma}= \sqrt{\mathbf{\Sigma}}\sqrt{\mathbf{\Sigma}}^{T}\) and the cubature points
                 \[
                 \xi_{i} = \begin{cases} \sqrt{n}\mathbf{e}_{i }, i=1, 2,\ldots n\\
                 -\sqrt{n}\mathbf{e}_{i }, i=n+1, n+2, \ldots 2n \end{cases}
+                \tag{8}
                 \]
 
             </li>
@@ -134,10 +142,12 @@
             <li>Assume at time \(k\) that the posterior density,
                 \[
                 p(\mathbf{x}_{k-1}|D_{k-1}) = \mathcal{N}(\hat{\mathbf{x}}_{k-1|k-1}, \mathbf{P}_{k-1|k-1})
+                \tag{9}
                 \]
                 is known. Factorize
                 \[
                 \mathbf{P}_{k-1|k-1} = S_{k-1|k-1}S_{k-1|k-1}^{T}
+                \tag{10}
                 \]
 
             </li>
@@ -147,12 +157,14 @@
                 Evaluate the cubature points: (\(i=1, 2,\ldots m, \text{ where } m=2n_{x}\))
                 \[
                 X_{i, k-1|k-1} = S_{k-1|k-1}\xi_{i} + \hat{\mathbf{x}}_{k-1|k-1}
+                \tag{11}
                 \]
             </li>
 
             <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
                 \[
                 X^{\ast}_{i, k|k-1} = \mathbf{f}(X_{i,k-1|k-1}, \mathbf{u}_{k})
+                \tag{12}
                 \]
             </li>
 
@@ -160,6 +172,7 @@
                 Estimate the predicted state
                 \[
                 \hat{\mathbf{x}}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}
+                \tag{13}
                 \]
             </li>
 
@@ -168,6 +181,7 @@
                 \[
                 \mathbf{P}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X^{\ast}_{i, k|k-1}X^{\ast T}_{i, k|k-1} -
                 \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{x}}^{T}_{k|k-1} + \mathbf{Q}_{k-1}
+                \tag{14}
                 \]
 
             </li>
@@ -185,6 +199,7 @@
             <li>Factorize
                 \[
                 \mathbf{P}_{k|k-1} = S_{k|k-1}S_{k|k-1}^{T}
+                \tag{15}
                 \]
             </li>
 
@@ -193,12 +208,14 @@
                 Evaluate the cubature points: (\(i=1, 2,\ldots m, \text{ where } m=2n_{x}\))
                 \[
                 X_{i, k|k-1} = S_{k|k-1}\xi_{i} + \hat{\mathbf{x}}_{k|k-1}
+                \tag{16}
                 \]
             </li>
 
             <li>Evaluate the propagated cubature points \((i=1,2,\ldots m)\):
                 \[
                 Z_{i, k|k-1} = \mathbf{h}(X_{i,k|k-1}, \mathbf{u}_{k})
+                \tag{17}
                 \]
             </li>
 
@@ -206,6 +223,7 @@
                 Estimate the predicted measurement
                 \[
                 \hat{\mathbf{z}}_{k|k-1} = \frac{1}{m}\sum_{i=1}^{m}Z_{i, k|k-1}
+                \tag{18}
                 \]
             </li>
 
@@ -214,6 +232,7 @@
                 \[
                 \mathbf{P}_{zz, k|k-1} = \frac{1}{m}\sum_{i=1}^{m}Z_{i, k|k-1}Z^{T}_{i, k|k-1} -
                 \hat{\mathbf{z}}_{k|k-1}\hat{\mathbf{z}}^{T}_{k|k-1} + \mathbf{R}_{k}
+                \tag{19}
                 \]
 
             </li>
@@ -234,6 +253,7 @@
                 \[
                 \mathbf{P}_{xz, k|k-1} = \frac{1}{m}\sum_{i=1}^{m}X_{i, k|k-1}Z^{T}_{i, k|k-1} -
                 \hat{\mathbf{x}}_{k|k-1}\hat{\mathbf{z}}^{T}_{k|k-1}
+                \tag{20}
                 \]
 
             </li>
@@ -242,6 +262,7 @@
                 Estimate the cubature Kalman Gain
                 \[
                 W_{k} = \mathbf{P}_{xz, k|k-1}\mathbf{P}^{-1}_{zz, k|k-1}
+                \tag{21}
                 \]
 
             </li>
@@ -253,6 +274,7 @@
                 Estimate the updated state
                 \[
                 \hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + W_{k}(\mathbf{z}_{k} - \hat{\mathbf{z}}_{k|k-1})
+                \tag{22}
                 \]
             </li>
 
@@ -260,6 +282,7 @@
                 Estimate the corresponding posterior error covariance matrix
                 \[
                 \mathbf{P}_{k|k} = \mathbf{P}_{k|k-1} - W_{k}P_{zz,k|k-1}W^{T}_{k}
+                \tag{23}
                 \]
 
             </li>
